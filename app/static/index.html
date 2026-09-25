@@ -140,7 +140,9 @@ function answerCard(item) {
     div.innerHTML = `<h3>${esc(item.question)}</h3><p class="warn">The model declined to answer this question.</p>`;
     return div;
   }
-  const body = esc(item.answer).replace(/\[(\d+)\]/g, "<sup>[$1]</sup>");
+  const body = esc(item.answer)
+    .replace(/\*\*([^*\n]+)\*\*/g, "<strong>$1</strong>")
+    .replace(/\[(\d+)\]/g, "<sup>[$1]</sup>");
   const sources = (item.sources || []).map((s) => `
     <li><b>[${s.n}]</b> <a href="${arxivUrl(s.arxiv_id)}" target="_blank" rel="noopener">${esc(s.title)}</a>
       <span class="note">— ${esc(s.section)}</span>
