@@ -103,7 +103,12 @@ def rerank(query, hits, reranker="minilm", k=10):
 
 
 def search(query, method="hybrid_rerank", strategy="section_header", model_key="bge-small", k=10, since=None,
-           reranker="minilm"):
+           reranker="minilm", translate=False):
+    if translate:
+        from rag.translate import needs_translation, to_english
+
+        if needs_translation(query):
+            query = to_english(query)
     if method == "vector":
         return vector_search(query, strategy, model_key, k, since)
     if method == "bm25":

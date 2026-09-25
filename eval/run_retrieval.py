@@ -20,6 +20,11 @@ CONFIGS = {
     "hybrid/section_header": dict(method="hybrid", strategy="section_header"),
     "hybrid+rerank(minilm)/section_header": dict(method="hybrid_rerank", strategy="section_header", reranker="minilm"),
     "hybrid+rerank(bge)/section_header": dict(method="hybrid_rerank", strategy="section_header", reranker="bge"),
+    "hybrid+rerank(minilm)/section_header+translate": dict(method="hybrid_rerank", strategy="section_header",
+                                                          reranker="minilm", translate=True),
+    "vector(bge-m3)/section_header": dict(method="vector", strategy="section_header", model_key="bge-m3"),
+    "hybrid(bge-m3)+rerank(bge)/section_header": dict(method="hybrid_rerank", strategy="section_header",
+                                                      model_key="bge-m3", reranker="bge"),
 }
 
 

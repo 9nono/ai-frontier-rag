@@ -1,0 +1,743 @@
+{
+ "hybrid+rerank(minilm)/section_header+translate": {
+  "rows": [
+   {
+    "id": "q01",
+    "lang": "en",
+    "type": "method",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.28117v1:section_header:0000",
+     "2609.28117v1:section_header:0034",
+     "2609.28117v1:section_header:0059"
+    ]
+   },
+   {
+    "id": "q02",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.26037v1:section_header:0058",
+     "2609.26037v1:section_header:0071",
+     "2609.26037v1:section_header:0044"
+    ]
+   },
+   {
+    "id": "q03",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.26711v1:section_header:0038",
+     "2609.26711v1:section_header:0099",
+     "2609.26711v1:section_header:0064"
+    ]
+   },
+   {
+    "id": "q04",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 2,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.28274v1:section_header:0031",
+     "2609.28274v1:section_header:0110",
+     "2609.28274v1:section_header:0016"
+    ]
+   },
+   {
+    "id": "q05",
+    "lang": "en",
+    "type": "method",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.27446v1:section_header:0035",
+     "2609.27446v1:section_header:0033",
+     "2609.27446v1:section_header:0030"
+    ]
+   },
+   {
+    "id": "q06",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.28414v1:section_header:0024",
+     "2609.28414v1:section_header:0012",
+     "2609.28414v1:section_header:0025"
+    ]
+   },
+   {
+    "id": "q07",
+    "lang": "en",
+    "type": "method",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.28471v1:section_header:0024",
+     "2609.28471v1:section_header:0013",
+     "2609.28471v1:section_header:0009"
+    ]
+   },
+   {
+    "id": "q08",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.26642v1:section_header:0026",
+     "2609.26642v1:section_header:0028",
+     "2609.26642v1:section_header:0031"
+    ]
+   },
+   {
+    "id": "q09",
+    "lang": "en",
+    "type": "method",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.26857v1:section_header:0011",
+     "2609.26857v1:section_header:0010",
+     "2609.26857v1:section_header:0007"
+    ]
+   },
+   {
+    "id": "q10",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 6,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.27284v1:section_header:0000",
+     "2609.27284v1:section_header:0030",
+     "2609.27284v1:section_header:0002"
+    ]
+   },
+   {
+    "id": "q11",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 5,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.26295v1:section_header:0051",
+     "2609.26295v1:section_header:0048",
+     "2609.26295v1:section_header:0038"
+    ]
+   },
+   {
+    "id": "q12",
+    "lang": "en",
+    "type": "finding",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.27690v1:section_header:0022",
+     "2609.27690v1:section_header:0001",
+     "2609.27690v1:section_header:0025"
+    ]
+   },
+   {
+    "id": "q13",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 2,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.27581v1:section_header:0032",
+     "2609.27581v1:section_header:0031",
+     "2609.27581v1:section_header:0000"
+    ]
+   },
+   {
+    "id": "q14",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 3,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.26347v2:section_header:0009",
+     "2609.26347v2:section_header:0010",
+     "2609.26347v2:section_header:0008"
+    ]
+   },
+   {
+    "id": "q15",
+    "lang": "en",
+    "type": "finding",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.26527v1:section_header:0087",
+     "2609.26527v1:section_header:0085",
+     "2609.26527v1:section_header:0065"
+    ]
+   },
+   {
+    "id": "q16",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.27209v1:section_header:0025",
+     "2609.27209v1:section_header:0002",
+     "2609.27209v1:section_header:0000"
+    ]
+   },
+   {
+    "id": "q17",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.26512v1:section_header:0068",
+     "2609.26512v1:section_header:0077",
+     "2609.26512v1:section_header:0064"
+    ]
+   },
+   {
+    "id": "q18",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": null,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.27981v1:section_header:0024",
+     "2609.27981v1:section_header:0035",
+     "2609.27981v1:section_header:0006"
+    ]
+   },
+   {
+    "id": "q19",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.27040v1:section_header:0067",
+     "2609.27040v1:section_header:0017",
+     "2609.27040v1:section_header:0055"
+    ]
+   },
+   {
+    "id": "q20",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.26025v1:section_header:0013",
+     "2609.26025v1:section_header:0012",
+     "2609.26025v1:section_header:0011"
+    ]
+   },
+   {
+    "id": "q21",
+    "lang": "en",
+    "type": "finding",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.26565v1:section_header:0016",
+     "2609.26565v1:section_header:0018",
+     "2609.26565v1:section_header:0000"
+    ]
+   },
+   {
+    "id": "q22",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 4,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.27262v1:section_header:0013",
+     "2609.27262v1:section_header:0047",
+     "2609.27262v1:section_header:0020"
+    ]
+   },
+   {
+    "id": "q23",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.27195v1:section_header:0005",
+     "2609.27195v1:section_header:0013",
+     "2609.27195v1:section_header:0016"
+    ]
+   },
+   {
+    "id": "q24",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.27257v1:section_header:0017",
+     "2609.27257v1:section_header:0006",
+     "2609.27257v1:section_header:0019"
+    ]
+   },
+   {
+    "id": "q25",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 3,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.28004v1:section_header:0027",
+     "2609.28004v1:section_header:0021",
+     "2609.28004v1:section_header:0098"
+    ]
+   },
+   {
+    "id": "q26",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 5,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.27173v1:section_header:0035",
+     "2609.27173v1:section_header:0038",
+     "2609.27173v1:section_header:0005"
+    ]
+   },
+   {
+    "id": "q27",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.27321v1:section_header:0037",
+     "2609.27321v1:section_header:0098",
+     "2609.28395v1:section_header:0061"
+    ]
+   },
+   {
+    "id": "q28",
+    "lang": "en",
+    "type": "method",
+    "first_rank": 7,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.26756v2:section_header:0041",
+     "2609.26756v2:section_header:0055",
+     "2609.26756v2:section_header:0005"
+    ]
+   },
+   {
+    "id": "q29",
+    "lang": "en",
+    "type": "method",
+    "first_rank": null,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.27155v1:section_header:0056",
+     "2609.27155v1:section_header:0016",
+     "2609.27155v1:section_header:0006"
+    ]
+   },
+   {
+    "id": "q30",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.28467v1:section_header:0038",
+     "2609.28467v1:section_header:0035",
+     "2609.28467v1:section_header:0026"
+    ]
+   },
+   {
+    "id": "q31",
+    "lang": "en",
+    "type": "method",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.26929v1:section_header:0009",
+     "2609.26929v1:section_header:0004",
+     "2609.26929v1:section_header:0045"
+    ]
+   },
+   {
+    "id": "q32",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.28272v1:section_header:0014",
+     "2609.28272v1:section_header:0000",
+     "2609.28272v1:section_header:0049"
+    ]
+   },
+   {
+    "id": "q33",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 4,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.27225v1:section_header:0010",
+     "2609.26532v1:section_header:0007",
+     "2609.27225v1:section_header:0006"
+    ]
+   },
+   {
+    "id": "q34",
+    "lang": "en",
+    "type": "method",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.26422v1:section_header:0010",
+     "2609.26422v1:section_header:0008",
+     "2609.26422v1:section_header:0006"
+    ]
+   },
+   {
+    "id": "q35",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 3,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.27489v1:section_header:0024",
+     "2609.27489v1:section_header:0015",
+     "2609.27489v1:section_header:0026"
+    ]
+   },
+   {
+    "id": "q36",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.28231v1:section_header:0020",
+     "2609.28231v1:section_header:0025",
+     "2609.28231v1:section_header:0000"
+    ]
+   },
+   {
+    "id": "q37",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 4,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.26853v1:section_header:0062",
+     "2609.26853v1:section_header:0040",
+     "2609.26853v1:section_header:0024"
+    ]
+   },
+   {
+    "id": "q38",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 2,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.28197v1:section_header:0031",
+     "2609.28197v1:section_header:0030",
+     "2609.28197v1:section_header:0032"
+    ]
+   },
+   {
+    "id": "q39",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.26634v1:section_header:0078",
+     "2609.26634v1:section_header:0077",
+     "2609.26634v1:section_header:0079"
+    ]
+   },
+   {
+    "id": "q40",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 2,
+    "first_paper_rank": 2,
+    "top_hits": [
+     "2609.26532v1:section_header:0017",
+     "2609.26911v1:section_header:0023",
+     "2609.27590v1:section_header:0072"
+    ]
+   },
+   {
+    "id": "q41",
+    "lang": "en",
+    "type": "finding",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.27385v1:section_header:0025",
+     "2609.27385v1:section_header:0024",
+     "2609.27385v1:section_header:0019"
+    ]
+   },
+   {
+    "id": "q42",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.26927v1:section_header:0091",
+     "2609.26927v1:section_header:0088",
+     "2609.26927v1:section_header:0084"
+    ]
+   },
+   {
+    "id": "q43",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.26480v1:section_header:0027",
+     "2609.26480v1:section_header:0034",
+     "2609.26480v1:section_header:0007"
+    ]
+   },
+   {
+    "id": "q44",
+    "lang": "en",
+    "type": "method",
+    "first_rank": 2,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.26687v1:section_header:0044",
+     "2609.26687v1:section_header:0014",
+     "2609.26687v1:section_header:0000"
+    ]
+   },
+   {
+    "id": "q45",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.27980v1:section_header:0020",
+     "2609.27980v1:section_header:0021",
+     "2609.27980v1:section_header:0022"
+    ]
+   },
+   {
+    "id": "q46",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.27337v1:section_header:0023",
+     "2609.27337v1:section_header:0034",
+     "2609.27337v1:section_header:0032"
+    ]
+   },
+   {
+    "id": "q47",
+    "lang": "en",
+    "type": "fact",
+    "first_rank": 2,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.27024v1:section_header:0022",
+     "2609.27024v1:section_header:0019",
+     "2609.27024v1:section_header:0017"
+    ]
+   },
+   {
+    "id": "q48",
+    "lang": "en",
+    "type": "paper",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.28197v1:section_header:0000",
+     "2609.27276v1:section_header:0048",
+     "2609.28197v1:section_header:0003"
+    ]
+   },
+   {
+    "id": "q49",
+    "lang": "en",
+    "type": "paper",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.27981v1:section_header:0052",
+     "2609.27981v1:section_header:0008",
+     "2609.27981v1:section_header:0015"
+    ]
+   },
+   {
+    "id": "q50",
+    "lang": "en",
+    "type": "paper",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.27257v1:section_header:0006",
+     "2609.27257v1:section_header:0000",
+     "2609.27257v1:section_header:0015"
+    ]
+   },
+   {
+    "id": "z01",
+    "lang": "zh",
+    "type": "fact",
+    "first_rank": 2,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.27284v1:section_header:0030",
+     "2609.27284v1:section_header:0031",
+     "2609.27284v1:section_header:0054"
+    ]
+   },
+   {
+    "id": "z02",
+    "lang": "zh",
+    "type": "fact",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.28274v1:section_header:0016",
+     "2609.28274v1:section_header:0110",
+     "2609.28274v1:section_header:0108"
+    ]
+   },
+   {
+    "id": "z03",
+    "lang": "zh",
+    "type": "finding",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.27690v1:section_header:0022",
+     "2609.26481v1:section_header:0123",
+     "2609.26481v1:section_header:0068"
+    ]
+   },
+   {
+    "id": "z04",
+    "lang": "zh",
+    "type": "fact",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.27980v1:section_header:0020",
+     "2609.27980v1:section_header:0021",
+     "2609.27980v1:section_header:0022"
+    ]
+   },
+   {
+    "id": "z05",
+    "lang": "zh",
+    "type": "method",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.26756v2:section_header:0011",
+     "2609.26756v2:section_header:0056",
+     "2609.26756v2:section_header:0041"
+    ]
+   },
+   {
+    "id": "z06",
+    "lang": "zh",
+    "type": "fact",
+    "first_rank": 5,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.27173v1:section_header:0035",
+     "2609.27173v1:section_header:0109",
+     "2609.27173v1:section_header:0038"
+    ]
+   },
+   {
+    "id": "z07",
+    "lang": "zh",
+    "type": "paper",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.28197v1:section_header:0039",
+     "2609.28197v1:section_header:0069",
+     "2609.28197v1:section_header:0032"
+    ]
+   },
+   {
+    "id": "z08",
+    "lang": "zh",
+    "type": "method",
+    "first_rank": null,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.27155v1:section_header:0016",
+     "2609.27155v1:section_header:0017",
+     "2609.27155v1:section_header:0004"
+    ]
+   },
+   {
+    "id": "z09",
+    "lang": "zh",
+    "type": "fact",
+    "first_rank": null,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.27981v1:section_header:0035",
+     "2609.27981v1:section_header:0001",
+     "2609.27981v1:section_header:0052"
+    ]
+   },
+   {
+    "id": "z10",
+    "lang": "zh",
+    "type": "fact",
+    "first_rank": 1,
+    "first_paper_rank": 1,
+    "top_hits": [
+     "2609.26711v1:section_header:0038",
+     "2609.26711v1:section_header:0099",
+     "2609.26711v1:section_header:0014"
+    ]
+   }
+  ],
+  "ms_per_query": 2621.30839159557,
+  "en": {
+   "n": 50,
+   "hit@1": 0.64,
+   "hit@5": 0.92,
+   "hit@10": 0.96,
+   "paper@5": 1.0,
+   "mrr@10": 0.7491904761904762
+  },
+  "zh": {
+   "n": 10,
+   "hit@1": 0.6,
+   "hit@5": 0.8,
+   "hit@10": 0.8,
+   "paper@5": 1.0,
+   "mrr@10": 0.67
+  }
+ }
+}
