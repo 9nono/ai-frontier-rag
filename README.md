@@ -100,20 +100,20 @@ Chinese questions (n = 10), best configuration:
 
 ### Scaling to two weeks (2,440 papers, 190k chunks)
 
-The same 60 questions against the full two-week corpus (the 300 original papers plus 2,140 more), `section + header` index only. Latency is the mean per query on an Apple-silicon laptop, embedding and reranking on the GPU.
+The same 60 questions against the full two-week corpus (the 300 original papers plus 2,140 more), `section + header` index only. Latency is the median per query after warm-up on an Apple-silicon laptop, embedding and reranking on the GPU.
 
 | Configuration (English, n = 50) | hit@1 | hit@5 | hit@10 | MRR | ms/query | hit@5 at 300 papers |
 |---|---|---|---|---|---|---|
-| BM25 | 0.46 | 0.76 | 0.80 | 0.572 | 349 | 0.78 |
-| Vector | 0.36 | 0.70 | 0.80 | 0.498 | 374 | 0.76 |
-| Hybrid (RRF) | 0.46 | 0.72 | 0.86 | 0.585 | 261 | 0.86 |
-| **Hybrid + rerank** | **0.58** | **0.88** | **0.92** | **0.693** | 872 | 0.92 |
-| Hybrid + rerank, Chinese questions with translation (n = 10) | 0.50 | 0.70 | 0.70 | 0.570 | 802 | 0.80 |
+| BM25 | 0.46 | 0.76 | 0.80 | 0.572 | 212 | 0.78 |
+| Vector | 0.36 | 0.70 | 0.80 | 0.498 | 10 | 0.76 |
+| Hybrid (RRF) | 0.46 | 0.72 | 0.86 | 0.585 | 242 | 0.86 |
+| **Hybrid + rerank** | **0.58** | **0.88** | **0.92** | **0.693** | 558 | 0.92 |
+| Hybrid + rerank, Chinese questions with translation (n = 10) | 0.50 | 0.70 | 0.70 | 0.570 | 586 | 0.80 |
 
 Eight times more text means eight times more near-misses. Every retriever loses some precision; hybrid search loses the most (hit@5 0.86 → 0.72), and reranking recovers most of it (0.88). Two problems surfaced that did not exist at 300 papers:
 
 - **Reranking can only reorder what it is given.** Hybrid hit@10 is 0.86, so for some questions the right passage is not among the 30 candidates sent to the reranker.
-- **BM25 latency grows with the corpus.** `rank_bm25` scores every chunk in Python; going from 23k to 190k chunks took a query from about 40 ms to about 350 ms.
+- **BM25 is the slow part.** `rank_bm25` scores all 190k chunks in Python for every query: 212 ms, most of hybrid search's 242 ms. Vector search over the same chunks takes 10 ms.
 
 ### Limitations
 
@@ -137,6 +137,7 @@ Each item is a question the evaluation can answer:
 - **Embedding throughput.** On this Apple-silicon laptop, ONNX on CPU embedded 11 to 17 chunks/s regardless of batch size, CoreML acceleration gave 17.5 chunks/s, and PyTorch on the Apple GPU (MPS) gave 113 chunks/s with identical vectors (cosine similarity 1.0000), so indexing moved to MPS without re-embedding.
 - **Resumable indexing.** Because indexing compares content hashes, an interrupted run picks up where it stopped; this was exercised when the backend was switched mid-run. Growing the corpus to two weeks embedded only the 166,910 new chunks and skipped the 23,354 already indexed.
 - **Answer language.** Every passage is in English, and with only the system prompt asking for the question's language, one of the three Chinese featured questions was answered in English. Restating the language next to the question fixed it; `rag.precompute` now flags a Chinese question whose answer contains no Chinese, and `--only N` regenerates single questions instead of paying for all ten.
+- **Measuring latency.** Timing each configuration from a cold start put model loading and the BM25 index build into its first query, which made vector search look like 374 ms per query when it takes 10 ms. Each configuration now runs two untimed warm-up queries first, and results report the median and 95th percentile.
 - **Ingestion at scale.** 2,440 papers downloaded at one request every 3 seconds with no failures: 2,279 from HTML, 161 from PDF.
 
 ## Running it

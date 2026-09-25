@@ -1,6 +1,6 @@
 {
  "corpus": "2,440 papers, cs.CL+cs.AI, published 2026-09-10..23; section_header index only",
- "source": "retrieval-20260925-141936.json",
+ "source": "retrieval-20260925-152412.json",
  "configs": {
   "bm25/section_header": {
    "en": {
@@ -19,7 +19,11 @@
     "paper@5": 0.4,
     "mrr@10": 0.08333333333333333
    },
-   "ms_per_query": 348.52376731966314
+   "latency_ms": {
+    "p50": 212.3248124262318,
+    "p95": 315.6076669692993,
+    "mean": 194.8363964795135
+   }
   },
   "vector/section_header": {
    "en": {
@@ -38,7 +42,11 @@
     "paper@5": 0.3,
     "mrr@10": 0.05
    },
-   "ms_per_query": 374.3747097828115
+   "latency_ms": {
+    "p50": 10.329666547477245,
+    "p95": 14.535417081788182,
+    "mean": 10.814904883348694
+   }
   },
   "hybrid/section_header": {
    "en": {
@@ -57,7 +65,11 @@
     "paper@5": 0.5,
     "mrr@10": 0.075
    },
-   "ms_per_query": 261.1620631883852
+   "latency_ms": {
+    "p50": 242.36083310097456,
+    "p95": 371.22333282604814,
+    "mean": 229.42583326948807
+   }
   },
   "hybrid+rerank(minilm)/section_header": {
    "en": {
@@ -76,7 +88,11 @@
     "paper@5": 0.5,
     "mrr@10": 0.06428571428571428
    },
-   "ms_per_query": 872.2422639140859
+   "latency_ms": {
+    "p50": 557.9574794974178,
+    "p95": 731.3525001518428,
+    "mean": 552.4780299048871
+   }
   },
   "hybrid+rerank(minilm)/section_header+translate": {
    "en": {
@@ -95,7 +111,11 @@
     "paper@5": 1.0,
     "mrr@10": 0.5700000000000001
    },
-   "ms_per_query": 801.9700396146314
+   "latency_ms": {
+    "p50": 585.8362920116633,
+    "p95": 776.0738749057055,
+    "mean": 590.2697437287619
+   }
   }
  }
 }
