@@ -5,22 +5,25 @@ import time
 from datetime import datetime
 
 import chromadb
-from fastembed import TextEmbedding
+import torch
+from sentence_transformers import SentenceTransformer
 
 from ingest.build_chunks import CHUNK_DIR
 from ingest.chunk import STRATEGIES
 from ingest.fetch_arxiv import DATA
 
 CHROMA_DIR = DATA / "chroma"
-BATCH = 128
+BATCH = 64
+MAX_SEQ_TOKENS = 512
+DEVICE = "mps" if torch.backends.mps.is_available() else "cpu"
 
 EMBED_MODELS = {
     "bge-small": {
         "name": "BAAI/bge-small-en-v1.5",
         "query_prefix": "Represent this sentence for searching relevant passages: ",
     },
-    "jina-zh": {
-        "name": "jinaai/jina-embeddings-v2-base-zh",
+    "bge-m3": {
+        "name": "BAAI/bge-m3",
         "query_prefix": "",
     },
 }
@@ -30,13 +33,19 @@ _models = {}
 
 def embedder(model_key):
     if model_key not in _models:
-        _models[model_key] = TextEmbedding(EMBED_MODELS[model_key]["name"])
+        model = SentenceTransformer(EMBED_MODELS[model_key]["name"], device=DEVICE)
+        model.max_seq_length = MAX_SEQ_TOKENS
+        _models[model_key] = model
     return _models[model_key]
+
+
+def embed_texts(model_key, texts):
+    return embedder(model_key).encode(texts, batch_size=BATCH, normalize_embeddings=True).tolist()
 
 
 def embed_queries(model_key, queries):
     prefix = EMBED_MODELS[model_key]["query_prefix"]
-    return [v.tolist() for v in embedder(model_key).embed([prefix + q for q in queries])]
+    return embed_texts(model_key, [prefix + q for q in queries])
 
 
 def client():
@@ -94,11 +103,10 @@ def build(strategy, model_key):
         collection.delete(ids=stale[start:start + 5000])
     print(f"{collection_name(strategy, model_key)}: {len(chunks)} chunks | "
           f"new/changed {len(todo)} | unchanged {len(chunks) - len(todo)} | deleted {len(stale)}")
-    model = embedder(model_key)
     started = time.monotonic()
     for start in range(0, len(todo), BATCH):
         batch = todo[start:start + BATCH]
-        vectors = [v.tolist() for v in model.embed([c["embed_text"] for c in batch], batch_size=BATCH)]
+        vectors = embed_texts(model_key, [c["embed_text"] for c in batch])
         collection.upsert(
             ids=[c["chunk_id"] for c in batch],
             embeddings=vectors,

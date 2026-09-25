@@ -2,15 +2,15 @@ import re
 from datetime import datetime, timezone
 from functools import lru_cache
 
-from fastembed.rerank.cross_encoder import TextCrossEncoder
 from rank_bm25 import BM25Okapi
+from sentence_transformers import CrossEncoder
 
-from rag.index import embed_queries, get_collection, load_chunks
+from rag.index import DEVICE, MAX_SEQ_TOKENS, embed_queries, get_collection, load_chunks
 
 RRF_K = 60
 RERANK_CANDIDATES = 30
 RERANKERS = {
-    "minilm": "Xenova/ms-marco-MiniLM-L-12-v2",
+    "minilm": "cross-encoder/ms-marco-MiniLM-L-12-v2",
     "bge": "BAAI/bge-reranker-base",
 }
 TOKEN = re.compile(r"[a-z0-9]+(?:[-.][a-z0-9]+)*")
@@ -39,7 +39,7 @@ def _bm25(strategy):
 
 @lru_cache(maxsize=None)
 def _reranker(name):
-    return TextCrossEncoder(RERANKERS[name])
+    return CrossEncoder(RERANKERS[name], device=DEVICE, max_length=MAX_SEQ_TOKENS)
 
 
 def _hit(chunk_id, meta, text, score, source):
@@ -96,7 +96,7 @@ def hybrid_search(query, strategy, model_key="bge-small", k=10, since=None, pool
 def rerank(query, hits, reranker="minilm", k=10):
     if not hits:
         return []
-    scores = list(_reranker(reranker).rerank(query, [h["text"] for h in hits]))
+    scores = _reranker(reranker).predict([(query, h["text"]) for h in hits])
     ranked = sorted(zip(hits, scores), key=lambda p: p[1], reverse=True)[:k]
     return [{**h, "score": float(s), "source": f"{h['source']}+rerank"} for h, s in ranked]
 
