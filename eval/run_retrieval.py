@@ -29,6 +29,12 @@ CONFIGS = {
             method="hybrid_rerank", strategy="section_header", reranker="minilm", translate=True, rerank_candidates=n)
         for n in (20, 50, 100)
     },
+    **{
+        f"hybrid+rerank(minilm,{precision},bs{batch})/section_header+translate": dict(
+            method="hybrid_rerank", strategy="section_header", reranker="minilm", translate=True,
+            rerank_precision=precision, rerank_batch=batch)
+        for precision, batch in (("fp32", 32), ("fp32", 8))
+    },
 }
 
 

@@ -147,6 +147,21 @@ A fresh process now answers its first keyword query in 0.45 s instead of 6.7 s a
 
 BM25 on its own also got better (MRR +0.062, 95% bootstrap interval [+0.019, +0.115]), but FTS5 is not the reason. FTS5's `bm25()` fixes k1 at 1.2, while `rank_bm25` defaults to 1.5; a lower k1 gives repeated occurrences of one word less weight relative to matching more of the query. Re-running `rank_bm25` with k1 = 1.2 returns the same top 10 as FTS5 for all 50 English questions, which also confirms the port is exact. After reranking the difference is gone (one question moves from rank 6 to 7), so the end-to-end gain is latency: 593 → 405 ms, of which the reranker is now about 350.
 
+### Reranker latency
+
+After the FTS5 switch the cross-encoder took about 320 of the 400 ms per query. The pairs it scores are short (query plus passage: median 225 tokens, 8% over 384), but all 30 candidates went through as one batch padded to the longest pair, which for the median query is 451 tokens. `sentence-transformers` already sorts pairs by length before batching, so smaller batches pad less. Each setting below reranks the same candidates for all 60 questions (`eval/rerank_latency.py`); "same top 6" counts questions whose top six come out in the same order as before.
+
+| Reranker setting | Rerank ms | Same top 6 | End to end, p50 / p95 ms |
+|---|---|---|---|
+| fp32, batch 32 (before) | 319 | — | 411 / 600 |
+| fp32, batch 8 | 224 | 60 / 60 | 301 / 465 |
+| fp32, passages cut to 384 tokens | 264 | 50 / 60 | — |
+| fp32, passages cut to 256 tokens | 172 | 24 / 60 | — |
+| **fp16, batch 8** | **104** | 59 / 60 | **171 / 347** |
+| CPU, fp32, batch 32 | 869 | 60 / 60 | — |
+
+Cutting passages saves compute but reorders results, so it was not used. Half precision changes one question's top six without moving its relevant passage: in the full evaluation, every question's first relevant rank and top three are identical to fp32, and every metric is unchanged. A query now takes 171 ms end to end; before the keyword index and reranker changes it took 593 ms. Half precision is applied only on a GPU; on CPU the reranker stays in fp32.
+
 ### Limitations
 
 - One person wrote the questions and the evidence labels, and 50 questions is a small sample: a difference of 0.06 in hit@5 is three questions.
@@ -157,11 +172,10 @@ BM25 on its own also got better (MRR +0.062, 95% bootstrap interval [+0.019, +0.
 
 Each item is a question the evaluation can answer:
 
-1. **Reranker latency.** The cross-encoder is now about 350 of the 405 ms per query. Does a smaller reranker, or a shorter passage window, keep hit@6 while cutting that?
-2. **Time-aware ranking.** The date filter is a hard cutoff. Add a recency prior and detect "latest / recent" intent, with new questions whose correct answer depends on publication date.
-3. **Answer-level evaluation.** Measure abstention on questions the corpus cannot answer, and check that every cited span actually contains the supporting evidence.
-4. **A larger, independent question set.** 100+ questions, a separate held-out Chinese set, and a second annotator.
-5. **Where the evidence comes from.** 32 of the 60 passages retrieved for the ten featured questions come from Introduction or Related Work sections, which describe earlier work second-hand: the KV-cache answer cites one paper's summary of SnapKV and PyramidKV, and that summary does not match how those methods work. The diffusion-model question, which asks about a field, drew all six passages from a single paper. Does a per-paper cap, or down-weighting related-work sections for "what's new" questions, broaden the answers without costing hit@k?
+1. **Time-aware ranking.** The date filter is a hard cutoff. Add a recency prior and detect "latest / recent" intent, with new questions whose correct answer depends on publication date.
+2. **Answer-level evaluation.** Measure abstention on questions the corpus cannot answer, and check that every cited span actually contains the supporting evidence.
+3. **A larger, independent question set.** 100+ questions, a separate held-out Chinese set, and a second annotator.
+4. **Where the evidence comes from.** 32 of the 60 passages retrieved for the ten featured questions come from Introduction or Related Work sections, which describe earlier work second-hand: the KV-cache answer cites one paper's summary of SnapKV and PyramidKV, and that summary does not match how those methods work. The diffusion-model question, which asks about a field, drew all six passages from a single paper. Does a per-paper cap, or down-weighting related-work sections for "what's new" questions, broaden the answers without costing hit@k?
 
 ## Engineering notes
 
@@ -201,6 +215,6 @@ ENABLE_LIVE_ANSWERS=1 .venv/bin/python -m app.server
 ```
 ingest/   fetch_arxiv.py  parse.py  chunk.py  build_chunks.py
 rag/      index.py  keyword_index.py  retrieve.py  translate.py  generate.py  precompute.py
-eval/     questions.jsonl  validate.py  run_retrieval.py  candidate_recall.py  compare.py  results/
+eval/     questions.jsonl  validate.py  run_retrieval.py  candidate_recall.py  compare.py  rerank_latency.py  results/
 app/      server.py  static/index.html  featured_answers.json
 ```

@@ -9,6 +9,10 @@ from rag.index import DEVICE, MAX_SEQ_TOKENS, embed_queries, get_collection
 RRF_K = 60
 HYBRID_POOL = 50
 RERANK_CANDIDATES = 30
+# Candidates are length-sorted before batching, so small batches pad less; half precision
+# roughly halves the rest. Both measured against fp32 / batch 32 in eval/results.
+RERANK_BATCH = 8
+RERANK_PRECISION = "fp16"
 RERANKERS = {
     "minilm": "cross-encoder/ms-marco-MiniLM-L-12-v2",
     "bge": "BAAI/bge-reranker-base",
@@ -22,8 +26,11 @@ def _since_ts(since):
 
 
 @lru_cache(maxsize=None)
-def _reranker(name):
-    return CrossEncoder(RERANKERS[name], device=DEVICE, max_length=MAX_SEQ_TOKENS)
+def _reranker(name, precision=RERANK_PRECISION):
+    model = CrossEncoder(RERANKERS[name], device=DEVICE, max_length=MAX_SEQ_TOKENS)
+    if precision == "fp16" and DEVICE != "cpu":
+        model.half()
+    return model
 
 
 def _hit(chunk_id, meta, text, score, source):
@@ -66,17 +73,18 @@ def hybrid_search(query, strategy, model_key="bge-small", k=10, since=None, pool
     return sorted(fused.values(), key=lambda h: h["score"], reverse=True)[:k]
 
 
-def rerank(query, hits, reranker="minilm", k=10):
+def rerank(query, hits, reranker="minilm", k=10, precision=RERANK_PRECISION, batch_size=RERANK_BATCH):
     if not hits:
         return []
     passages = [f"{h['title']}\nSection: {h['section']}\n{h['text']}" for h in hits]
-    scores = _reranker(reranker).predict([(query, p) for p in passages])
+    scores = _reranker(reranker, precision).predict([(query, p) for p in passages], batch_size=batch_size)
     ranked = sorted(zip(hits, scores), key=lambda p: p[1], reverse=True)[:k]
     return [{**h, "score": float(s), "source": f"{h['source']}+rerank"} for h, s in ranked]
 
 
 def search(query, method="hybrid_rerank", strategy="section_header", model_key="bge-small", k=10, since=None,
-           reranker="minilm", translate=False, rerank_candidates=RERANK_CANDIDATES):
+           reranker="minilm", translate=False, rerank_candidates=RERANK_CANDIDATES,
+           rerank_precision=RERANK_PRECISION, rerank_batch=RERANK_BATCH):
     if translate:
         from rag.translate import needs_translation, to_english
 
@@ -91,5 +99,5 @@ def search(query, method="hybrid_rerank", strategy="section_header", model_key="
     if method == "hybrid_rerank":
         candidates = hybrid_search(query, strategy, model_key, rerank_candidates, since,
                                    pool=max(HYBRID_POOL, rerank_candidates))
-        return rerank(query, candidates, reranker, k)
+        return rerank(query, candidates, reranker, k, rerank_precision, rerank_batch)
     raise ValueError(f"unknown method {method}")

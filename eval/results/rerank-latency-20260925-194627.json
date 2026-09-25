@@ -1,0 +1,83 @@
+{
+ "fp32, batch 32": {
+  "device": "mps",
+  "precision": "fp32",
+  "max_length": 512,
+  "batch_size": 32,
+  "p50_ms": 319.20775049366057,
+  "same_top": 60,
+  "n": 60
+ },
+ "fp32, batch 16": {
+  "device": "mps",
+  "precision": "fp32",
+  "max_length": 512,
+  "batch_size": 16,
+  "p50_ms": 248.29010397661477,
+  "same_top": 60,
+  "n": 60
+ },
+ "fp32, batch 8": {
+  "device": "mps",
+  "precision": "fp32",
+  "max_length": 512,
+  "batch_size": 8,
+  "p50_ms": 224.29158340673894,
+  "same_top": 60,
+  "n": 60
+ },
+ "fp32, batch 4": {
+  "device": "mps",
+  "precision": "fp32",
+  "max_length": 512,
+  "batch_size": 4,
+  "p50_ms": 211.27964602783322,
+  "same_top": 60,
+  "n": 60
+ },
+ "fp32, cut to 384 tokens": {
+  "device": "mps",
+  "precision": "fp32",
+  "max_length": 384,
+  "batch_size": 32,
+  "p50_ms": 264.42287501413375,
+  "same_top": 50,
+  "n": 60
+ },
+ "fp32, cut to 256 tokens": {
+  "device": "mps",
+  "precision": "fp32",
+  "max_length": 256,
+  "batch_size": 32,
+  "p50_ms": 172.17431287281215,
+  "same_top": 24,
+  "n": 60
+ },
+ "fp16, batch 32": {
+  "device": "mps",
+  "precision": "fp16",
+  "max_length": 512,
+  "batch_size": 32,
+  "p50_ms": 146.4658125769347,
+  "same_top": 59,
+  "n": 60
+ },
+ "fp16, batch 8": {
+  "device": "mps",
+  "precision": "fp16",
+  "max_length": 512,
+  "batch_size": 8,
+  "p50_ms": 104.00870849844068,
+  "same_top": 59,
+  "n": 60
+ },
+ "cpu fp32, batch 32": {
+  "device": "cpu",
+  "precision": "fp32",
+  "max_length": 512,
+  "batch_size": 32,
+  "p50_ms": 868.8435209915042,
+  "same_top": 60,
+  "n": 60
+ }
+}
