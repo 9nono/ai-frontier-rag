@@ -1,31 +1,21 @@
-import re
 from datetime import datetime, timezone
 from functools import lru_cache
 
 from rank_bm25 import BM25Okapi
 from sentence_transformers import CrossEncoder
 
+from rag import keyword_index
 from rag.index import DEVICE, MAX_SEQ_TOKENS, embed_queries, get_collection, load_chunks
+from rag.keyword_index import tokenize
 
 RRF_K = 60
+KEYWORD_BACKEND = "rank_bm25"
 HYBRID_POOL = 50
 RERANK_CANDIDATES = 30
 RERANKERS = {
     "minilm": "cross-encoder/ms-marco-MiniLM-L-12-v2",
     "bge": "BAAI/bge-reranker-base",
 }
-TOKEN = re.compile(r"[a-z0-9]+(?:[-.][a-z0-9]+)*")
-STOPWORDS = set(
-    "a an the of to in on for and or is are was were be been by with as at from that this these those it its "
-    "we our they their which what how why when who does do did can could would should will than then there "
-    "into over under about between via using use used also such not no".split()
-)
-
-
-def tokenize(text):
-    return [t for t in TOKEN.findall(text.lower()) if t not in STOPWORDS]
-
-
 def _since_ts(since):
     if since is None:
         return None
@@ -69,7 +59,10 @@ def vector_search(query, strategy, model_key="bge-small", k=10, since=None):
     ]
 
 
-def bm25_search(query, strategy, k=10, since=None):
+def bm25_search(query, strategy, k=10, since=None, backend=KEYWORD_BACKEND):
+    if backend == "fts5":
+        return [_hit(r["chunk_id"], r, r["text"], r["score"], "bm25")
+                for r in keyword_index.search(query, strategy, k, _since_ts(since))]
     index, chunks = _bm25(strategy)
     scores = index.get_scores(tokenize(query))
     since_ts = _since_ts(since)
@@ -85,9 +78,10 @@ def bm25_search(query, strategy, k=10, since=None):
     return hits
 
 
-def hybrid_search(query, strategy, model_key="bge-small", k=10, since=None, pool=HYBRID_POOL):
+def hybrid_search(query, strategy, model_key="bge-small", k=10, since=None, pool=HYBRID_POOL, keyword=KEYWORD_BACKEND):
     fused = {}
-    for results in (vector_search(query, strategy, model_key, pool, since), bm25_search(query, strategy, pool, since)):
+    for results in (vector_search(query, strategy, model_key, pool, since),
+                    bm25_search(query, strategy, pool, since, keyword)):
         for rank, hit in enumerate(results, 1):
             entry = fused.setdefault(hit["chunk_id"], {**hit, "score": 0.0, "source": "hybrid"})
             entry["score"] += 1 / (RRF_K + rank)
@@ -104,7 +98,7 @@ def rerank(query, hits, reranker="minilm", k=10):
 
 
 def search(query, method="hybrid_rerank", strategy="section_header", model_key="bge-small", k=10, since=None,
-           reranker="minilm", translate=False, rerank_candidates=RERANK_CANDIDATES):
+           reranker="minilm", translate=False, rerank_candidates=RERANK_CANDIDATES, keyword=KEYWORD_BACKEND):
     if translate:
         from rag.translate import needs_translation, to_english
 
@@ -113,11 +107,11 @@ def search(query, method="hybrid_rerank", strategy="section_header", model_key="
     if method == "vector":
         return vector_search(query, strategy, model_key, k, since)
     if method == "bm25":
-        return bm25_search(query, strategy, k, since)
+        return bm25_search(query, strategy, k, since, keyword)
     if method == "hybrid":
-        return hybrid_search(query, strategy, model_key, k, since)
+        return hybrid_search(query, strategy, model_key, k, since, keyword=keyword)
     if method == "hybrid_rerank":
         candidates = hybrid_search(query, strategy, model_key, rerank_candidates, since,
-                                   pool=max(HYBRID_POOL, rerank_candidates))
+                                   pool=max(HYBRID_POOL, rerank_candidates), keyword=keyword)
         return rerank(query, candidates, reranker, k)
     raise ValueError(f"unknown method {method}")

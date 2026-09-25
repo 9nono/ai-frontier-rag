@@ -29,6 +29,10 @@ CONFIGS = {
             method="hybrid_rerank", strategy="section_header", reranker="minilm", translate=True, rerank_candidates=n)
         for n in (20, 50, 100)
     },
+    "bm25/section_header+fts5": dict(method="bm25", strategy="section_header", keyword="fts5"),
+    "hybrid/section_header+fts5": dict(method="hybrid", strategy="section_header", keyword="fts5"),
+    "hybrid+rerank(minilm)/section_header+translate+fts5": dict(method="hybrid_rerank", strategy="section_header",
+                                                               reranker="minilm", translate=True, keyword="fts5"),
 }
 
 
