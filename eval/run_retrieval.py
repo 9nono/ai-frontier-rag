@@ -24,6 +24,11 @@ CONFIGS = {
     "hybrid+rerank(bge)/section_header": dict(method="hybrid_rerank", strategy="section_header", reranker="bge"),
     "hybrid+rerank(minilm)/section_header+translate": dict(method="hybrid_rerank", strategy="section_header",
                                                           reranker="minilm", translate=True),
+    **{
+        f"hybrid+rerank(minilm)/section_header+translate@{n}": dict(
+            method="hybrid_rerank", strategy="section_header", reranker="minilm", translate=True, rerank_candidates=n)
+        for n in (20, 50, 100)
+    },
 }
 
 

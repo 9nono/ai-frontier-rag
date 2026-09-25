@@ -104,7 +104,7 @@ def rerank(query, hits, reranker="minilm", k=10):
 
 
 def search(query, method="hybrid_rerank", strategy="section_header", model_key="bge-small", k=10, since=None,
-           reranker="minilm", translate=False):
+           reranker="minilm", translate=False, rerank_candidates=RERANK_CANDIDATES):
     if translate:
         from rag.translate import needs_translation, to_english
 
@@ -117,5 +117,7 @@ def search(query, method="hybrid_rerank", strategy="section_header", model_key="
     if method == "hybrid":
         return hybrid_search(query, strategy, model_key, k, since)
     if method == "hybrid_rerank":
-        return rerank(query, hybrid_search(query, strategy, model_key, RERANK_CANDIDATES, since), reranker, k)
+        candidates = hybrid_search(query, strategy, model_key, rerank_candidates, since,
+                                   pool=max(HYBRID_POOL, rerank_candidates))
+        return rerank(query, candidates, reranker, k)
     raise ValueError(f"unknown method {method}")

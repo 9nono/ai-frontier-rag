@@ -115,22 +115,36 @@ Eight times more text means eight times more near-misses. Every retriever loses 
 - **Reranking can only reorder what it is given.** Hybrid search puts a relevant passage among the 30 candidates sent to the reranker for 46 of 50 English questions and 7 of 10 Chinese ones (`eval/candidate_recall.py`). Reranked hit@10 is also 0.92, so the reranker already brings every relevant passage it receives into the top 10; the ceiling is the pool. Widening the pool to 100 would contain all 50 English passages and 9 of the 10 Chinese ones.
 - **BM25 is the slow part.** `rank_bm25` scores all 190k chunks in Python for every query: 212 ms, most of hybrid search's 242 ms. Vector search over the same chunks takes 10 ms.
 
+### Rerank pool size
+
+Does a bigger pool turn that ceiling into better answers? Same corpus, candidates from hybrid search, MiniLM reranker, Chinese questions translated. "In pool" is candidate recall; hit@1 to MRR are English (n = 50); hit@6 is over all 60 questions, because the generator is given the top six passages.
+
+| Candidates | In pool (en / zh) | hit@1 | hit@5 | hit@10 | MRR | hit@6 (all) | ms/query |
+|---|---|---|---|---|---|---|---|
+| 20 | 0.92 / 0.70 | 0.58 | 0.88 | 0.92 | 0.693 | 53 / 60 | 472 |
+| **30** | 0.92 / 0.70 | 0.58 | 0.88 | 0.92 | 0.693 | 53 / 60 | 596 |
+| 50 | 0.94 / 0.90 | 0.60 | 0.86 | 0.94 | 0.709 | 53 / 60 | 750 |
+| 100 | 1.00 / 0.90 | 0.60 | 0.88 | 0.96 | 0.718 | 53 / 60 | 1,243 |
+
+A bigger pool does what it is meant to: passages that were missing come back, and the reranker puts three of them straight at rank 1 or 2 (q02, q18, and the Chinese z07). It also brings more near-misses, which push five other English questions down one to three places. For the six passages the generator sees, the two effects cancel exactly at every size. Against 30 candidates, 100 gains +0.026 MRR on English with a 95% bootstrap interval of [−0.006, +0.076] (`eval/compare.py`), while reranking costs about 10 ms per candidate. **The pool stays at 30.** The question set cannot tell 20 from 30 either: no question's passage sits between ranks 21 and 30.
+
+Three passages reach the reranker only at 100 candidates and still miss the top 10. Two are one passage asked in English and Chinese (q29, z08): the reranker ranks higher a passage from the same paper that describes a "self-reinforcing feedback loop", which arguably answers the question but lacks the labeled phrase "positive feedback loop". The third (q48, a find-the-paper question) is a real miss.
+
 ### Limitations
 
 - One person wrote the questions and the evidence labels, and 50 questions is a small sample: a difference of 0.06 in hit@5 is three questions.
 - The 10 Chinese questions were used while building the translation step (including choosing glossary terms), so they act as a development set, not a held-out test. The glossary only contains general AI terms, not terms specific to any question.
-- Evidence matching is lenient: a chunk that contains the evidence string for an unrelated reason still counts.
+- Evidence matching is lenient in one direction and strict in the other: a chunk that contains the evidence string for an unrelated reason still counts, while a chunk that gives the answer in other words does not (see q29 above).
 
 ## Next iterations
 
 Each item is a question the evaluation can answer:
 
-1. **Rerank pool size.** Does sending 50 or 100 candidates to the reranker instead of 30 recover the passages hybrid search ranks 31st to 100th, and what does it cost in latency?
-2. **Keyword index that scales.** Replace in-memory BM25 with SQLite FTS5; compare latency and hit@k at 190k chunks.
-3. **Time-aware ranking.** The date filter is a hard cutoff. Add a recency prior and detect "latest / recent" intent, with new questions whose correct answer depends on publication date.
-4. **Answer-level evaluation.** Measure abstention on questions the corpus cannot answer, and check that every cited span actually contains the supporting evidence.
-5. **A larger, independent question set.** 100+ questions, a separate held-out Chinese set, and a second annotator.
-6. **Where the evidence comes from.** 32 of the 60 passages retrieved for the ten featured questions come from Introduction or Related Work sections, which describe earlier work second-hand: the KV-cache answer cites one paper's summary of SnapKV and PyramidKV, and that summary does not match how those methods work. The diffusion-model question, which asks about a field, drew all six passages from a single paper. Does a per-paper cap, or down-weighting related-work sections for "what's new" questions, broaden the answers without costing hit@k?
+1. **Keyword index that scales.** Replace in-memory BM25 with SQLite FTS5; compare latency and hit@k at 190k chunks.
+2. **Time-aware ranking.** The date filter is a hard cutoff. Add a recency prior and detect "latest / recent" intent, with new questions whose correct answer depends on publication date.
+3. **Answer-level evaluation.** Measure abstention on questions the corpus cannot answer, and check that every cited span actually contains the supporting evidence.
+4. **A larger, independent question set.** 100+ questions, a separate held-out Chinese set, and a second annotator.
+5. **Where the evidence comes from.** 32 of the 60 passages retrieved for the ten featured questions come from Introduction or Related Work sections, which describe earlier work second-hand: the KV-cache answer cites one paper's summary of SnapKV and PyramidKV, and that summary does not match how those methods work. The diffusion-model question, which asks about a field, drew all six passages from a single paper. Does a per-paper cap, or down-weighting related-work sections for "what's new" questions, broaden the answers without costing hit@k?
 
 ## Engineering notes
 
