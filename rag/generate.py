@@ -4,6 +4,7 @@ import json
 import anthropic
 
 from rag.retrieve import search
+from rag.translate import needs_translation
 
 DEFAULT_MODEL = "claude-haiku-4-5"
 FALLBACK_MODELS = {"claude-opus-5"}
@@ -30,12 +31,21 @@ def build_documents(hits):
     ]
 
 
+def _question_turn(question):
+    # The excerpts are all English, which pulls answers to Chinese questions into English
+    # despite the system prompt; restating the language next to the question keeps it.
+    if needs_translation(question):
+        return f"{question}\n\n请用中文回答。"
+    return question
+
+
 def _request(model, effort, hits, question):
     kwargs = dict(
         model=model,
         max_tokens=4000,
         system=SYSTEM,
-        messages=[{"role": "user", "content": [*build_documents(hits), {"type": "text", "text": question}]}],
+        messages=[{"role": "user", "content": [*build_documents(hits),
+                                               {"type": "text", "text": _question_turn(question)}]}],
     )
     if model not in NO_EFFORT_MODELS:
         kwargs["output_config"] = {"effort": effort}

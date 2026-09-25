@@ -347,28 +347,26 @@
  },
  {
   "question": "检索增强生成（RAG）最近有什么改进？",
-  "answer": "Based on the indexed papers, here are some recent improvements to Retrieval-Augmented Generation (RAG):\n\n**Technical Enhancements:**\nPrior work has explored retrieval refinement through reranking, active, and iterative retrieval strategies, as well as architectures that improve reasoning over retrieved documents and multi-document fusion[1]. Additionally, work has explored supervised fine-tuning of LLMs to retrofit them with retrieval capabilities, distilling reader signal back into the retriever, or fine-tuning the generator to reason over retrieved context[1].\n\n**Dynamic Selection:**\nRAG improves text generation by grounding LLM outputs in external knowledge, thereby mitigating hallucinations and knowledge limitations[1], and recent approaches explore dynamic selection of retrievers and generators for different tasks.\n\n**Security and Privacy:**\nNovel defenses like RAG-CT identify malicious queries by analyzing their entropy and margin distributions, providing a lightweight yet effective mechanism to protect RAG systems against PII leakage without requiring modifications to the underlying LLM or retriever[2].\n\n**Domain-Specific Applications:**\nRecent work has introduced legal-specific retrieval and RAG benchmarks, including LegalBench-RAG and Legal RAG Bench[3].",
+  "answer": "根据提供的论文摘要，检索增强生成（RAG）最近有以下几个主要改进方向：\n\n**安全性和隐私保护：** 提出了RAG-CT防御机制，通过分析查询的熵和边际分布来识别恶意查询，在无需修改底层LLM或检索器的情况下保护RAG系统免受个人身份信息（PII）泄露[1]。\n\n**检索器和生成器选择优化：** 探索了多种检索增强形式，包括基于查询的检索、检索条件下的生成、通过重新排序、主动和迭代检索策略的检索精化，以及改进对检索文档推理和多文档融合的架构[2]。\n\n**法律领域应用：** 引入了法律特定的检索和RAG基准，包括LegalBench-RAG和Legal RAG Bench[3]。\n\n**自主代理集成：** 现代AI系统越来越依赖与外部工具、API和分布式信息源的持续交互，标志着从独立语言模型向互联代理生态系统的广泛转变[4]。",
   "refused": false,
   "sources": [
    {
     "n": 1,
-    "arxiv_id": "2609.17709",
-    "title": "One Size Does Not Fit All! Dynamic Retriever and Generator Selection for RAG",
-    "section": "2. Related Works > Retrieval Augmented Generation",
-    "cited": [
-     "Prior work has explored several forms of retrieval augmentation, including query-based retrieval and retrieval-conditioned generation ( Guu et al., 2020 ; Shi et al., 2024 ) , latent and logit-level integration of retrieved evidence into language modeling ( Khandelwal et al., 2020 ; Zhong et al., 2022 ) , retrieval refinement through reranking, active, and iterative retrieval strategies ( Glass et al., 2022 ; Jiang et al., 2023 ; Zhang et al., 2023 ) , as well as architectures that improve reasoning over retrieved documents and multi-document fusion ( Izacard and Grave, 2021 ; Lan et al., 2023 ; Santra et al., 2025 ) . ",
-     "Another line of work explores supervised fine-tuning of LLMs, that retrofit any LLM with retrieval capabilities ( Lin et al., 2024 ; Wang et al., 2024a ) , distill reader signal back into the retriever ( Izacard et al., 2023 ) , or fine-tune the generator to reason over retrieved context ( Lin et al., 2024 ; Asai et al., 2024 ) .",
-     "Retrieval-Augmented Generation (RAG) improves text generation by grounding LLM outputs in external knowledge, thereby mitigating hallucinations and knowledge limitations. "
-    ]
-   },
-   {
-    "n": 2,
     "arxiv_id": "2609.16095",
     "title": "RAG-CT: Mitigating Privacy Risks on Retrieval-Augmented Generation Systems via Scanning Prompt Distribution",
     "section": "Abstract",
     "cited": [
      "To mitigate this risk, we propose a novel defense, RAG-CT, that identifies malicious queries by analyzing their entropy and margin distributions and using a score-based detection method. ",
      "This work provides a lightweight yet effective mechanism to protect RAG systems against PII leakage without requiring modifications to the underlying LLM or retriever."
+    ]
+   },
+   {
+    "n": 2,
+    "arxiv_id": "2609.17709",
+    "title": "One Size Does Not Fit All! Dynamic Retriever and Generator Selection for RAG",
+    "section": "2. Related Works > Retrieval Augmented Generation",
+    "cited": [
+     "Prior work has explored several forms of retrieval augmentation, including query-based retrieval and retrieval-conditioned generation ( Guu et al., 2020 ; Shi et al., 2024 ) , latent and logit-level integration of retrieved evidence into language modeling ( Khandelwal et al., 2020 ; Zhong et al., 2022 ) , retrieval refinement through reranking, active, and iterative retrieval strategies ( Glass et al., 2022 ; Jiang et al., 2023 ; Zhang et al., 2023 ) , as well as architectures that improve reasoning over retrieved documents and multi-document fusion ( Izacard and Grave, 2021 ; Lan et al., 2023 ; Santra et al., 2025 ) . "
     ]
    },
    {
@@ -379,14 +377,23 @@
     "cited": [
      "Recent work has introduced legal-specific retrieval and RAG benchmarks, including LegalBench-RAG and Legal RAG Bench ( Pipitone and Alami, 2024 ; Butler and Butler, 2026 ) . "
     ]
+   },
+   {
+    "n": 4,
+    "arxiv_id": "2609.22601",
+    "title": "Fairly Compensated Distributed Information Retrieval and Augmentation for AI Agents",
+    "section": "2 Preliminaries > 2.5 Related Works > Retrieval-Augmented Generation and Autonomous Agents",
+    "cited": [
+     "(2023) demonstrate that modern AI systems increasingly rely on continuous interactions with external tools, APIs, and distributed information sources. These developments indicate a broader transition from standalone language models toward interconnected agent ecosystems where information retrieval becomes a core operational primitive."
+    ]
    }
   ],
   "model": "claude-haiku-4-5-20251001",
   "usage": {
-   "input_tokens": 2976,
-   "output_tokens": 350
+   "input_tokens": 2984,
+   "output_tokens": 402
   },
-  "generated_at": "2026-09-25T06:42:06+00:00"
+  "generated_at": "2026-09-25T06:47:39+00:00"
  },
  {
   "question": "有哪些工作研究多智能体系统的安全风险？",

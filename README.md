@@ -135,6 +135,7 @@ Each item is a question the evaluation can answer:
 
 - **Embedding throughput.** On this Apple-silicon laptop, ONNX on CPU embedded 11 to 17 chunks/s regardless of batch size, CoreML acceleration gave 17.5 chunks/s, and PyTorch on the Apple GPU (MPS) gave 113 chunks/s with identical vectors (cosine similarity 1.0000), so indexing moved to MPS without re-embedding.
 - **Resumable indexing.** Because indexing compares content hashes, an interrupted run picks up where it stopped; this was exercised when the backend was switched mid-run. Growing the corpus to two weeks embedded only the 166,910 new chunks and skipped the 23,354 already indexed.
+- **Answer language.** Every passage is in English, and with only the system prompt asking for the question's language, one of the three Chinese featured questions was answered in English. Restating the language next to the question fixed it; `rag.precompute` now flags a Chinese question whose answer contains no Chinese, and `--only N` regenerates single questions instead of paying for all ten.
 - **Ingestion at scale.** 2,440 papers downloaded at one request every 3 seconds with no failures: 2,279 from HTML, 161 from PDF.
 
 ## Running it
