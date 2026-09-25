@@ -101,20 +101,33 @@ function highlight(text, query) {
   let html = esc(text);
   const terms = [...new Set(query.toLowerCase().match(/[a-z0-9][a-z0-9.\-]{2,}/g) || [])];
   for (const t of terms) {
-    const re = new RegExp(`(${t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`, "gi");
+    const re = new RegExp(`\\b(${t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})\\b`, "gi");
     html = html.replace(re, "<mark>$1</mark>");
   }
   return html;
 }
 
-function hitCard(h, query) {
+function groupByPaper(hits) {
+  const groups = new Map();
+  for (const h of hits) {
+    if (!groups.has(h.arxiv_id)) groups.set(h.arxiv_id, {best: h, others: []});
+    else groups.get(h.arxiv_id).others.push(h);
+  }
+  return [...groups.values()];
+}
+
+function hitCard({best: h, others}, query) {
   const div = document.createElement("div");
   div.className = "card";
+  const sections = [...new Set(others.map((o) => o.section))].filter((s) => s !== h.section);
+  const extra = sections.length > 4 ? ` +${sections.length - 4} more` : "";
+  const also = sections.length
+    ? `<div class="meta">Also matched: ${sections.slice(0, 4).map(esc).join(" · ")}${extra}</div>` : "";
   div.innerHTML = `
     <h3><a href="${arxivUrl(h.arxiv_id)}" target="_blank" rel="noopener">${esc(h.title)}</a></h3>
     <div class="meta"><span class="pill">${esc(h.kind)}</span>${esc(h.section)} · ${esc(h.published.slice(0, 10))} · arXiv:${esc(h.arxiv_id)}</div>
     <div class="snippet clamp">${highlight(h.text, query)}</div>
-    <button class="more">Show more</button>`;
+    <button class="more">Show more</button>${also}`;
   const snip = div.querySelector(".snippet"), more = div.querySelector(".more");
   more.onclick = () => { snip.classList.toggle("clamp"); more.textContent = snip.classList.contains("clamp") ? "Show more" : "Show less"; };
   return div;
@@ -146,7 +159,7 @@ $("#search-form").onsubmit = async (e) => {
   e.preventDefault();
   const q = $("#q").value.trim();
   if (!q) return;
-  const params = new URLSearchParams({q, method: $("#method").value, k: 8});
+  const params = new URLSearchParams({q, method: $("#method").value, k: 15});
   if ($("#since").value) params.set("since", $("#since").value);
   $("#results").innerHTML = `<p class="note">Searching…</p>`;
   try {
@@ -154,7 +167,7 @@ $("#search-form").onsubmit = async (e) => {
     if (!res.ok) throw new Error(res.statusText);
     const {hits} = await res.json();
     $("#results").innerHTML = hits.length ? "" : `<p class="note">No matching excerpts.</p>`;
-    hits.forEach((h) => $("#results").appendChild(hitCard(h, q)));
+    groupByPaper(hits).forEach((g) => $("#results").appendChild(hitCard(g, q)));
   } catch (err) {
     $("#results").innerHTML = `<p class="warn">Search failed: ${esc(err.message)}. Try again.</p>`;
   }

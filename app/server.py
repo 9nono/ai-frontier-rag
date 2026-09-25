@@ -47,7 +47,8 @@ def api_search():
         abort(400, "unknown method")
     since = request.args.get("since") or None
     k = min(max(int(request.args.get("k", 8)), 1), 20)
-    hits = search(query, method=method, strategy=DEFAULT_STRATEGY, model_key=DEFAULT_MODEL, k=k, since=since)
+    hits = search(query, method=method, strategy=DEFAULT_STRATEGY, model_key=DEFAULT_MODEL, k=k, since=since,
+                  translate=True)
     return jsonify({"hits": [_hit_view(h) for h in hits]})
 
 
@@ -67,10 +68,11 @@ def api_answer():
     question = ((request.get_json(silent=True) or {}).get("question") or "").strip()[:MAX_QUERY_CHARS]
     if not question:
         abort(400, "question is required")
-    result = answer(question, method=DEFAULT_METHOD, strategy=DEFAULT_STRATEGY, model_key=DEFAULT_MODEL)
+    result = answer(question, method=DEFAULT_METHOD, strategy=DEFAULT_STRATEGY, model_key=DEFAULT_MODEL,
+                    translate=True)
     result["hits"] = [_hit_view(h) for h in result["hits"]]
     return jsonify(result)
 
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=int(os.environ.get("PORT", 5055)), debug=False)
+    app.run(host="127.0.0.1", port=int(os.environ.get("PORT", 5077)), debug=False)
