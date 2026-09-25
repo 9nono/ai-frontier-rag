@@ -22,7 +22,7 @@ arXiv API ──► fetch_arxiv ──► papers.db (SQLite, idempotent upsert b
                           ┌───────────────────────────────┴──────────────┐
                           ▼                                              ▼
             bge-small-en-v1.5 embeddings                          BM25 index
-            Chroma (HNSW, cosine), content-hash sync              (in memory)
+            Chroma (HNSW, cosine), content-hash sync            (SQLite FTS5)
                           └──────────────┬───────────────────────────────┘
                                          ▼
      query ─► zh→en translation (if Chinese) ─► hybrid retrieval (RRF) ─► cross-encoder rerank
@@ -49,9 +49,9 @@ arXiv API ──► fetch_arxiv ──► papers.db (SQLite, idempotent upsert b
 
 Abstracts are always kept as their own chunk.
 
-**Indexing.** Chunks are embedded with `BAAI/bge-small-en-v1.5` (with its query instruction prefix) and stored in Chroma. Indexing is a sync, not an append: every chunk carries a hash of its indexed text, so a run embeds new or changed chunks, skips unchanged ones, and deletes chunks that no longer exist (for example after a paper is revised).
+**Indexing.** Chunks are embedded with `BAAI/bge-small-en-v1.5` (with its query instruction prefix) and stored in Chroma. Indexing is a sync, not an append: every chunk carries a hash of its indexed text, so a run embeds new or changed chunks, skips unchanged ones, and deletes chunks that no longer exist (for example after a paper is revised). The keyword index is an SQLite FTS5 table over the same tokens, rebuilt when the chunk file changes.
 
-**Retrieval.** BM25 and vector search each return 50 candidates; they are merged with reciprocal rank fusion, and the top 30 are rescored by a cross-encoder (`cross-encoder/ms-marco-MiniLM-L-12-v2`) that sees the same `title + section + text` the index saw. Chinese queries are translated locally (`Helsinki-NLP/opus-mt-zh-en`) after a small glossary of general AI terms is applied, and English terms in the query are kept verbatim.
+**Retrieval.** BM25 (SQLite FTS5) and vector search each return 50 candidates; they are merged with reciprocal rank fusion, and the top 30 are rescored by a cross-encoder (`cross-encoder/ms-marco-MiniLM-L-12-v2`) that sees the same `title + section + text` the index saw. Chinese queries are translated locally (`Helsinki-NLP/opus-mt-zh-en`) after a small glossary of general AI terms is applied, and English terms in the query are kept verbatim.
 
 **Answering.** The top passages are sent to Claude Haiku 4.5 as `document` blocks with citations enabled, so every cited span points back to an exact passage. The system prompt requires answering only from the passages, saying so when they don't contain the answer, and attributing disagreements between papers.
 
@@ -100,7 +100,7 @@ Chinese questions (n = 10), best configuration:
 
 ### Scaling to two weeks (2,440 papers, 190k chunks)
 
-The same 60 questions against the full two-week corpus (the 300 original papers plus 2,140 more), `section + header` index only. Latency is the median per query after warm-up on an Apple-silicon laptop, embedding and reranking on the GPU.
+The same 60 questions against the full two-week corpus (the 300 original papers plus 2,140 more), `section + header` index only. Latency is the median per query after warm-up on an Apple-silicon laptop, embedding and reranking on the GPU. Keyword search in this section and the next is `rank_bm25`; it was replaced afterwards (see below).
 
 | Configuration (English, n = 50) | hit@1 | hit@5 | hit@10 | MRR | ms/query | hit@5 at 300 papers |
 |---|---|---|---|---|---|---|
@@ -113,7 +113,7 @@ The same 60 questions against the full two-week corpus (the 300 original papers 
 Eight times more text means eight times more near-misses. Every retriever loses some precision; hybrid search loses the most (hit@5 0.86 → 0.72), and reranking recovers most of it (0.88). Two problems surfaced that did not exist at 300 papers:
 
 - **Reranking can only reorder what it is given.** Hybrid search puts a relevant passage among the 30 candidates sent to the reranker for 46 of 50 English questions and 7 of 10 Chinese ones (`eval/candidate_recall.py`). Reranked hit@10 is also 0.92, so the reranker already brings every relevant passage it receives into the top 10; the ceiling is the pool. Widening the pool to 100 would contain all 50 English passages and 9 of the 10 Chinese ones.
-- **BM25 is the slow part.** `rank_bm25` scores all 190k chunks in Python for every query: 212 ms, most of hybrid search's 242 ms. Vector search over the same chunks takes 10 ms.
+- **BM25 is the slow part.** `rank_bm25` scores all 190k chunks in Python for every query: 212 ms, most of hybrid search's 242 ms. Vector search over the same chunks takes 10 ms. The FTS5 section below replaces it.
 
 ### Rerank pool size
 
@@ -130,6 +130,23 @@ A bigger pool does what it is meant to: passages that were missing come back, an
 
 Three passages reach the reranker only at 100 candidates and still miss the top 10. Two are one passage asked in English and Chinese (q29, z08): the reranker ranks higher a passage from the same paper that describes a "self-reinforcing feedback loop", which arguably answers the question but lacks the labeled phrase "positive feedback loop". The third (q48, a find-the-paper question) is a real miss.
 
+### Keyword index: rank_bm25 → SQLite FTS5
+
+`rank_bm25` keeps its index in memory and scores every chunk in Python. At 190k chunks that meant rebuilding the index on every start (6.7 s and 2.3 GB of memory) and 216 ms per query. The replacement stores the same tokens in an SQLite FTS5 table on disk: 273 MB, built in 7 s, and rebuilt only when the chunk file changes. Same run, English questions:
+
+| Configuration | Keyword index | hit@1 | hit@5 | hit@10 | MRR | ms/query |
+|---|---|---|---|---|---|---|
+| BM25 | rank_bm25 | 0.46 | 0.76 | 0.80 | 0.572 | 216 |
+| BM25 | FTS5 | 0.54 | 0.76 | 0.82 | 0.634 | 35 |
+| Hybrid | rank_bm25 | 0.46 | 0.72 | 0.86 | 0.585 | 246 |
+| Hybrid | FTS5 | 0.48 | 0.74 | 0.90 | 0.604 | 58 |
+| Hybrid + rerank | rank_bm25 | 0.58 | 0.88 | 0.92 | 0.693 | 593 |
+| **Hybrid + rerank** | **FTS5** | **0.58** | **0.88** | **0.92** | **0.692** | **405** |
+
+A fresh process now answers its first keyword query in 0.45 s instead of 6.7 s and never loads the chunk file into memory; the web server, with all models warmed up, is ready in about 4 s at 1.35 GB peak memory.
+
+BM25 on its own also got better (MRR +0.062, 95% bootstrap interval [+0.019, +0.115]), but FTS5 is not the reason. FTS5's `bm25()` fixes k1 at 1.2, while `rank_bm25` defaults to 1.5; a lower k1 gives repeated occurrences of one word less weight relative to matching more of the query. Re-running `rank_bm25` with k1 = 1.2 returns the same top 10 as FTS5 for all 50 English questions, which also confirms the port is exact. After reranking the difference is gone (one question moves from rank 6 to 7), so the end-to-end gain is latency: 593 → 405 ms, of which the reranker is now about 350.
+
 ### Limitations
 
 - One person wrote the questions and the evidence labels, and 50 questions is a small sample: a difference of 0.06 in hit@5 is three questions.
@@ -140,7 +157,7 @@ Three passages reach the reranker only at 100 candidates and still miss the top 
 
 Each item is a question the evaluation can answer:
 
-1. **Keyword index that scales.** Replace in-memory BM25 with SQLite FTS5; compare latency and hit@k at 190k chunks.
+1. **Reranker latency.** The cross-encoder is now about 350 of the 405 ms per query. Does a smaller reranker, or a shorter passage window, keep hit@6 while cutting that?
 2. **Time-aware ranking.** The date filter is a hard cutoff. Add a recency prior and detect "latest / recent" intent, with new questions whose correct answer depends on publication date.
 3. **Answer-level evaluation.** Measure abstention on questions the corpus cannot answer, and check that every cited span actually contains the supporting evidence.
 4. **A larger, independent question set.** 100+ questions, a separate held-out Chinese set, and a second annotator.
@@ -163,6 +180,7 @@ python3.13 -m venv .venv && .venv/bin/pip install -r requirements.txt
 .venv/bin/python -m ingest.fetch_arxiv fulltext
 .venv/bin/python -m ingest.build_chunks
 .venv/bin/python -m rag.index --strategies section_header
+.venv/bin/python -m rag.keyword_index --strategies section_header   # also built on first use
 
 .venv/bin/python -m eval.validate
 .venv/bin/python -m eval.run_retrieval
@@ -182,7 +200,7 @@ ENABLE_LIVE_ANSWERS=1 .venv/bin/python -m app.server
 
 ```
 ingest/   fetch_arxiv.py  parse.py  chunk.py  build_chunks.py
-rag/      index.py  retrieve.py  translate.py  generate.py  precompute.py
-eval/     questions.jsonl  validate.py  run_retrieval.py  results/
+rag/      index.py  keyword_index.py  retrieve.py  translate.py  generate.py  precompute.py
+eval/     questions.jsonl  validate.py  run_retrieval.py  candidate_recall.py  compare.py  results/
 app/      server.py  static/index.html  featured_answers.json
 ```
