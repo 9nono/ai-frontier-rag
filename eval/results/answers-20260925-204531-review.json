@@ -1,0 +1,186 @@
+{
+ "run": "answers-20260925-204531.json",
+ "method": "Every answer the rules could not settle was read against its question, label and cited passages: answers given the relevant passage that did not cite it, hedged or declined; cited answers whose text does not contain the evidence string; every answer to a question whose passage was not retrieved; every answer to an unanswerable question. The other 35 answers cite the relevant passage and state the evidence verbatim, and count as correct without further review.",
+ "verdicts": {
+  "q01": {
+   "verdict": "declined, correctly",
+   "note": "The six passages mention TMM but none states the recommendation the question asks about; the label counts any TMM mention as relevant."
+  },
+  "q02": {
+   "verdict": "declined, correctly",
+   "note": "Says the value is not given; the passage with lambda=2 was not retrieved."
+  },
+  "q05": {
+   "verdict": "correct",
+   "note": "Cites the relevant passage and states the evidence in other words or formatting."
+  },
+  "q10": {
+   "verdict": "correct",
+   "note": "Cites the relevant passage and states the evidence in other words or formatting."
+  },
+  "q11": {
+   "verdict": "wrong",
+   "note": "Names Transparency & Copyright (lowest score, 'total stagnation'); the paper calls Risk Management System 'almost completely missing'. Grounded in its citations, but answers a different reading of the question."
+  },
+  "q16": {
+   "verdict": "correct",
+   "note": "Cites the relevant passage and states the evidence in other words or formatting."
+  },
+  "q18": {
+   "verdict": "wrong",
+   "note": "Adds RULER's 13 tasks (target paper) and LongBench's 21 tasks (a different paper, 2609.23314) into 34; the paper calibrated on 12. Every sentence is cited; the total appears in no passage."
+  },
+  "q21": {
+   "verdict": "correct",
+   "note": "Quadratic reduction in oracle queries, from another chunk of the same paper."
+  },
+  "q26": {
+   "verdict": "correct",
+   "note": "71%, rounded from 70.64%, from another chunk of the same paper."
+  },
+  "q28": {
+   "verdict": "correct",
+   "note": "Answered from other chunks of the same paper, or named the right benchmark; the label requires a specific chunk."
+  },
+  "q29": {
+   "verdict": "correct",
+   "note": "Answered from other chunks of the same paper, or named the right benchmark; the label requires a specific chunk."
+  },
+  "q32": {
+   "verdict": "correct",
+   "note": "Correct answer followed by an unnecessary caveat, which the rules read as hedging."
+  },
+  "q33": {
+   "verdict": "correct",
+   "note": "Cites the relevant passage and states the evidence in other words or formatting."
+  },
+  "q38": {
+   "verdict": "wrong",
+   "note": "Gives 0.0%, the bottom of one category's range, instead of the lowest overall rate across models (44.60%), and names no model."
+  },
+  "q39": {
+   "verdict": "correct",
+   "note": "Cites the relevant passage and states the evidence in other words or formatting."
+  },
+  "q48": {
+   "verdict": "correct",
+   "note": "Answered from other chunks of the same paper, or named the right benchmark; the label requires a specific chunk."
+  },
+  "u01": {
+   "verdict": "declined, correctly",
+   "note": "Says the indexed papers contain nothing on it; no citations."
+  },
+  "u02": {
+   "verdict": "declined, correctly",
+   "note": "Says the indexed papers contain nothing on it; no citations."
+  },
+  "u03": {
+   "verdict": "declined, correctly",
+   "note": "Says the indexed papers contain nothing on it; no citations."
+  },
+  "u04": {
+   "verdict": "declined, correctly",
+   "note": "Says the indexed papers contain nothing on it; no citations."
+  },
+  "u05": {
+   "verdict": "declined, correctly",
+   "note": "Says the indexed papers contain nothing on it; no citations."
+  },
+  "u06": {
+   "verdict": "declined, correctly",
+   "note": "Says the indexed papers contain nothing on it; no citations."
+  },
+  "u07": {
+   "verdict": "declined, correctly",
+   "note": "Says the name does not appear in the papers, then cites related work on the general topic without attributing it to the name."
+  },
+  "u08": {
+   "verdict": "declined, correctly",
+   "note": "Says the indexed papers contain nothing on it; no citations."
+  },
+  "u09": {
+   "verdict": "declined, correctly",
+   "note": "Says the indexed papers contain nothing on it; no citations."
+  },
+  "u10": {
+   "verdict": "declined, correctly",
+   "note": "Says the indexed papers contain nothing on it; no citations."
+  },
+  "u11": {
+   "verdict": "declined, correctly",
+   "note": "Says the name does not appear in the papers, then cites related work on the general topic without attributing it to the name."
+  },
+  "u12": {
+   "verdict": "declined, correctly",
+   "note": "Says the indexed papers contain nothing on it; no citations."
+  },
+  "u13": {
+   "verdict": "declined, correctly",
+   "note": "Says the indexed papers contain nothing on it; no citations."
+  },
+  "u14": {
+   "verdict": "declined, correctly",
+   "note": "Says the indexed papers contain nothing on it; no citations."
+  },
+  "u15": {
+   "verdict": "declined, correctly",
+   "note": "Says the indexed papers contain nothing on it; no citations."
+  },
+  "u16": {
+   "verdict": "declined, correctly",
+   "note": "Says the indexed papers contain nothing on it; no citations."
+  },
+  "u17": {
+   "verdict": "declined, correctly",
+   "note": "Says the indexed papers contain nothing on it; no citations."
+  },
+  "u18": {
+   "verdict": "declined, correctly",
+   "note": "Says the indexed papers contain nothing on it; no citations."
+  },
+  "u19": {
+   "verdict": "declined, correctly",
+   "note": "Says the indexed papers contain nothing on it; no citations."
+  },
+  "u20": {
+   "verdict": "declined, correctly",
+   "note": "Says the indexed papers contain nothing on it; no citations."
+  },
+  "z01": {
+   "verdict": "wrong",
+   "note": "Translates 80 billion total parameters as 80 亿 (8 billion); the same answer later says 80B."
+  },
+  "z03": {
+   "verdict": "correct",
+   "note": "Correct answer followed by an unnecessary caveat, which the rules read as hedging."
+  },
+  "z04": {
+   "verdict": "correct",
+   "note": "Cites the relevant passage and states the evidence in other words or formatting."
+  },
+  "z05": {
+   "verdict": "correct",
+   "note": "Cites the relevant passage and states the evidence in other words or formatting."
+  },
+  "z06": {
+   "verdict": "correct",
+   "note": "70.64, from another chunk of the same paper."
+  },
+  "z07": {
+   "verdict": "correct",
+   "note": "Answered from other chunks of the same paper, or named the right benchmark; the label requires a specific chunk."
+  },
+  "z08": {
+   "verdict": "correct",
+   "note": "Answered from other chunks of the same paper, or named the right benchmark; the label requires a specific chunk."
+  },
+  "z09": {
+   "verdict": "declined, correctly",
+   "note": "Says the number of tasks is not given; the same question in English (q18) produced a wrong total."
+  },
+  "z10": {
+   "verdict": "correct",
+   "note": "Cites the relevant passage and states the evidence in other words or formatting."
+  }
+ }
+}

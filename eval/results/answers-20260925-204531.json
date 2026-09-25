@@ -1,0 +1,5331 @@
+{
+ "model": "claude-haiku-4-5",
+ "mode": "batch",
+ "top_k": 6,
+ "cost_usd": 0.1492185,
+ "summary": {
+  "answerable": {
+   "n": 60,
+   "retrieved": 52,
+   "retrieved_cited_relevant": 46,
+   "retrieved_evidence_cited": 45,
+   "retrieved_outcomes": {
+    "answered": [
+     "q03",
+     "q04",
+     "q05",
+     "q06",
+     "q07",
+     "q08",
+     "q09",
+     "q10",
+     "q11",
+     "q12",
+     "q13",
+     "q14",
+     "q15",
+     "q16",
+     "q17",
+     "q19",
+     "q20",
+     "q21",
+     "q22",
+     "q23",
+     "q24",
+     "q25",
+     "q26",
+     "q27",
+     "q30",
+     "q31",
+     "q33",
+     "q34",
+     "q35",
+     "q36",
+     "q37",
+     "q39",
+     "q40",
+     "q41",
+     "q42",
+     "q43",
+     "q44",
+     "q45",
+     "q46",
+     "q47",
+     "q49",
+     "q50",
+     "z01",
+     "z02",
+     "z04",
+     "z05",
+     "z06",
+     "z10"
+    ],
+    "hedged": [
+     "q32",
+     "q38",
+     "z03"
+    ],
+    "abstained": [
+     "q01"
+    ],
+    "refused": []
+   },
+   "not_retrieved_outcomes": {
+    "answered": [
+     "q18",
+     "q28",
+     "q29",
+     "z07",
+     "z08"
+    ],
+    "hedged": [
+     "q02",
+     "q48",
+     "z09"
+    ],
+    "abstained": [],
+    "refused": []
+   }
+  },
+  "unanswerable": {
+   "n": 20,
+   "outcomes": {
+    "answered": [],
+    "hedged": [
+     "u07",
+     "u11"
+    ],
+    "abstained": [
+     "u01",
+     "u02",
+     "u03",
+     "u04",
+     "u05",
+     "u06",
+     "u08",
+     "u09",
+     "u10",
+     "u12",
+     "u13",
+     "u14",
+     "u15",
+     "u16",
+     "u17",
+     "u18",
+     "u19",
+     "u20"
+    ],
+    "refused": []
+   },
+   "by_type": {
+    "fabricated": {
+     "answered": [],
+     "hedged": [
+      "u07",
+      "u11"
+     ],
+     "abstained": [
+      "u01",
+      "u02",
+      "u03",
+      "u04",
+      "u05",
+      "u06",
+      "u08",
+      "u09",
+      "u10",
+      "u12",
+      "u13",
+      "u14"
+     ],
+     "refused": []
+    },
+    "out_of_scope": {
+     "answered": [],
+     "hedged": [],
+     "abstained": [
+      "u15",
+      "u16",
+      "u17",
+      "u18",
+      "u19",
+      "u20"
+     ],
+     "refused": []
+    }
+   }
+  },
+  "language_mismatch": []
+ },
+ "items": [
+  {
+   "id": "q01",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "method",
+   "question": "For attributing attention heads in document-level machine translation, which training loss do the authors recommend for all models even though it lost in a few settings?",
+   "evidence": "Token-level Max-Margin",
+   "arxiv_id": "2609.28117",
+   "hits": [
+    {
+     "chunk_id": "2609.28117v1:section_header:0000",
+     "arxiv_id": "2609.28117",
+     "section": "Abstract",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.28117v1:section_header:0059",
+     "arxiv_id": "2609.28117",
+     "section": "8 Conclusions",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28117v1:section_header:0005",
+     "arxiv_id": "2609.28117",
+     "section": "1 Introduction",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.28117v1:section_header:0020",
+     "arxiv_id": "2609.28117",
+     "section": "4 Approach",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.28117v1:section_header:0028",
+     "arxiv_id": "2609.28117",
+     "section": "5 Experiments",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.28117v1:section_header:0075",
+     "arxiv_id": "2609.28117",
+     "section": "Appendix D Details of Head Tuning",
+     "relevant": false
+    }
+   ],
+   "answer": "The indexed papers do not contain information about which training loss the authors recommend for all models despite it losing in a few settings. While the papers discuss various loss functions tested in their experiments (Token-level Max-Margin loss, Negative Log Likelihood, Contrastive loss, and Max-Margin loss), they do not explicitly state a recommendation for a particular loss across all models or acknowledge it performing worse in some settings.",
+   "stop_reason": "end_turn",
+   "citations": [],
+   "usage": {
+    "input_tokens": 3648,
+    "output_tokens": 91
+   },
+   "outcome": "abstained",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": false,
+   "evidence_cited": false
+  },
+  {
+   "id": "q02",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "What value of the explanatory weight was picked for the causal interactive learning experiments, and how was it tuned?",
+   "evidence": "\\lambda=2",
+   "arxiv_id": "2609.26037",
+   "hits": [
+    {
+     "chunk_id": "2609.26037v1:section_header:0071",
+     "arxiv_id": "2609.26037",
+     "section": "Appendix C Method and Implementation > C.2 Training Steps",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26037v1:section_header:0044",
+     "arxiv_id": "2609.26037",
+     "section": "5 Experiments and Discussion > 5.2 The Causal Tug-of-War and Incorrect Explanations",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26037v1:section_header:0032",
+     "arxiv_id": "2609.26037",
+     "section": "4 CIL : A Practical Method for Interactive xWhyL",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26037v1:section_header:0037",
+     "arxiv_id": "2609.26037",
+     "section": "5 Experiments and Discussion > 5.1 Can Explanations Improve Causal Discovery?",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26037v1:section_header:0028",
+     "arxiv_id": "2609.26037",
+     "section": "3 Learning from Explanations > 3.3 The Causal Tug-of-War: Learning from Biased Experts",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26037v1:section_header:0004",
+     "arxiv_id": "2609.26037",
+     "section": "1 Introduction",
+     "relevant": false
+    }
+   ],
+   "answer": "The indexed papers do not contain specific information about what value of the explanatory weight (λ) was picked for the causal interactive learning experiments or how it was tuned.\n\nWhile the papers discuss the importance of tuning this parameter—for lower values of λ, the explanatory signal is too weak to override data-driven evidence and most feedback is ignored, whereas as λ grows, the framework progressively accepts more of the expert's feedback, regardless of correctness, eventually collapsing into the biased expert's flawed mental model[1]—the specific experimental values and tuning procedures are not provided in the available excerpts.",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 1,
+     "cited_text": "For lower values of $\\lambda$ , the explanatory signal is too weak to override data-driven evidence, and most feedback is ignored. As $\\lambda$ grows, the framework progressively accepts more of the expert’s feedback, regardless of correctness, eventually collapsing into the biased expert’s flawed mental model. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 3482,
+    "output_tokens": 154
+   },
+   "outcome": "hedged",
+   "language_ok": true,
+   "retrieved": false,
+   "cited_relevant": false,
+   "evidence_cited": false
+  },
+  {
+   "id": "q03",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "After deduplication, how many vulnerability-inducing commit cases were left for the 5-fold cross-validation in TraceVIC?",
+   "evidence": "755 cases",
+   "arxiv_id": "2609.26711",
+   "hits": [
+    {
+     "chunk_id": "2609.26711v1:section_header:0038",
+     "arxiv_id": "2609.26711",
+     "section": "6 Evaluation > 6.2 Experimental Protocol",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.26711v1:section_header:0099",
+     "arxiv_id": "2609.26711",
+     "section": "Appendix I Failure Analysis",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26711v1:section_header:0064",
+     "arxiv_id": "2609.26711",
+     "section": "6 Evaluation > 6.4 RQ2: Generalizability",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26711v1:section_header:0097",
+     "arxiv_id": "2609.26711",
+     "section": "Appendix H Computational Cost",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.26711v1:section_header:0060",
+     "arxiv_id": "2609.26711",
+     "section": "6 Evaluation > 6.4 RQ2: Generalizability",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26711v1:section_header:0036",
+     "arxiv_id": "2609.26711",
+     "section": "6 Evaluation > 6.1 Dataset and Metrics",
+     "relevant": false
+    }
+   ],
+   "answer": "After removing 25 duplicated VIC-VFC pairs from the 780-instance filtered dataset, 755 cases remained for the 5-fold cross-validation procedure.[1]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "Both are evaluated under an identical 5-fold cross-validation procedure over 755 cases remaining after removing 25 duplicated VIC-VFC pairs from the 780-instance filtered dataset. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 3488,
+    "output_tokens": 57
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q04",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "Which significance test was used to compare how often agents sabotage shutdown across experimental conditions?",
+   "evidence": "Boschloo exact test",
+   "arxiv_id": "2609.28274",
+   "hits": [
+    {
+     "chunk_id": "2609.28274v1:section_header:0031",
+     "arxiv_id": "2609.28274",
+     "section": "4 Qualitative Analysis of Agent Transcripts > 4.1 Sabotage Strategies > Deletion.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28274v1:section_header:0110",
+     "arxiv_id": "2609.28274",
+     "section": "Appendix C Additional Results > C.4 Goal",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.28274v1:section_header:0016",
+     "arxiv_id": "2609.28274",
+     "section": "2 Methods > 2.3 Evaluation > Sabotage Rates.",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.28274v1:section_header:0108",
+     "arxiv_id": "2609.28274",
+     "section": "Appendix C Additional Results > C.4 Goal",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.28274v1:section_header:0018",
+     "arxiv_id": "2609.28274",
+     "section": "3 Results > Sabotage Propensity.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28274v1:section_header:0019",
+     "arxiv_id": "2609.28274",
+     "section": "3 Results > Sabotage Propensity.",
+     "relevant": false
+    }
+   ],
+   "answer": "A two-sided Boschloo exact test was used to compare sabotage rates between different conditions, separately for each model-scenario combination, with Holm–Bonferroni correction applied within each family of tests and α = .05.[1]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 2,
+     "cited_text": "We compare the sabotage rates between different conditions using a two-sided Boschloo exact test ( Boschloo, 1970 ) , separately for each model-scenario combination, with Holm–Bonferroni correction applied within each family of tests ( $p_{\\text{corr}}$ ) and $\\alpha$ =.05 (each study corresponds to one family of tests)."
+    }
+   ],
+   "usage": {
+    "input_tokens": 2900,
+    "output_tokens": 72
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q05",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "method",
+   "question": "In quantum reinforcement learning for quantum cloud job orchestration, to what interval are state features scaled before being used as qubit rotation angles?",
+   "evidence": "[0,\\pi]",
+   "arxiv_id": "2609.27446",
+   "hits": [
+    {
+     "chunk_id": "2609.27446v1:section_header:0035",
+     "arxiv_id": "2609.27446",
+     "section": "IV The Proposed QRLQ Framework > IV-B Parameterised Quantum Circuit (PQC) Design",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27446v1:section_header:0033",
+     "arxiv_id": "2609.27446",
+     "section": "IV The Proposed QRLQ Framework > IV-A Overall QRLQ Architecture",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27446v1:section_header:0030",
+     "arxiv_id": "2609.27446",
+     "section": "III System Model and Problem Formulation > III-E Markov Decision Process (MDP) Formulation",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27446v1:section_header:0036",
+     "arxiv_id": "2609.27446",
+     "section": "IV The Proposed QRLQ Framework > IV-B Parameterised Quantum Circuit (PQC) Design",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27446v1:section_header:0037",
+     "arxiv_id": "2609.27446",
+     "section": "IV The Proposed QRLQ Framework > IV-C Value Observation and Duelling Output",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27446v1:section_header:0055",
+     "arxiv_id": "2609.27446",
+     "section": "V Performance Evaluation > V-B Performance Study > V-B 5 Computational Complexity and Efficiency Analysis",
+     "relevant": false
+    }
+   ],
+   "answer": "State features are scaled to [0,1] and then mapped to rotation angles in [0,π] before being encoded into the parameterised quantum circuit.[1]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 2,
+     "cited_text": "All features are scaled to $[0,1]$ and then mapped to rotation angles in $[0,\\pi]$ before being encoded into the parameterised quantum circuit. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 4004,
+    "output_tokens": 52
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q06",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "With 650 robot demonstrations, by roughly what percentage does retraining only the latent part of the flow world model reduce per-step L1 error?",
+   "evidence": "27\\%",
+   "arxiv_id": "2609.28414",
+   "hits": [
+    {
+     "chunk_id": "2609.28414v1:section_header:0024",
+     "arxiv_id": "2609.28414",
+     "section": "5 Experiments > 5.5 Does it hold at scale?",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.28414v1:section_header:0012",
+     "arxiv_id": "2609.28414",
+     "section": "5 Experiments > 5.1 Setup",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28414v1:section_header:0025",
+     "arxiv_id": "2609.28414",
+     "section": "5 Experiments > 5.5 Does it hold at scale?",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28414v1:section_header:0009",
+     "arxiv_id": "2609.28414",
+     "section": "3 Diagnosing Motion Collapse > 3.2 Motion collapse",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28414v1:section_header:0004",
+     "arxiv_id": "2609.28414",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.13851v1:section_header:0048",
+     "arxiv_id": "2609.13851",
+     "section": "IV Experiments and Results > IV-D Real-world Results",
+     "relevant": false
+    }
+   ],
+   "answer": "With 650 demonstrations, latent-only retraining of the flow cuts per-step L1 by approximately 27%.[1]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "5 ), latent-only retraining of the same flow cuts per-step L1 by ${\\approx}27\\%$ , and DART improves again at this scale: with three seeds per family, every DART seed falls below every parent seed (mean L1 $10.36$ – $10.44$ against $10.73$ – $11.01$ ). "
+    }
+   ],
+   "usage": {
+    "input_tokens": 2757,
+    "output_tokens": 48
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q07",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "method",
+   "question": "Why does a contrastive objective with many in-batch negatives help open-set authorship verification?",
+   "evidence": "implicit authorship attribution proxy tasks",
+   "arxiv_id": "2609.28471",
+   "hits": [
+    {
+     "chunk_id": "2609.28471v1:section_header:0024",
+     "arxiv_id": "2609.28471",
+     "section": "4 Discussion",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.28471v1:section_header:0013",
+     "arxiv_id": "2609.28471",
+     "section": "3 Results > 3.1 Loss Function",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28471v1:section_header:0009",
+     "arxiv_id": "2609.28471",
+     "section": "2 Methodology > 2.3 Contrastive Learning",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28471v1:section_header:0008",
+     "arxiv_id": "2609.28471",
+     "section": "2 Methodology > 2.2 Pair Classification",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28471v1:section_header:0003",
+     "arxiv_id": "2609.28471",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28471v1:section_header:0001",
+     "arxiv_id": "2609.28471",
+     "section": "1 Introduction",
+     "relevant": false
+    }
+   ],
+   "answer": "The contrastive learning objective for open-set authorship verification works as if solving many implicit authorship attribution proxy tasks. This interpretation follows the view of InfoNCE as a categorical cross-entropy objective over one positive and many negative samples, where the model is trained to identify the positive example among the batch candidates.[1]\n\nAdditionally, the results suggest that learning useful representations for authorial style can be done efficiently on each text independently.[1] This method benefits from large batch sizes that have many negative instances.[1]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "The contrastive learning objective for open-set authorship verification works as if solving many implicit authorship attribution proxy tasks. The interpretation here follows the view of InfoNCE [ 38 ] as a categorical cross-entropy objective over one positive and many negative samples, where the model is trained to identify the positive example among the batch candidates."
+    },
+    {
+     "doc": 0,
+     "cited_text": "The results suggest that learning useful representations for authorial style can be done efficiently on each text independently. "
+    },
+    {
+     "doc": 0,
+     "cited_text": "This method benefits from large batch sizes that have many negative instances. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 3324,
+    "output_tokens": 155
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q08",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "When auditing product decisions from agent choices, what was the mean interval width when using receipts instead of actions?",
+   "evidence": "0.0436",
+   "arxiv_id": "2609.26642",
+   "hits": [
+    {
+     "chunk_id": "2609.26642v1:section_header:0026",
+     "arxiv_id": "2609.26642",
+     "section": "7 Results > 7.3 Explicit preference information at matched counts",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.26642v1:section_header:0028",
+     "arxiv_id": "2609.26642",
+     "section": "7 Results > 7.3 Explicit preference information at matched counts",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.26642v1:section_header:0031",
+     "arxiv_id": "2609.26642",
+     "section": "7 Results > 7.4 A deterministic baseline for supplied preferences",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26642v1:section_header:0017",
+     "arxiv_id": "2609.26642",
+     "section": "6 Computational experiment > 6.3 Exploratory explicit-preference receipts",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26642v1:section_header:0029",
+     "arxiv_id": "2609.26642",
+     "section": "7 Results > 7.3 Explicit preference information at matched counts",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26642v1:section_header:0037",
+     "arxiv_id": "2609.26642",
+     "section": "8 From telemetry to a decision receipt",
+     "relevant": false
+    }
+   ],
+   "answer": "When using receipts instead of actions, the mean interval width decreased from 0.0872 for action logs to 0.0436 for receipts, a 50.0% reduction.[1]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "Mean interval width decreases from 0.0872 for action logs to 0.0436 for receipts, a 50.0% reduction. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 3090,
+    "output_tokens": 61
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q09",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "method",
+   "question": "What strategies does FLINT use to turn a driven path into self-supervised traversability labels?",
+   "evidence": "STEGO cluster propagation",
+   "arxiv_id": "2609.26857",
+   "hits": [
+    {
+     "chunk_id": "2609.26857v1:section_header:0011",
+     "arxiv_id": "2609.26857",
+     "section": "III Method > III-A Self-Supervised Label Generation",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.26857v1:section_header:0010",
+     "arxiv_id": "2609.26857",
+     "section": "III Method",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.26857v1:section_header:0007",
+     "arxiv_id": "2609.26857",
+     "section": "II Related Work > II-A Self-supervised labels for traversability",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26857v1:section_header:0003",
+     "arxiv_id": "2609.26857",
+     "section": "I Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26857v1:section_header:0012",
+     "arxiv_id": "2609.26857",
+     "section": "III Method > III-A Self-Supervised Label Generation",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26857v1:section_header:0004",
+     "arxiv_id": "2609.26857",
+     "section": "I Introduction",
+     "relevant": false
+    }
+   ],
+   "answer": "FLINT uses three propagation strategies: trajectory reprojection (traj), SAM3 instance propagation (sam3), and STEGO cluster propagation (stego).[1]\n\nThese strategies work as follows:\n\n1. Trajectory reprojection projects the vehicle's future 2.0 s wheel corridor into the image as the positive region; negatives are sampled outside a dilated margin around that corridor, excluding sky and an automatically fitted vehicle-hood mask.[1]\n\n2. SAM3 instance propagation uses SAM3's text-prompted instance segmentation over an 11-term terrain vocabulary; any instance whose area overlaps the driven corridor by at least 5% is labeled positive in full, propagating the sparse trajectory signal to the entire coherent surface it lies on.[2]\n\n3. STEGO cluster propagation is mentioned as one of the three strategies that define positive and negative regions differently from the same underlying signal[3], though specific details about this method are not provided in the excerpts.",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "In this work, we use three propagation strategies: trajectory reprojection ( traj ), SAM3 instance propagation ( sam3 ), and STEGO cluster propagation ( stego ), illustrated in Fig. "
+    },
+    {
+     "doc": 0,
+     "cited_text": "Trajectory reprojection , in the spirit of Wild Visual Navigation’s footprint-based supervision [ 4 , 5 ] , projects the vehicle’s future 2.0 s wheel corridor into the image as the positive region; negatives are sampled outside a dilated margin around that corridor, excluding sky and an automatically fitted vehicle-hood mask, and are binned directly onto the 32 $\\times$ 32 patch grid."
+    },
+    {
+     "doc": 4,
+     "cited_text": "SAM3 instance propagation , following V-STRONG’s use of segmentation to extend a sparse trajectory signal [ 6 ] , uses SAM3’s [ 17 ] text-prompted instance segmentation over an 11-term terrain vocabulary (dirt trail, rocky ground, smooth dirt road, grass, tall grass, bush, tree, mud, puddle, rock, sky); any instance whose area overlaps the driven corridor by at least 5% is labeled positive in full, propagating the sparse trajectory signal to the entire coherent surface it lies on. "
+    },
+    {
+     "doc": 1,
+     "cited_text": "We first detail trajectory reprojection, followed by SAM3 instance propagation and STEGO cluster propagation, each defining positive and negative regions differently from the same underlying signal. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 2575,
+    "output_tokens": 279
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q10",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "How many total parameters does the Hunyuan-A13B mixture-of-experts base model have compared with Qwen3-A22B?",
+   "evidence": "389B | 72B | 235B | 80B",
+   "arxiv_id": "2609.27284",
+   "hits": [
+    {
+     "chunk_id": "2609.27284v1:section_header:0000",
+     "arxiv_id": "2609.27284",
+     "section": "Abstract",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27284v1:section_header:0030",
+     "arxiv_id": "2609.27284",
+     "section": "4 Evaluation > 4.1 Evaluations on Pre-Trained Model > 4.1.2 Evaluation Results",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27284v1:section_header:0002",
+     "arxiv_id": "2609.27284",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27284v1:section_header:0008",
+     "arxiv_id": "2609.27284",
+     "section": "2 Pre-Training > 2.2 Model Architechture",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27284v1:section_header:0031",
+     "arxiv_id": "2609.27284",
+     "section": "4 Evaluation > 4.1 Evaluations on Pre-Trained Model > 4.1.2 Evaluation Results",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27284v1:section_header:0041",
+     "arxiv_id": "2609.27284",
+     "section": "4 Evaluation > 4.2 Evaluations on Post-Trained Model > 4.2.1 Benchmarks",
+     "relevant": false
+    }
+   ],
+   "answer": "Hunyuan-A13B contains 80 billion total parameters[1], while Qwen3-A22B has 235 billion total parameters[2]. This means Qwen3-A22B has approximately 2.9 times more total parameters than Hunyuan-A13B.",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "It contains 80 billion total parameters but activates only 13 billion during inference, balancing model capability, computational efficiency, and deployment cost. "
+    },
+    {
+     "doc": 4,
+     "cited_text": "Model | Hunyuan-Large-1116 | Qwen2.5-72B | Qwen3-A22B | Hunyuan-A13B\nArchitecture | MoE | Dense | MoE | MoE\n# Activated Params | 52B | 72B | 22B | 13B\n# Total Params | 389B | 72B | 235B | 80B\nContext Length | 256K | 128K | 128K | 256K\nGeneral Tasks | | | |\nMMLU | 88.40 | 86.10 | 87.81 | 88.17\nMMLU-Pro | 60.20 | 58.10 | 68.18 | 67.23\nMMLU-Redux | 87.47 | 83.90 | 87.40 | 87.67\nBBH | 86.30 | 85.80 | 88.87 | 87.56\nSuperGPQA | 38.90 | 36.20 | 44.06 | 41.32\nCoding Tasks | | | |\nEvalPlus | 75.69 | 65.93 | 77.60 | 78.64\nMultiPL-E | 59.13 | 60.50 | 65.94 | 69.33\nMBPP | 72.60 | 76.00 | 81.40 | 83.86\nCRUX-I | 57.00 | 57.63 | - | 70.13\nCRUX-O | 60.63 | 66.20 | 79.00 | 77.00\nMath & STEM Tasks | | | |\nMATH | 69.80 | 62.12 | 71.84 | 72.35\nCMATH | 91.30 | 84.80 | - | 91.17"
+    }
+   ],
+   "usage": {
+    "input_tokens": 3745,
+    "output_tokens": 100
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q11",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "In the review of LLMs for transportation against the EU AI Act, which compliance area scored as almost completely missing?",
+   "evidence": "Risk Management System",
+   "arxiv_id": "2609.26295",
+   "hits": [
+    {
+     "chunk_id": "2609.26295v1:section_header:0051",
+     "arxiv_id": "2609.26295",
+     "section": "4. AI Act in Transportation Reserach > 4.3. Compliance Assessment of the Reviewed Work > 4.3.3. Empirical Evaluation",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26295v1:section_header:0048",
+     "arxiv_id": "2609.26295",
+     "section": "4. AI Act in Transportation Reserach > 4.3. Compliance Assessment of the Reviewed Work",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26295v1:section_header:0038",
+     "arxiv_id": "2609.26295",
+     "section": "4. AI Act in Transportation Reserach > 4.2. Compliance Framework Evaluation Criteria",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26295v1:section_header:0055",
+     "arxiv_id": "2609.26295",
+     "section": "5. Conclusion and Future Directions",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26295v1:section_header:0049",
+     "arxiv_id": "2609.26295",
+     "section": "4. AI Act in Transportation Reserach > 4.3. Compliance Assessment of the Reviewed Work > 4.3.1. Scope Selection",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.26295v1:section_header:0053",
+     "arxiv_id": "2609.26295",
+     "section": "4. AI Act in Transportation Reserach > 4.3. Compliance Assessment of the Reviewed Work > 4.3.3. Empirical Evaluation",
+     "relevant": false
+    }
+   ],
+   "answer": "Transparency & Copyright was almost completely missing, with total stagnation across the entire sector. Training data transparency registered absolute zero variance, with none of the evaluated papers providing or planning copyright-compliant dataset documentation, marking a collective failure regarding transparency obligations.[1]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 5,
+     "cited_text": "• Transparency & Copyright [ $\\mu=1.01$ , $\\sigma=0.12$ , $N=70$ ]: Total stagnation across the entire sector. "
+    },
+    {
+     "doc": 5,
+     "cited_text": "The most critical metric is training data transparency, which registers absolute zero variance ( $\\mu=1.00$ , $\\sigma=0.00$ , $\\max=5$ ): none of the evaluated papers provide or plan copyright-compliant dataset documentation, marking a collective failure regarding transparency obligations."
+    }
+   ],
+   "usage": {
+    "input_tokens": 2723,
+    "output_tokens": 74
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": false,
+   "evidence_cited": false
+  },
+  {
+   "id": "q12",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "finding",
+   "question": "When LLM-simulated respondents are validated against real social science experiments, what systematic bias shows up in treatment effects?",
+   "evidence": "overestimation of effect sizes",
+   "arxiv_id": "2609.27690",
+   "hits": [
+    {
+     "chunk_id": "2609.27690v1:section_header:0022",
+     "arxiv_id": "2609.27690",
+     "section": "2 Levels of correspondence between synthetic and human responses > 2.3 Experimental correspondence",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.12949v1:section_header:0043",
+     "arxiv_id": "2609.12949",
+     "section": "Limitations > Simulated, not human, students.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.25066v1:section_header:0000",
+     "arxiv_id": "2609.25066",
+     "section": "Abstract",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.19843v1:section_header:0029",
+     "arxiv_id": "2609.19843",
+     "section": "3 Hypothesis Development",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27690v1:section_header:0001",
+     "arxiv_id": "2609.27690",
+     "section": "Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.24911v1:section_header:0104",
+     "arxiv_id": "2609.24911",
+     "section": "5 Evaluation on Social Science Simulation > 5.2 Case Family I: Simulation Mechanisms > 5.2.2 Case Study 2: Hybrid Opinion Dynamics on Social Media > Results.",
+     "relevant": false
+    }
+   ],
+   "answer": "When LLM predictions are validated against a large set of social science experiments, researchers find strong correlations with human treatment effects but also a systematic overestimation of effect sizes.[1]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "Ashokkumar and colleagues ( 2026 ) validate LLM predictions against a large set of social science experiments, including meta-studies, and find strong correlations with human treatment effects but also a systematic overestimation of effect sizes. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 2853,
+    "output_tokens": 56
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q13",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "What tokenizer vocabulary size replaced GPT-2 BPE when testing whether Step Law holds for very small language models?",
+   "evidence": "2,048-token BPE tokenizer",
+   "arxiv_id": "2609.27581",
+   "hits": [
+    {
+     "chunk_id": "2609.27581v1:section_header:0032",
+     "arxiv_id": "2609.27581",
+     "section": "5 Experiments > 5.3 Tokenizer Choice and Its Consequences",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27581v1:section_header:0031",
+     "arxiv_id": "2609.27581",
+     "section": "5 Experiments > 5.2 Design and Departures from the Step Law Setup",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27581v1:section_header:0000",
+     "arxiv_id": "2609.27581",
+     "section": "Abstract",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27581v1:section_header:0027",
+     "arxiv_id": "2609.27581",
+     "section": "5 Experiments > 5.1 Protocol and Final Grid > Models and data.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27581v1:section_header:0009",
+     "arxiv_id": "2609.27581",
+     "section": "2 Related Work > Batch size, gradient noise, and the critical batch size.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27581v1:section_header:0051",
+     "arxiv_id": "2609.27581",
+     "section": "6 Conclusion",
+     "relevant": false
+    }
+   ],
+   "answer": "When testing whether Step Law holds for very small language models, a 2,048-token BPE tokenizer trained on TinyStories replaced the ~50K-token GPT-2 BPE vocabulary.[1] This change was made because at model sizes on the order of 0.25–2.0M parameters, the GPT-2 tokenizer's 50K-token vocabulary makes the embedding and output layers disproportionately large relative to the transformer blocks, which would confound measurements of the backbone model's optimal hyperparameters with the cost of an oversized vocabulary projection.[2]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 1,
+     "cited_text": "Instead of the $\\sim$ 50K-token GPT-2 BPE vocabulary, we use a 2,048-token BPE tokenizer trained on TinyStories. "
+    },
+    {
+     "doc": 0,
+     "cited_text": "At $N$ on the order of 0.25–2.0M parameters, the GPT-2 tokenizer introduces a substantial confounder: a 50K-token vocabulary makes the embedding and output layers disproportionately large relative to the transformer blocks. Under such a setup, the experiment would end up measuring not only the scaling of the backbone model’s optimal hyperparameters, but also the cost of an oversized vocabulary projection. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 4048,
+    "output_tokens": 167
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q14",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "How large was the sample used to compare document-level and sentence-level machine translation in TransBERT?",
+   "evidence": "1000 life sciences abstracts",
+   "arxiv_id": "2609.26347",
+   "hits": [
+    {
+     "chunk_id": "2609.26347v2:section_header:0009",
+     "arxiv_id": "2609.26347",
+     "section": "3 TransCorpus: A Scalable Translation Framework > 3.2 Model Size & Context Length",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.12674v1:section_header:0096",
+     "arxiv_id": "2609.12674",
+     "section": "Appendix E Experimental Setups > E.2 Training Data Filtering and Statistics",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.12674v1:section_header:0023",
+     "arxiv_id": "2609.12674",
+     "section": "5 Experiment > 5.1 Datasets > 5.1.1 Experimental Setups",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26347v2:section_header:0010",
+     "arxiv_id": "2609.26347",
+     "section": "3 TransCorpus: A Scalable Translation Framework > 3.2 Model Size & Context Length",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.12674v1:section_header:0083",
+     "arxiv_id": "2609.12674",
+     "section": "Appendix C Details of GlobVDoc",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26347v2:section_header:0008",
+     "arxiv_id": "2609.26347",
+     "section": "3 TransCorpus: A Scalable Translation Framework > 3.2 Model Size & Context Length",
+     "relevant": true
+    }
+   ],
+   "answer": "The sample used to compare document-based and sentence-based translation methods in TransBERT consisted of 1000 life sciences abstracts.[1]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 5,
+     "cited_text": "The following analysis explores document-based and sentence-based translation methods while considering both models sizes on a sample of 1000 life sciences abstracts."
+    }
+   ],
+   "usage": {
+    "input_tokens": 3145,
+    "output_tokens": 49
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q15",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "finding",
+   "question": "Does swapping the reference extractor change how systems are ranked under the semiotics-aware fidelity and coverage metrics?",
+   "evidence": "same ordering",
+   "arxiv_id": "2609.26527",
+   "hits": [
+    {
+     "chunk_id": "2609.26527v1:section_header:0087",
+     "arxiv_id": "2609.26527",
+     "section": "Appendix D Additional experiments > D.3 Analysis of Reference Extraction > Effect of the Reference Extractor.",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.26527v1:section_header:0085",
+     "arxiv_id": "2609.26527",
+     "section": "Appendix D Additional experiments > D.3 Analysis of Reference Extraction > Effect of the Reference Extractor.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26527v1:section_header:0065",
+     "arxiv_id": "2609.26527",
+     "section": "Appendix B Implementation Details > B.6 Reference Extraction Algorithm > Step 5: Normalization and merging.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26527v1:section_header:0048",
+     "arxiv_id": "2609.26527",
+     "section": "7 Limitations",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26527v1:section_header:0049",
+     "arxiv_id": "2609.26527",
+     "section": "7 Limitations",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26527v1:section_header:0000",
+     "arxiv_id": "2609.26527",
+     "section": "Abstract",
+     "relevant": false
+    }
+   ],
+   "answer": "No, swapping the reference extractor does not change how systems are ranked. Using either the SRL-based extractor or the alternative NP+NER extractor, the fidelity and coverage scores yielded the same ordering (OSE-AI > OSE-IE > SWiPE > OSE-AE > Peirce), with Kendall's τ_b = 1.0 indicating agreement across every pairwise comparison.[1] The extraction algorithm affects the absolute values while preserving the same comparative pattern across the two tested approaches.[1]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "Using either extractor, the fidelity and coverage scores yielded the same ordering: OSE-AI $>$ OSE-IE $>$ SWiPE $>$ OSE-AE $>$ Peirce . For each measure, Kendall’s $\\tau_{b}=1.0$ indicates agreement across every pairwise comparison. "
+    },
+    {
+     "doc": 0,
+     "cited_text": "Thus, the extraction algorithm affects the absolute values while preserving the same comparative pattern in R3 across the two tested approaches."
+    }
+   ],
+   "usage": {
+    "input_tokens": 2853,
+    "output_tokens": 159
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q16",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "What speedup does using JL projection for resistance curvature give over the conjugate-gradient version on ogbn-arxiv?",
+   "evidence": "34.5\\times",
+   "arxiv_id": "2609.27209",
+   "hits": [
+    {
+     "chunk_id": "2609.27209v1:section_header:0025",
+     "arxiv_id": "2609.27209",
+     "section": "4 Experiments > 4.2 Experimental Results > 4.2.3 Computational Efficiency and GPU Memory Usage",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27209v1:section_header:0002",
+     "arxiv_id": "2609.27209",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27209v1:section_header:0000",
+     "arxiv_id": "2609.27209",
+     "section": "Abstract",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27209v1:section_header:0006",
+     "arxiv_id": "2609.27209",
+     "section": "3 Method",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27209v1:section_header:0019",
+     "arxiv_id": "2609.27209",
+     "section": "4 Experiments > 4.1 Experimental Settings",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27209v1:section_header:0014",
+     "arxiv_id": "2609.27209",
+     "section": "3 Method > 3.3 Complexity and Memory",
+     "relevant": false
+    }
+   ],
+   "answer": "ERC-LG, which uses JL projection, is approximately 34.5× faster on ogbn-arxiv compared with ERC-CG, which uses CG without JL projection.[1]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "Compared with ERC-CG, which uses CG without JL projection, ERC-LG is approximately $9.4\\times$ faster on Flickr and $34.5\\times$ faster on ogbn-arxiv. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 3474,
+    "output_tokens": 62
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q17",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "What peak EEG encoding correlation did the ResNet-based CLIP model reach compared with the ViT version?",
+   "evidence": "0.659",
+   "arxiv_id": "2609.26512",
+   "hits": [
+    {
+     "chunk_id": "2609.26512v1:section_header:0068",
+     "arxiv_id": "2609.26512",
+     "section": "4 Experimental Evaluation and Discussion > 4.3 Model-Level Performance and Architecture/Training Objective Controls",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.26512v1:section_header:0077",
+     "arxiv_id": "2609.26512",
+     "section": "4 Experimental Evaluation and Discussion > 4.5 Discussion",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.26512v1:section_header:0064",
+     "arxiv_id": "2609.26512",
+     "section": "4 Experimental Evaluation and Discussion > 4.3 Model-Level Performance and Architecture/Training Objective Controls",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.26512v1:section_header:0048",
+     "arxiv_id": "2609.26512",
+     "section": "4 Experimental Evaluation and Discussion > 4.2 Block-wise Encoding of Vision Transformers",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26512v1:section_header:0058",
+     "arxiv_id": "2609.26512",
+     "section": "4 Experimental Evaluation and Discussion > 4.2 Block-wise Encoding of Vision Transformers > 4.2.3 Effect of Token Aggregation on Encoding Accuracy",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26512v1:section_header:0000",
+     "arxiv_id": "2609.26512",
+     "section": "Abstract",
+     "relevant": false
+    }
+   ],
+   "answer": "CLIP-RN50 achieved a peak encoding accuracy of r=0.659±0.043, compared with CLIP-ViT-B/32's r=0.476±0.049 using the standard transformer representation.[1] However, when individual patch tokens were retained using the CLS + all patches concatenated representation, CLIP-ViT reached a substantially higher peak encoding accuracy of r=0.640±0.048, approaching the r=0.659±0.043 achieved by CLIP-RN50.[1]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "With the standard transformer representation, CLIP-ViT achieves a lower peak encoding accuracy of $r{=}0.476\\pm 0.049$ compared with $r{=}0.659\\pm 0.043$ for CLIP-RN50. "
+    },
+    {
+     "doc": 0,
+     "cited_text": "When the individual patch tokens are retained using the CLS + all patches concatenated representation, CLIP-ViT reaches a substantially higher peak encoding accuracy of $r{=}0.640\\pm 0.048$ , approaching the $r{=}0.659\\pm 0.043$ achieved by CLIP-RN50, while retaining the stronger late temporal encoding profile. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 3724,
+    "output_tokens": 151
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q18",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "How many long-context benchmark tasks were used to calibrate risk-controlled KV cache eviction?",
+   "evidence": "12 tasks",
+   "arxiv_id": "2609.27981",
+   "hits": [
+    {
+     "chunk_id": "2609.27981v1:section_header:0024",
+     "arxiv_id": "2609.27981",
+     "section": "4 Experimental Setup > 4.2 Benchmarks and evaluation populations > RULER Benchmark.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.23314v1:section_header:0026",
+     "arxiv_id": "2609.23314",
+     "section": "4 Experiments > Benchmarks.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27981v1:section_header:0035",
+     "arxiv_id": "2609.27981",
+     "section": "5 Results > 5.2 RULER-32K Results",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27981v1:section_header:0006",
+     "arxiv_id": "2609.27981",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27981v1:section_header:0052",
+     "arxiv_id": "2609.27981",
+     "section": "8 Conclusion",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27981v1:section_header:0044",
+     "arxiv_id": "2609.27981",
+     "section": "6 Additional Analyses > Sensitivity to the reliability contract.",
+     "relevant": false
+    }
+   ],
+   "answer": "The RULER benchmark provides 13 controlled long-context tasks covering needle-in-a-haystack retrieval, variable tracking, word extraction, and question answering, and all 13 tasks were evaluated at a 32K context length.[1] Additionally, LongBench tests transfer to 21 heterogeneous document tasks with contexts reaching up to 65k tokens.[2]\n\nSo the papers used two main benchmarks: RULER with 13 tasks and LongBench with 21 tasks, for a total of 34 long-context benchmark tasks.",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "RULER ( Hsieh et al., 2024 ) provides 13 controlled long-context tasks covering needle-in-a-haystack retrieval, variable tracking, word extraction, and question answering. We evaluate all 13 tasks at a 32K context length and define the RULER population analogously as a uniform mixture over tasks. "
+    },
+    {
+     "doc": 1,
+     "cited_text": "RULER [ 25 ] evaluates long-context capability in controlled 8k-context tasks spanning retrieval (NIAH [ 26 ] ), variable tracking, aggregation, and multi-hop QA, while LongBench [ 27 ] tests transfer to 21 heterogeneous document tasks with contexts reaching up to 65k tokens. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 2639,
+    "output_tokens": 159
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": false,
+   "cited_relevant": false,
+   "evidence_cited": false
+  },
+  {
+   "id": "q19",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "How much extra latency does elastic GPU memory sharing add when memory is expanded by about 20 GB on A100-80GB?",
+   "evidence": "10% increase in latency",
+   "arxiv_id": "2609.27040",
+   "hits": [
+    {
+     "chunk_id": "2609.27040v1:section_header:0067",
+     "arxiv_id": "2609.27040",
+     "section": "6 Evaluation > 6.4 Latency Comparison",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27040v1:section_header:0017",
+     "arxiv_id": "2609.27040",
+     "section": "2 Background > 2.2 Inefficiency of Static Partition > Wasted Bandwidth.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27040v1:section_header:0055",
+     "arxiv_id": "2609.27040",
+     "section": "6 Evaluation > 6.1 Experiment Setup > Hardware Configuration.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27040v1:section_header:0015",
+     "arxiv_id": "2609.27040",
+     "section": "2 Background > 2.2 Inefficiency of Static Partition > External Fragmentation.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27040v1:section_header:0033",
+     "arxiv_id": "2609.27040",
+     "section": "4 Memory Slice: Sharing Between Two GPUs > 4.1 Static-Dynamic Symmetry",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27040v1:section_header:0032",
+     "arxiv_id": "2609.27040",
+     "section": "4 Memory Slice: Sharing Between Two GPUs > 4.1 Static-Dynamic Symmetry",
+     "relevant": false
+    }
+   ],
+   "answer": "When memory is expanded by about 20 GB on A100-80GB, EMA shows a 10% increase in latency.[1] This increase is primarily due to larger batch sizes enabled by the expanded capacity, which increase per-iteration compute time, and DMA synchronization and coordination overhead between the memory slice processes.[1]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "With large expansions (e.g., 20 GB on A100-80GB), EMA shows a 10% increase in latency. "
+    },
+    {
+     "doc": 0,
+     "cited_text": "This is primarily due to larger batch sizes enabled by the expanded capacity, which increase per-iteration compute time, and DMA synchronization and coordination overhead between the memory slice processes. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 3328,
+    "output_tokens": 101
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q20",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "In multi-fidelity active search for severe errors, how many candidates does MICRO evaluate per step?",
+   "evidence": "K=12",
+   "arxiv_id": "2609.26025",
+   "hits": [
+    {
+     "chunk_id": "2609.26025v1:section_header:0013",
+     "arxiv_id": "2609.26025",
+     "section": "4 Experimental Setup > 4.2 Multi-Fidelity Active Search",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.26025v1:section_header:0012",
+     "arxiv_id": "2609.26025",
+     "section": "4 Experimental Setup > 4.2 Multi-Fidelity Active Search",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26025v1:section_header:0011",
+     "arxiv_id": "2609.26025",
+     "section": "4 Experimental Setup > 4.2 Multi-Fidelity Active Search",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26025v1:section_header:0009",
+     "arxiv_id": "2609.26025",
+     "section": "3 MICRO > 3.2 Multi-Fidelity Active Search",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26025v1:section_header:0017",
+     "arxiv_id": "2609.26025",
+     "section": "5 Results and Discussion > 5.2 Multi-Fidelity Active Search",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26025v1:section_header:0018",
+     "arxiv_id": "2609.26025",
+     "section": "5 Results and Discussion > 5.2 Multi-Fidelity Active Search",
+     "relevant": false
+    }
+   ],
+   "answer": "MICRO evaluates K=12 candidates with M=128 trajectories, chosen for computational practicality.[1]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "While adapted MF-ENS evaluates all legal acquisitions, MICRO only evaluates $K=12$ candidates with $M=128$ trajectories, chosen for computational practicality (the calibration mentioned in Section 4.1 is not applied in active search). "
+    }
+   ],
+   "usage": {
+    "input_tokens": 3576,
+    "output_tokens": 43
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q21",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "finding",
+   "question": "What advantage does Grover-based device detection have over classical maximum-likelihood detection in symbiotic radio networks?",
+   "evidence": "quadratically fewer search iterations",
+   "arxiv_id": "2609.26565",
+   "hits": [
+    {
+     "chunk_id": "2609.26565v1:section_header:0016",
+     "arxiv_id": "2609.26565",
+     "section": "IV Numerical Results",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.26565v1:section_header:0018",
+     "arxiv_id": "2609.26565",
+     "section": "IV Numerical Results",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26565v1:section_header:0000",
+     "arxiv_id": "2609.26565",
+     "section": "Abstract",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26565v1:section_header:0020",
+     "arxiv_id": "2609.26565",
+     "section": "IV Numerical Results",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26565v1:section_header:0010",
+     "arxiv_id": "2609.26565",
+     "section": "III Grover’s Algorithm for Active IoT Device Detection",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26565v1:section_header:0011",
+     "arxiv_id": "2609.26565",
+     "section": "III Grover’s Algorithm for Active IoT Device Detection",
+     "relevant": false
+    }
+   ],
+   "answer": "Grover's quantum search algorithm provides a quadratic reduction in oracle-query complexity over exhaustive maximum-likelihood (ML) search[1]. More specifically, as the number of devices increases, the ML search space grows exponentially as B=2^K, whereas the number of Grover iterations grows as O(√B)[2]. \n\nTo illustrate with a concrete example, for K=6 devices, Grover requires only 12 oracle calls compared with 64 ML comparisons, corresponding to a 5.3× reduction in search operations[2]. Despite this computational advantage, numerical results show that the proposed approach closely approaches ML performance while substantially reducing the number of search iterations[1].",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 2,
+     "cited_text": "To reduce the complexity of ADD, Grover's quantum search algorithm is employed, providing a quadratic reduction in oracle-query complexity over exhaustive maximum-likelihood (ML) search. "
+    },
+    {
+     "doc": 1,
+     "cited_text": "As $K$ increases, the ML search space grows exponentially as $B=2^{K}$ , whereas the number of Grover iterations $\\kappa=\\left\\lfloor\\frac{\\pi}{4}\\sqrt{B}\\right\\rfloor$ grows as $\\mathcal{O}(\\sqrt{B})$ . "
+    },
+    {
+     "doc": 1,
+     "cited_text": "For $K=6$ , Grover requires only 12 oracle calls compared with 64 ML comparisons, corresponding to a $5.3\\times$ reduction in search operations. "
+    },
+    {
+     "doc": 2,
+     "cited_text": "Numerical results show that the proposed approach closely approaches ML performance while substantially reducing the number of search iterations, demonstrating its potential for scalable ambient IoT systems."
+    }
+   ],
+   "usage": {
+    "input_tokens": 3170,
+    "output_tokens": 211
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": false,
+   "evidence_cited": false
+  },
+  {
+   "id": "q22",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "Which dataset serves as the dialogue summarization task when choosing fine-tuning strategies for customer support LLMs?",
+   "evidence": "SAMSum",
+   "arxiv_id": "2609.27262",
+   "hits": [
+    {
+     "chunk_id": "2609.27262v1:section_header:0013",
+     "arxiv_id": "2609.27262",
+     "section": "3 Methodology > 3.2 Datasets > 3.2.1 Public Academic Suite",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27262v1:section_header:0047",
+     "arxiv_id": "2609.27262",
+     "section": "Appendix A Task Prompts > A.1 Public Suite",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27262v1:section_header:0020",
+     "arxiv_id": "2609.27262",
+     "section": "4 Results and Discussion",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27262v1:section_header:0010",
+     "arxiv_id": "2609.27262",
+     "section": "3 Methodology > 3.2 Datasets > 3.2.1 Public Academic Suite",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27262v1:section_header:0011",
+     "arxiv_id": "2609.27262",
+     "section": "3 Methodology > 3.2 Datasets > 3.2.1 Public Academic Suite",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27262v1:section_header:0000",
+     "arxiv_id": "2609.27262",
+     "section": "Abstract",
+     "relevant": false
+    }
+   ],
+   "answer": "The SAMSum dataset is used for the dialogue summarization task, containing 14,731 training samples and 1,637 evaluation samples.[1]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 3,
+     "cited_text": "For this, we use the SAMSum ( Gliwa et al., 2019 ) dataset ( $14{,}731$ train, $1{,}637$ eval). "
+    }
+   ],
+   "usage": {
+    "input_tokens": 3496,
+    "output_tokens": 50
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q23",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "How stable was the ranking of interfering sounds for speech encoders under split-half resampling?",
+   "evidence": "0.975",
+   "arxiv_id": "2609.27195",
+   "hits": [
+    {
+     "chunk_id": "2609.27195v1:section_header:0005",
+     "arxiv_id": "2609.27195",
+     "section": "2 Evaluation > 2.2 Speech variation as a reference",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27195v1:section_header:0013",
+     "arxiv_id": "2609.27195",
+     "section": "3 Results > 3.1 Quiet interference can match speech variation",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27195v1:section_header:0016",
+     "arxiv_id": "2609.27195",
+     "section": "3 Results > 3.2 Drift tracks damage across sounds",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27195v1:section_header:0001",
+     "arxiv_id": "2609.27195",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27195v1:section_header:0012",
+     "arxiv_id": "2609.27195",
+     "section": "3 Results > 3.1 Quiet interference can match speech variation",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27195v1:section_header:0000",
+     "arxiv_id": "2609.27195",
+     "section": "Abstract",
+     "relevant": false
+    }
+   ],
+   "answer": "The split-half Spearman agreement for ranking interfering sounds had a median of 0.975 and minimum of 0.906, with the male/female split giving 0.968.[1] This indicates very high stability in the rankings across the resampling approach used.",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "Split-half Spearman agreement has median 0.975 and minimum 0.906; the male/female split gives 0.968. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 3247,
+    "output_tokens": 78
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q24",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "How many real business questions were used to compare the ontology-grounded report agent with document RAG?",
+   "evidence": "40 real enterprise questions",
+   "arxiv_id": "2609.27257",
+   "hits": [
+    {
+     "chunk_id": "2609.27257v1:section_header:0017",
+     "arxiv_id": "2609.27257",
+     "section": "IV Real-World Enterprise Question Evaluation > IV-A Evaluation Setup",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27257v1:section_header:0006",
+     "arxiv_id": "2609.27257",
+     "section": "I Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27257v1:section_header:0019",
+     "arxiv_id": "2609.27257",
+     "section": "IV Real-World Enterprise Question Evaluation > IV-B Results and Failure Analysis",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27257v1:section_header:0000",
+     "arxiv_id": "2609.27257",
+     "section": "Abstract",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27257v1:section_header:0018",
+     "arxiv_id": "2609.27257",
+     "section": "IV Real-World Enterprise Question Evaluation > IV-B Results and Failure Analysis",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27257v1:section_header:0010",
+     "arxiv_id": "2609.27257",
+     "section": "II System Overview > II-B QRE: From Questions to Evidence-Backed Reports",
+     "relevant": false
+    }
+   ],
+   "answer": "40 real enterprise questions from six operational domains were evaluated[1], and UniDataAgent was compared with document RAG in the same enterprise data environment[1].",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "We evaluate 40 real enterprise questions from six operational domains. "
+    },
+    {
+     "doc": 0,
+     "cited_text": "We compare UniDataAgent with document RAG in the same enterprise data environment. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 2814,
+    "output_tokens": 64
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q25",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "What inter-annotator agreement was reached when labeling utterances for summarizing interrogation testimonies?",
+   "evidence": "0.83",
+   "arxiv_id": "2609.28004",
+   "hits": [
+    {
+     "chunk_id": "2609.28004v1:section_header:0027",
+     "arxiv_id": "2609.28004",
+     "section": "3 Data Preparation and Annotation Framework > 3.2 Dataset Statistics",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28004v1:section_header:0021",
+     "arxiv_id": "2609.28004",
+     "section": "3 Data Preparation and Annotation Framework > 3.1 Annotation",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28004v1:section_header:0098",
+     "arxiv_id": "2609.28004",
+     "section": "7 Ethical Considerations",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.28004v1:section_header:0026",
+     "arxiv_id": "2609.28004",
+     "section": "3 Data Preparation and Annotation Framework > 3.1 Annotation",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.28004v1:section_header:0003",
+     "arxiv_id": "2609.28004",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28004v1:section_header:0002",
+     "arxiv_id": "2609.28004",
+     "section": "1 Introduction",
+     "relevant": false
+    }
+   ],
+   "answer": "When labeling utterances, the annotators achieved a Cohen's κ=0.83 inter-annotator agreement[1].",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 3,
+     "cited_text": "Following the pilot phase, our annotators annotate the utterances in isolation and achieve a Cohen’s $\\kappa=0.83$ over these labels. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 2799,
+    "output_tokens": 45
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q26",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "What CorpusQA accuracy does R3Con reach with the Qwen3.5-35B-A3B model?",
+   "evidence": "70.64%",
+   "arxiv_id": "2609.27173",
+   "hits": [
+    {
+     "chunk_id": "2609.27173v1:section_header:0035",
+     "arxiv_id": "2609.27173",
+     "section": "6 Results > 6.1 Overall Performance and Cost",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27173v1:section_header:0038",
+     "arxiv_id": "2609.27173",
+     "section": "6 Results > 6.3 Can’t Claude Code Do It?",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27173v1:section_header:0005",
+     "arxiv_id": "2609.27173",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27173v1:section_header:0098",
+     "arxiv_id": "2609.27173",
+     "section": "Appendix D Detailed Results > D.1 Evaluating Baselines with Smaller Models",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27173v1:section_header:0097",
+     "arxiv_id": "2609.27173",
+     "section": "Appendix D Detailed Results > D.1 Evaluating Baselines with Smaller Models",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27173v1:section_header:0109",
+     "arxiv_id": "2609.27173",
+     "section": "Appendix D Detailed Results > D.2 R3Con – Detailed Analyses > D.2.5 Effect of Rounds",
+     "relevant": false
+    }
+   ],
+   "answer": "R3Con achieves 71% accuracy on CorpusQA using Qwen3.5-35B-A3B (3B active parameters).[1]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 1,
+     "cited_text": "R3Con achieves 71% accuracy using Qwen3.5-35B-A3B (3B active parameters). "
+    }
+   ],
+   "usage": {
+    "input_tokens": 3571,
+    "output_tokens": 56
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": false,
+   "evidence_cited": false
+  },
+  {
+   "id": "q27",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "How far did the RL-trained policy drift from the base model in KL divergence per token on generated environments?",
+   "evidence": "0.089",
+   "arxiv_id": "2609.27321",
+   "hits": [
+    {
+     "chunk_id": "2609.16076v1:section_header:0175",
+     "arxiv_id": "2609.16076",
+     "section": "Appendix G Training Dynamics > G.1 RL Training Dynamics Analysis > Policy stability.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27321v1:section_header:0037",
+     "arxiv_id": "2609.27321",
+     "section": "5 Experiments > 5.2 A learnable gap under stateful interaction",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27321v1:section_header:0098",
+     "arxiv_id": "2609.27321",
+     "section": "Appendix H Additional experimental results > H.2 Generated-family results > Capability-elicitation diagnostic.",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.13770v1:section_header:0041",
+     "arxiv_id": "2609.13770",
+     "section": "5 Analysis: Data Scaling, Cross-model, KL Drift, Explicit KL Anchor, and Trajectory Quality > 5.3 Post-training strategies induce different degrees of KL drift.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.16648v1:section_header:0002",
+     "arxiv_id": "2609.16648",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28395v1:section_header:0061",
+     "arxiv_id": "2609.28395",
+     "section": "7 Analysis and Discussion > Why do the methods anchored to model outputs fail?",
+     "relevant": false
+    }
+   ],
+   "answer": "In the generated environments, the RL-trained policy had a modest policy shift of D_KL(π_trained||π_Base) = 0.089 nats per assistant token on held-out trajectory states.[1]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 1,
+     "cited_text": "Consistent with a capability-elicitation interpretation, the gain coincides with a modest policy shift of $D_{\\mathrm{KL}}(\\pi_{\\mathrm{trained}}\\|\\pi_{\\mathrm{Base}})=0.089$ nats per assistant token on held-out trajectory states, with the estimation protocol and breakdown reported in App. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 3195,
+    "output_tokens": 67
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q28",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "method",
+   "question": "How does FleXray create its synthetic training radiographs from CT volumes?",
+   "evidence": "physics-based analytical X-ray renderer",
+   "arxiv_id": "2609.26756",
+   "hits": [
+    {
+     "chunk_id": "2609.26756v2:section_header:0041",
+     "arxiv_id": "2609.26756",
+     "section": "Discussion > Conclusion.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26756v2:section_header:0055",
+     "arxiv_id": "2609.26756",
+     "section": "Appendix A Training data engine > A.2 Diffusion-enhanced synthetic X-rays > Fixed-pose rendering.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26756v2:section_header:0005",
+     "arxiv_id": "2609.26756",
+     "section": "Body",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26756v2:section_header:0056",
+     "arxiv_id": "2609.26756",
+     "section": "Appendix A Training data engine > A.2 Diffusion-enhanced synthetic X-rays > Diffusion model-based enhancement.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26756v2:section_header:0006",
+     "arxiv_id": "2609.26756",
+     "section": "Body",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26756v2:section_header:0049",
+     "arxiv_id": "2609.26756",
+     "section": "Appendix A Training data engine > A.1 DRRs generated online from CT scans > Randomly sampling DRRs and their labels.",
+     "relevant": false
+    }
+   ],
+   "answer": "FleXray generates labeled synthetic X-rays by doing ray-projection through CT volumes and their labels from different viewing angles.[1] More specifically, it renders DRRs (Digitally Reconstructed Radiographs) by integrating CT attenuation along source-to-detector rays, randomly sampling parameters including source-to-detector distance, detector spacing, C-arm rotational and translational parameters, and projection geometry from dataset-specific ranges.[2]\n\nTo bridge the gap between synthetic and real radiographs, FleXray uses generative image-editing models to introduce clinical appearance factors that are difficult to model analytically, including scanner artifacts, text overlays, scatter, and other higher-order effects.[3] Additionally, because whole-body CT collections often omit some regions that are commonly imaged with X-rays (e.g., the hands and feet), the method supplements its CT training sources with real X-ray datasets to close coverage gaps.[3]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 2,
+     "cited_text": "c, We generate labeled synthetic X-rays by doing ray-projection through the CT volumes and their labels from different viewing angles. "
+    },
+    {
+     "doc": 5,
+     "cited_text": "We render DRRs by integrating CT attenuation along source-to-detector rays [ 74 , 22 ] , following established conventions [ 46 ] . For each view, we randomly sample the source-to-detector distance SDD , detector spacing $\\Delta$ , C-arm rotational parameters $\\theta=[\\alpha,\\beta,\\gamma]$ , C-arm translational parameters $\\tau=[x,y,z]$ , and projection geometry (cone-beam or orthographic) from dataset-specific ranges ( Table 2 ). "
+    },
+    {
+     "doc": 4,
+     "cited_text": "We therefore use generative image-editing models [ 26 ] to introduce clinical appearance factors that are difficult to model analytically, including scanner artifacts, text overlays, scatter, and other higher-order effects ( Figure 2 b). "
+    },
+    {
+     "doc": 4,
+     "cited_text": "Further, because whole-body CT collections often omit some regions that are commonly imaged with X-rays (e.g., the hands and feet), we supplement our CT training sources with real X-ray datasets to close coverage gaps across common X-ray use cases. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 2999,
+    "output_tokens": 270
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": false,
+   "cited_relevant": false,
+   "evidence_cited": false
+  },
+  {
+   "id": "q29",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "method",
+   "question": "What property of similarity-based recommenders does the multi-stage poisoning attack on agents take advantage of?",
+   "evidence": "positive feedback loop",
+   "arxiv_id": "2609.27155",
+   "hits": [
+    {
+     "chunk_id": "2609.27155v1:section_header:0056",
+     "arxiv_id": "2609.27155",
+     "section": "6 Conclusion",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27155v1:section_header:0016",
+     "arxiv_id": "2609.27155",
+     "section": "3 Problem Setup > 3.2 Threat Model Setup > Attack goal.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27155v1:section_header:0006",
+     "arxiv_id": "2609.27155",
+     "section": "2 Related Work > Shilling Attacks in Recommendation Systems.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27155v1:section_header:0003",
+     "arxiv_id": "2609.27155",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27155v1:section_header:0017",
+     "arxiv_id": "2609.27155",
+     "section": "4 The Poisoning Attack Algorithm > High-Level Attack Strategy.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27155v1:section_header:0057",
+     "arxiv_id": "2609.27155",
+     "section": "Limitations",
+     "relevant": false
+    }
+   ],
+   "answer": "The multi-stage poisoning attack takes advantage of the like-score mechanism in similarity-based recommenders, turning it against the system by having the agent like early-stage posts trigger a feedback loop that pulls later, less similar posts into the feed.[1] \n\nMore specifically, the attack constructs poisoned posts with varying degrees of similarity to the target user's profile, first inducing the victim to like posts that are highly similar to the profile and then gradually steering it toward liking less similar posts.[2] Once the victim agent engages with a poisoned post, the like-score mechanism progressively increases the proportion of poisoned posts in subsequent recommendations, eventually recommending even poisoned posts with low user–post similarity.[3]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "We show, both theoretically and empirically, that a carefully designed multi-stage chain of poisoned posts can turn the like-score mechanism against the system: liking early-stage posts triggers a feedback loop that pulls later, less similar posts into the feed. "
+    },
+    {
+     "doc": 4,
+     "cited_text": "At a high level, the attack constructs poisoned posts with varying degrees of similarity to the target user’s profile. The goal is to first induce the victim to like posts that are highly similar to the profile and then gradually steer it toward liking less similar posts. "
+    },
+    {
+     "doc": 1,
+     "cited_text": "The attacker’s objective is to trigger a self-reinforcing feedback loop: once the victim agent engages with a poisoned post, the like-score mechanism progressively increases the proportion of poisoned posts in subsequent recommendations. Eventually, even poisoned posts with low user–post similarity are recommended and occupy a substantial portion of the victim’s feed."
+    }
+   ],
+   "usage": {
+    "input_tokens": 2535,
+    "output_tokens": 205
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": false,
+   "cited_relevant": false,
+   "evidence_cited": false
+  },
+  {
+   "id": "q30",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "What agreement-weighted F1 does the language-guided robot group joining method get for grounding the target group?",
+   "evidence": "0.8125",
+   "arxiv_id": "2609.28467",
+   "hits": [
+    {
+     "chunk_id": "2609.28467v1:section_header:0038",
+     "arxiv_id": "2609.28467",
+     "section": "VI Experiments > VI-B Experiment Results",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.28467v1:section_header:0035",
+     "arxiv_id": "2609.28467",
+     "section": "VI Experiments > VI-A Experimental Setup",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28467v1:section_header:0026",
+     "arxiv_id": "2609.28467",
+     "section": "V Goal Prediction",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.28467v1:section_header:0021",
+     "arxiv_id": "2609.28467",
+     "section": "IV Group Grounding > IV-B Hypothesis Ranking",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28467v1:section_header:0000",
+     "arxiv_id": "2609.28467",
+     "section": "Abstract",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28467v1:section_header:0046",
+     "arxiv_id": "2609.28467",
+     "section": "VII Conclusion and Limitation",
+     "relevant": false
+    }
+   ],
+   "answer": "The method achieves an agreement-weighted F1 of 0.8125 for grounding the target group, averaged over scenes containing 4 to more than 20 people.[1]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "Our method achieves an agreement-weighted F1 of $0.8125$ in $0.936$ s, averaged over scenes containing $4$ to more than $20$ people. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 3170,
+    "output_tokens": 59
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q31",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "method",
+   "question": "How are two trained models combined to hit a new target objective weight in steerable pluralistic alignment?",
+   "evidence": "LoRA adapters",
+   "arxiv_id": "2609.26929",
+   "hits": [
+    {
+     "chunk_id": "2609.26929v1:section_header:0009",
+     "arxiv_id": "2609.26929",
+     "section": "2 Related Work > Reusing and merging models.",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.26929v1:section_header:0004",
+     "arxiv_id": "2609.26929",
+     "section": "1 Introduction > RQ2: How can we cover many trade-offs without training a model for each?",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.26929v1:section_header:0045",
+     "arxiv_id": "2609.26929",
+     "section": "6 Results > 6.2 Covering the continuum without retraining (RQ2)",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26929v1:section_header:0044",
+     "arxiv_id": "2609.26929",
+     "section": "6 Results > 6.2 Covering the continuum without retraining (RQ2)",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26929v1:section_header:0000",
+     "arxiv_id": "2609.26929",
+     "section": "Abstract",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26929v1:section_header:0050",
+     "arxiv_id": "2609.26929",
+     "section": "7 Discussion > Coverage is cheap but approximate (RQ2).",
+     "relevant": false
+    }
+   ],
+   "answer": "In steerable pluralistic alignment, two training-free reuse methods are used to hit a new target objective weight: nearest-model selection, using the trained model whose weight is closest to the target, and parameter merging, blending the LoRA adapters of the two neighbouring trained models.[1]\n\nParameter merging (the interpolation approach) has the smallest combined gap from a directly trained target model but is not uniformly best across all weights. Merging is an interpolation heuristic, not an optimization procedure for the target weight.[2] A continuum of trade-offs can be covered by reusing a few trained models, with parameter merging having the smallest combined gap from direct training and nearest-model selection serving as a simple fallback.[3]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 1,
+     "cited_text": "Given a family of MODPO models already trained at a few weights, we ask how closely two training-free reuse methods match a model trained directly at a new target weight: nearest-model selection , using the trained model whose weight is closest to the target, and parameter merging , blending the LoRA adapters of the two neighbouring trained models ( Jang et al., 2024 ; Rame et al., 2023 ) ."
+    },
+    {
+     "doc": 2,
+     "cited_text": "Parameter merging (interpolated model, dashed) has the smallest combined gap but is not uniformly best: it is slightly worse than fine selection on mean reward, the selection methods spike at the $w^{\\star}{=}0.1$ endpoint, and merging shows a large reward gap at $w^{\\star}{=}0.9$ . Merging is an interpolation heuristic, not an optimization procedure for the target weight."
+    },
+    {
+     "doc": 5,
+     "cited_text": "A continuum of trade-offs can be covered by reusing a few trained models: parameter merging has the smallest combined gap from direct training and nearest-model selection is a simple fallback. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 2568,
+    "output_tokens": 209
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q32",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "What accuracy do ground-truth causal shortcuts reach for diffusion language models with more decoding steps?",
+   "evidence": "87.2\\%",
+   "arxiv_id": "2609.28272",
+   "hits": [
+    {
+     "chunk_id": "2609.28272v1:section_header:0014",
+     "arxiv_id": "2609.28272",
+     "section": "3 Method > 3.1 Conditional Mutual Information Priority",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.28272v1:section_header:0000",
+     "arxiv_id": "2609.28272",
+     "section": "Abstract",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28272v1:section_header:0049",
+     "arxiv_id": "2609.28272",
+     "section": "Appendix B Discussion on the Data Scaling of Step-by-Step Processing",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28272v1:section_header:0064",
+     "arxiv_id": "2609.28272",
+     "section": "Appendix D Detailed Ablation Analysis",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28272v1:section_header:0004",
+     "arxiv_id": "2609.28272",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28272v1:section_header:0041",
+     "arxiv_id": "2609.28272",
+     "section": "5 Conclusion",
+     "relevant": false
+    }
+   ],
+   "answer": "CMI-GT (ground-truth causal shortcuts) raises accuracy to 87.2% under larger timestep settings[1] for diffusion language models. However, the paper does not provide a more detailed breakdown of accuracy across different specific numbers of decoding steps beyond this figure.",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "Moreover, CMI-GT further raises the accuracy to $87.2\\%$ under larger timestep settings. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 3384,
+    "output_tokens": 76
+   },
+   "outcome": "hedged",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q33",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "According to the LatWeave positioning table, how do selective prediction methods decide when to abstain?",
+   "evidence": "prob. thresh.",
+   "arxiv_id": "2609.27225",
+   "hits": [
+    {
+     "chunk_id": "2609.27225v1:section_header:0010",
+     "arxiv_id": "2609.27225",
+     "section": "2. Related Work > 2.4. Abstention, Selective Prediction, and Hallucination",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.24277v1:section_header:0037",
+     "arxiv_id": "2609.24277",
+     "section": "5 Analysis > 5.4 Downstream: Selective Prediction and Abstention",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26532v1:section_header:0007",
+     "arxiv_id": "2609.26532",
+     "section": "2 Related Work > Confidence and selective action.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27225v1:section_header:0006",
+     "arxiv_id": "2609.27225",
+     "section": "2. Related Work",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27225v1:section_header:0071",
+     "arxiv_id": "2609.27225",
+     "section": "Appendix G Additional Results Tables",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27225v1:section_header:0070",
+     "arxiv_id": "2609.27225",
+     "section": "Appendix G Additional Results Tables",
+     "relevant": false
+    }
+   ],
+   "answer": "According to the LatWeave positioning table, selective prediction methods use probabilistic thresholding to decide when to abstain.[1] More specifically, existing abstention is almost entirely probabilistic confidence thresholding, whose risk–coverage trade-off drifts with the task.[2]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 4,
+     "cited_text": "| Abstain\nNeural multi-hop retrievers | partial 1 | $\\times$ | $\\times$ | $\\times$\nRAG / GraphRAG | partial 2 | $\\times$ | eng.-level | $\\times$\nKBQA / semantic parsing | $\\times$ 3 | ✓ | ✓ | $\\times$\nSelective prediction | $\\times$ 4 | — | $\\times$ | prob. "
+    },
+    {
+     "doc": 0,
+     "cited_text": "Yet existing abstention is almost entirely probabilistic confidence thresholding, whose risk–coverage trade-off drifts with the task—softmax-score rejection attains under 7.5% coverage at 1% risk, and a learned selector attains only about 15.6% ( Whitehead et al., 2022 ) . "
+    }
+   ],
+   "usage": {
+    "input_tokens": 2831,
+    "output_tokens": 93
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": false
+  },
+  {
+   "id": "q34",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "method",
+   "question": "How does ACERT inject information from earlier utterances into the current utterance for speech emotion recognition?",
+   "evidence": "temporal mean pooling",
+   "arxiv_id": "2609.26422",
+   "hits": [
+    {
+     "chunk_id": "2609.26422v1:section_header:0010",
+     "arxiv_id": "2609.26422",
+     "section": "2 Methodology > 2.2 ACERT",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.26422v1:section_header:0008",
+     "arxiv_id": "2609.26422",
+     "section": "2 Methodology > 2.2 ACERT",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26422v1:section_header:0006",
+     "arxiv_id": "2609.26422",
+     "section": "2 Methodology",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.26422v1:section_header:0005",
+     "arxiv_id": "2609.26422",
+     "section": "1 Introduction",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.26422v1:section_header:0000",
+     "arxiv_id": "2609.26422",
+     "section": "Abstract",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26422v1:section_header:0027",
+     "arxiv_id": "2609.26422",
+     "section": "5 Conclusion",
+     "relevant": true
+    }
+   ],
+   "answer": "ACERT incorporates information from preceding utterances into the target utterance's features[1] through a specific technical process:\n\n1. **Context aggregation**: Frame-level features are split into target frames and context frames, and the context frames are aggregated through temporal mean pooling to produce a pooled vector[1].\n\n2. **Feature fusion**: The pooled vector is added to every target frame, followed by a feed-forward network with residual connections and LayerNorm[1].\n\n3. **Classification**: Temporal average pooling over the enriched target frames produces an utterance-level representation, which is then passed through a classification head to predict emotion classes[1].\n\nOverall, ACERT aggregates the conversational context through temporal mean pooling and fuses it with the target utterance's features[2], allowing the model to leverage emotional continuity from preceding dialogue when recognizing emotions in the current utterance.",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "The ACERT block incorporates information from the preceding utterances into the target utterance’s features. "
+    },
+    {
+     "doc": 0,
+     "cited_text": "The frame-level features $\\mathbf{H}$ are split into target frames $\\mathbf{H}_{t}$ and context frames $\\mathbf{H}_{c}$ . The context frames are aggregated through temporal mean pooling: $\\mathbf{c}=\\frac{1}{|\\mathbf{H}_{c}|}\\sum_{h\\in\\mathbf{H}_{c}}h$ (1) The pooled vector $\\mathbf{c}$ is added to every target frame, followed by a feed-forward network with residual connections and LayerNorm [ 4 ] : $\\mathbf{H}_{t}^{\\prime}=\\text{LN}(\\mathbf{H}_{t}+\\mathbf{c}),\\quad\\mathbf{H}_{t}^{\\prime\\prime}=\\text{LN}\\big(\\mathbf{H}_{t}^{\\prime}+\\text{FFN}(\\mathbf{H}_{t}^{\\prime})\\big)$ (2) where $\\text{FFN}(\\cdot)$ is a two-layer feed-forward network with ReLU activation. "
+    },
+    {
+     "doc": 0,
+     "cited_text": "The context frames are aggregated through temporal mean pooling: $\\mathbf{c}=\\frac{1}{|\\mathbf{H}_{c}|}\\sum_{h\\in\\mathbf{H}_{c}}h$ (1) The pooled vector $\\mathbf{c}$ is added to every target frame, followed by a feed-forward network with residual connections and LayerNorm [ 4 ] : $\\mathbf{H}_{t}^{\\prime}=\\text{LN}(\\mathbf{H}_{t}+\\mathbf{c}),\\quad\\mathbf{H}_{t}^{\\prime\\prime}=\\text{LN}\\big(\\mathbf{H}_{t}^{\\prime}+\\text{FFN}(\\mathbf{H}_{t}^{\\prime})\\big)$ (2) where $\\text{FFN}(\\cdot)$ is a two-layer feed-forward network with ReLU activation. "
+    },
+    {
+     "doc": 0,
+     "cited_text": "Temporal average pooling over $\\mathbf{H}_{t}^{\\prime\\prime}$ produces an utterance-level representation $\\bar{\\mathbf{h}}_{i}$ , passed through a classification head (a ReLU activation followed by a linear layer) to predict one of the $C$ emotion classes."
+    },
+    {
+     "doc": 2,
+     "cited_text": "It aggregates the conversational context through temporal mean pooling and fuses it with the target utterance’s features. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 3040,
+    "output_tokens": 274
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q35",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "Which part of SpecMaskFoley was dropped for the real-time sound generation in the Passing artwork?",
+   "evidence": "CLIP visual encoder",
+   "arxiv_id": "2609.27489",
+   "hits": [
+    {
+     "chunk_id": "2609.27489v1:section_header:0024",
+     "arxiv_id": "2609.27489",
+     "section": "Appendix Appendix A Technical Details of Real-time Video-to-Audio Generation > A.1 SpecMaskFoley Configuration and Architectural Modifications",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27489v1:section_header:0015",
+     "arxiv_id": "2609.27489",
+     "section": "4 Real-time Sound Generation",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27489v1:section_header:0026",
+     "arxiv_id": "2609.27489",
+     "section": "Appendix Appendix A Technical Details of Real-time Video-to-Audio Generation > A.1 SpecMaskFoley Configuration and Architectural Modifications",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27489v1:section_header:0018",
+     "arxiv_id": "2609.27489",
+     "section": "4 Real-time Sound Generation > 4.3 Real-time Deployment",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27489v1:section_header:0028",
+     "arxiv_id": "2609.27489",
+     "section": "Appendix Appendix A Technical Details of Real-time Video-to-Audio Generation > A.2 Comparison of Video-to-Audio Synthesis Performance",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27489v1:section_header:0025",
+     "arxiv_id": "2609.27489",
+     "section": "Appendix Appendix A Technical Details of Real-time Video-to-Audio Generation > A.1 SpecMaskFoley Configuration and Architectural Modifications",
+     "relevant": true
+    }
+   ],
+   "answer": "The CLIP visual encoder was deliberately omitted from the original SpecMaskFoley model for the Passing artwork.[1] This removal was necessary because the CLIP visual encoder proved to be a significant bottleneck for real-time inference, and its removal was crucial to ensure the stable, low-latency performance required for the interactive installation.[2]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 5,
+     "cited_text": "While the original SpecMaskFoley model utilizes both a ControlNet for temporal synchronization and a CLIP visual encoder for semantic understanding of the video content, we deliberately omitted the CLIP visual encoder in this work for two primary reasons. "
+    },
+    {
+     "doc": 2,
+     "cited_text": "Second, from a technical perspective, the CLIP visual encoder proved to be a significant bottleneck for real-time inference. Its removal was crucial to ensure the stable, low-latency performance required for the interactive installation, where sound must be synthesized anew for the evolving video stream without perceptible delay. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 3153,
+    "output_tokens": 110
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q36",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "Which pathology foundation model encodes the most information about the acquisition center?",
+   "evidence": "KAIKO shows the strongest center-related encoding",
+   "arxiv_id": "2609.28231",
+   "hits": [
+    {
+     "chunk_id": "2609.28231v1:section_header:0020",
+     "arxiv_id": "2609.28231",
+     "section": "4 Results > 4.1 Representation-Level Center Encoding",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.28231v1:section_header:0025",
+     "arxiv_id": "2609.28231",
+     "section": "5 Conclusion",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28231v1:section_header:0000",
+     "arxiv_id": "2609.28231",
+     "section": "Abstract",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28231v1:section_header:0010",
+     "arxiv_id": "2609.28231",
+     "section": "3 Experimental design > 3.1 Datasets and Preprocessing",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28231v1:section_header:0009",
+     "arxiv_id": "2609.28231",
+     "section": "3 Experimental design > 3.1 Datasets and Preprocessing",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28231v1:section_header:0011",
+     "arxiv_id": "2609.28231",
+     "section": "3 Experimental design > 3.1 Datasets and Preprocessing",
+     "relevant": false
+    }
+   ],
+   "answer": "KAIKO shows the strongest center-related encoding, followed by H-Optimus-1.[1]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "CONCH and KEEP occupy the most robust region of the representation space, whereas KAIKO shows the strongest center-related encoding, followed by H-Optimus-1. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 2617,
+    "output_tokens": 40
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q37",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "How many users from PersonaLens were used to evaluate continual personalization with sparse feedback?",
+   "evidence": "256",
+   "arxiv_id": "2609.26853",
+   "hits": [
+    {
+     "chunk_id": "2609.26853v1:section_header:0062",
+     "arxiv_id": "2609.26853",
+     "section": "Appendix H Implementation Details > H.2 Rationale for Simulator-Based Evaluation",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26853v1:section_header:0040",
+     "arxiv_id": "2609.26853",
+     "section": "Limitations",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26853v1:section_header:0024",
+     "arxiv_id": "2609.26853",
+     "section": "4 Experiments and Results > 4.3 Main Results",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26853v1:section_header:0017",
+     "arxiv_id": "2609.26853",
+     "section": "4 Experiments and Results > 4.1 Experimental Setup",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.26853v1:section_header:0034",
+     "arxiv_id": "2609.26853",
+     "section": "5 Discussion",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26853v1:section_header:0035",
+     "arxiv_id": "2609.26853",
+     "section": "5 Discussion",
+     "relevant": false
+    }
+   ],
+   "answer": "256 users from PersonaLens were used to evaluate continual personalization with sparse feedback, with each user interested in exactly 17 domains.[1]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 3,
+     "cited_text": "To balance domain and user diversity, we select $256$ users, each interested in exactly $17$ domains, which together cover all $20$ domains."
+    }
+   ],
+   "usage": {
+    "input_tokens": 2216,
+    "output_tokens": 50
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q38",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "What was the lowest effective interruption rate among models on the proactive agent safety benchmark, and which model got it?",
+   "evidence": "44.60%",
+   "arxiv_id": "2609.28197",
+   "hits": [
+    {
+     "chunk_id": "2609.28197v1:section_header:0031",
+     "arxiv_id": "2609.28197",
+     "section": "4 Experiments > 4.2 Main Results",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28197v1:section_header:0030",
+     "arxiv_id": "2609.28197",
+     "section": "4 Experiments > 4.2 Main Results",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.28197v1:section_header:0032",
+     "arxiv_id": "2609.28197",
+     "section": "4 Experiments > 4.2 Main Results",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28197v1:section_header:0039",
+     "arxiv_id": "2609.28197",
+     "section": "5 Conclusion",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28197v1:section_header:0024",
+     "arxiv_id": "2609.28197",
+     "section": "3 Benchmark > 3.2 Data construction > Stage 5: Human Verification",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28197v1:section_header:0051",
+     "arxiv_id": "2609.28197",
+     "section": "Appendix B Statistical Robustness Analysis > B.1 Repeated-Run Stability",
+     "relevant": false
+    }
+   ],
+   "answer": "The Procedural Safety Gap category proved most challenging, with effective interruption rates ranging from 0.0% to 32.6%[1], making 0.0% the lowest effective interruption rate observed on the benchmark. However, the document does not specify which model achieved this 0.0% rate.",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "The Procedural Safety Gap category proves most challenging, with effective interruption rates ranging from 0.0% to 32.6%, suggesting that current models struggle to recognize hazards outside well-represented safety categories. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 3356,
+    "output_tokens": 84
+   },
+   "outcome": "hedged",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": false,
+   "evidence_cited": false
+  },
+  {
+   "id": "q39",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "Which claim decomposition strategy produced the lowest share of hallucinated claims in Knowledge Pull Requests?",
+   "evidence": "Native Decomp | 376,331 | 89.8 | 1.1 | 8.3",
+   "arxiv_id": "2609.26634",
+   "hits": [
+    {
+     "chunk_id": "2609.26634v1:section_header:0078",
+     "arxiv_id": "2609.26634",
+     "section": "Appendix C Method Details",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.26634v1:section_header:0077",
+     "arxiv_id": "2609.26634",
+     "section": "Appendix C Method Details",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26634v1:section_header:0079",
+     "arxiv_id": "2609.26634",
+     "section": "Appendix C Method Details > Claim Decomposition.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26634v1:section_header:0020",
+     "arxiv_id": "2609.26634",
+     "section": "4 Method for KPRs > Claim Decomposition ( Figure 2 ).",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26634v1:section_header:0025",
+     "arxiv_id": "2609.26634",
+     "section": "4 Method for KPRs > 4.1 Baselines > ConText.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26634v1:section_header:0019",
+     "arxiv_id": "2609.26634",
+     "section": "4 Method for KPRs",
+     "relevant": false
+    }
+   ],
+   "answer": "The Native Decomp strategy produced the lowest share of hallucinated claims at 8.3%, compared to English-to-English (10.0%), NLLB Translate (16.8%), LLM Translate (13.2%), and Cross Decomp (9.2%)[1].",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "Each row shows the number of claims produced and the percentage judged supported, contradicted, hallucinated, or …\nStrategy | Claims | Supported | Contradicted | Hallucinated | Cannot-Det\nEnglish-to-English | 175,267 | 88.7 | 0.7 | 10.0 | 0.7\nNLLB Translate | 431,098 | 79.8 | 2.3 | 16.8 | 1.1\nLLM Translate | 451,333 | 84.4 | 1.0 | 13.2 | 1.4\nNative Decomp | 376,331 | 89.8 | 1.1 | 8.3 | 0.8\nCross Decomp | 357,460 | 89.0 | 0.9 | 9.2 | 0.9"
+    }
+   ],
+   "usage": {
+    "input_tokens": 2417,
+    "output_tokens": 84
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q40",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "How many bootstrap resamples does TwinCheck use for its confidence intervals?",
+   "evidence": "20,000",
+   "arxiv_id": "2609.26911",
+   "hits": [
+    {
+     "chunk_id": "2609.13458v1:section_header:0121",
+     "arxiv_id": "2609.13458",
+     "section": "Appendix G Confidence Intervals and Probe Diagnostics > G.1 Bootstrap Confidence Intervals",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26532v1:section_header:0017",
+     "arxiv_id": "2609.26532",
+     "section": "4 Experimental Setup > Inference and multiplicity.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26911v1:section_header:0023",
+     "arxiv_id": "2609.26911",
+     "section": "5 Experimental setup > Metrics and uncertainty.",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.17855v1:section_header:0029",
+     "arxiv_id": "2609.17855",
+     "section": "6 Evaluation",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.23056v1:section_header:0019",
+     "arxiv_id": "2609.23056",
+     "section": "4 Experimental Setup > 4.3 Evaluation > Statistical analysis.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.24876v1:section_header:0077",
+     "arxiv_id": "2609.24876",
+     "section": "Appendix 4 Simulation Protocols and Metrics > 4.5 Uncertainty Estimates",
+     "relevant": false
+    }
+   ],
+   "answer": "TwinCheck uses 20,000 category-stratified percentile bootstrap resamples to obtain 95% confidence intervals.[1]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 2,
+     "cited_text": "We obtain 95% CIs from 20,000 category-stratified percentile bootstrap resamples, drawing task pairs independently within category, and report exact two-sided McNemar tests [ 6 , 13 ] . "
+    }
+   ],
+   "usage": {
+    "input_tokens": 2373,
+    "output_tokens": 46
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q41",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "finding",
+   "question": "Is Astra's top rank on the forecasting workflow benchmark robust to changing the loss and cost weights?",
+   "evidence": "Astra remained first",
+   "arxiv_id": "2609.27385",
+   "hits": [
+    {
+     "chunk_id": "2609.27385v1:section_header:0025",
+     "arxiv_id": "2609.27385",
+     "section": "4 Experiments > 4.5 Weight sensitivity and repeated executions",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27385v1:section_header:0024",
+     "arxiv_id": "2609.27385",
+     "section": "4 Experiments > 4.4 Effect of the stated objective",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27385v1:section_header:0019",
+     "arxiv_id": "2609.27385",
+     "section": "4 Experiments > 4.2 Quantitative results",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27385v1:section_header:0027",
+     "arxiv_id": "2609.27385",
+     "section": "6 Conclusion",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27385v1:section_header:0011",
+     "arxiv_id": "2609.27385",
+     "section": "3 Benchmark Design > 3.4 Cost accounting, objective and references",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27385v1:section_header:0009",
+     "arxiv_id": "2609.27385",
+     "section": "3 Benchmark Design > 3.4 Cost accounting, objective and references",
+     "relevant": false
+    }
+   ],
+   "answer": "Astra remained first under both weight alternatives (0.25/0.75 and 0.75/0.25), with significant improvements over each setting's best fixed policy.[1] However, the paired 95% interval against the best fixed policy included zero when testing repeated runs on 100 cases, so the repeated ranking did not establish statistical superiority.[1] So while Astra's top ranking appears robust to the weight sensitivity test, the statistical evidence for superiority is mixed depending on which evaluation is considered.",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "Astra remained first under both alternatives (0.25/0.75 and 0.75/0.25), with significant improvements over each setting’s best fixed policy. "
+    },
+    {
+     "doc": 0,
+     "cited_text": "However, the paired 95% interval against the best fixed policy included zero, so the repeated ranking did not establish statistical superiority."
+    }
+   ],
+   "usage": {
+    "input_tokens": 3673,
+    "output_tokens": 141
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q42",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "How often did the neuro-symbolic socio-affective agents pick the expected action in social reasoning tests?",
+   "evidence": "26.8%",
+   "arxiv_id": "2609.26927",
+   "hits": [
+    {
+     "chunk_id": "2609.26927v1:section_header:0091",
+     "arxiv_id": "2609.26927",
+     "section": "IV Socio-Affective tests - Experimental Design and Evaluation Parameters > IV-A Social Reasoning Experiments > IV-A 2 Experimental Results > IV-A 2f Conclusion: Social Reasoning Tests",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.26927v1:section_header:0088",
+     "arxiv_id": "2609.26927",
+     "section": "IV Socio-Affective tests - Experimental Design and Evaluation Parameters > IV-A Social Reasoning Experiments > IV-A 2 Experimental Results > IV-A 2d Detailed Intent-Level Results",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26927v1:section_header:0084",
+     "arxiv_id": "2609.26927",
+     "section": "IV Socio-Affective tests - Experimental Design and Evaluation Parameters > IV-A Social Reasoning Experiments > IV-A 2 Experimental Results > IV-A 2b Action Selection Analysis",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26927v1:section_header:0085",
+     "arxiv_id": "2609.26927",
+     "section": "IV Socio-Affective tests - Experimental Design and Evaluation Parameters > IV-A Social Reasoning Experiments > IV-A 2 Experimental Results > IV-A 2c Expected vs. Actual Outcomes",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26927v1:section_header:0087",
+     "arxiv_id": "2609.26927",
+     "section": "IV Socio-Affective tests - Experimental Design and Evaluation Parameters > IV-A Social Reasoning Experiments > IV-A 2 Experimental Results > IV-A 2c Expected vs. Actual Outcomes",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.26927v1:section_header:0092",
+     "arxiv_id": "2609.26927",
+     "section": "IV Socio-Affective tests - Experimental Design and Evaluation Parameters > IV-A Social Reasoning Experiments > IV-A 2 Experimental Results > IV-A 2f Conclusion: Social Reasoning Tests",
+     "relevant": false
+    }
+   ],
+   "answer": "The system achieves only 26.8% overall match rate[1] in matching expected actions. However, performance varied significantly by configuration: high_belief_discrepancy achieves 0%, while high_power achieves only 10%[1]. The poor performance is partly due to a systemic issue—every intent across every configuration resolved to HARVEST_SUSTAINABLE_SHARED[2], so only HARVEST_SUSTAINABLE_SHARED (when expected) achieves 100% match rate[1].",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 4,
+     "cited_text": "The system achieves only 26.8% overall match rate. "
+    },
+    {
+     "doc": 4,
+     "cited_text": "high_belief_discrepancy achieves 0%, while high_power achieves only 10%. "
+    },
+    {
+     "doc": 1,
+     "cited_text": "Every intent across every configuration resolved to HARVEST_SUSTAINABLE_SHARED . "
+    },
+    {
+     "doc": 4,
+     "cited_text": "Only HARVEST_SUSTAINABLE_SHARED (when expected) achieves 100% match rate."
+    }
+   ],
+   "usage": {
+    "input_tokens": 2614,
+    "output_tokens": 168
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q43",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "What dependency retrieval scores does plain BM25 RAG get on DevEval, compared with FeatLens?",
+   "evidence": "0.261/0.296/0.322",
+   "arxiv_id": "2609.26480",
+   "hits": [
+    {
+     "chunk_id": "2609.26480v1:section_header:0027",
+     "arxiv_id": "2609.26480",
+     "section": "5 Experimental Results > 5.1 RQ1: Effectiveness > 5.1.1 Dependency Retrieval",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.26480v1:section_header:0034",
+     "arxiv_id": "2609.26480",
+     "section": "5 Experimental Results > 5.1 RQ1: Effectiveness > 5.1.2 Downstream Repository-Level Code Generation",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26480v1:section_header:0007",
+     "arxiv_id": "2609.26480",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26480v1:section_header:0033",
+     "arxiv_id": "2609.26480",
+     "section": "5 Experimental Results > 5.1 RQ1: Effectiveness > 5.1.2 Downstream Repository-Level Code Generation",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26480v1:section_header:0030",
+     "arxiv_id": "2609.26480",
+     "section": "5 Experimental Results > 5.1 RQ1: Effectiveness > 5.1.1 Dependency Retrieval",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26480v1:section_header:0029",
+     "arxiv_id": "2609.26480",
+     "section": "5 Experimental Results > 5.1 RQ1: Effectiveness > 5.1.1 Dependency Retrieval",
+     "relevant": false
+    }
+   ],
+   "answer": "On DevEval, BM25 RAG achieves DR@10/15/20 of 0.261/0.296/0.322, while FeatLens improves these to 0.461/0.501/0.517[1].",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "Compared with BM25 RAG, FeatLens improves DR@10/15/20 from 0.261/0.296/0.322 to 0.461/0.501/0.517 on DevEval, and from 0.204/0.241/0.273 to 0.428/0.460/0.465 on EvoCodeBench. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 3642,
+    "output_tokens": 76
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q44",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "method",
+   "question": "How were GPT-assisted essays produced in the dataset used for stylometric detection of AI-assisted writing?",
+   "evidence": "paraphrase the generated content",
+   "arxiv_id": "2609.26687",
+   "hits": [
+    {
+     "chunk_id": "2609.26687v1:section_header:0044",
+     "arxiv_id": "2609.26687",
+     "section": "5 Ethical considerations and limitations",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26687v1:section_header:0014",
+     "arxiv_id": "2609.26687",
+     "section": "3 Methodology > 3.1 Dataset",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.26687v1:section_header:0000",
+     "arxiv_id": "2609.26687",
+     "section": "Abstract",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26687v1:section_header:0016",
+     "arxiv_id": "2609.26687",
+     "section": "3 Methodology > 3.1 Dataset",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26687v1:section_header:0005",
+     "arxiv_id": "2609.26687",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26687v1:section_header:0015",
+     "arxiv_id": "2609.26687",
+     "section": "3 Methodology > 3.1 Dataset",
+     "relevant": false
+    }
+   ],
+   "answer": "In the GPT-assisted condition, participants were allowed to use LLMs such as ChatGPT for assistance but were explicitly instructed to paraphrase the generated content before typing their responses.[1] Additionally, copy-and-paste functionality was disabled, as were auto-correct, grammar tools, and browser extensions.[1]\n\nIt's important to note that in this study, \"GPT-assisted\" refers specifically to responses written by paraphrasing GPT-generated content rather than to the broader range of possible GPT-assisted writing practices.[1]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 1,
+     "cited_text": "In the second session, they were allowed to use LLMs such as ChatGPT for assistance but were explicitly instructed to paraphrase the generated content before typing their responses. "
+    },
+    {
+     "doc": 1,
+     "cited_text": "Copy-and-paste functionality was disabled, as were auto-correct, grammar tools, and browser extensions. "
+    },
+    {
+     "doc": 1,
+     "cited_text": "Thus, in this study, “GPT-assisted” refers specifically to responses written by paraphrasing GPT-generated content rather than to the broader range of possible GPT-assisted writing practices."
+    }
+   ],
+   "usage": {
+    "input_tokens": 3350,
+    "output_tokens": 163
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q45",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "Which language recovered the most after pruning Whisper's encoder and distilling on English-only audio?",
+   "evidence": "Danish",
+   "arxiv_id": "2609.27980",
+   "hits": [
+    {
+     "chunk_id": "2609.27980v1:section_header:0020",
+     "arxiv_id": "2609.27980",
+     "section": "4 Discussion > 4.3 Multilingual recovery through monolingual distillation",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27980v1:section_header:0021",
+     "arxiv_id": "2609.27980",
+     "section": "4 Discussion > 4.4 Limitations",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27980v1:section_header:0022",
+     "arxiv_id": "2609.27980",
+     "section": "5 Conclusion",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27980v1:section_header:0009",
+     "arxiv_id": "2609.27980",
+     "section": "3 Results",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27980v1:section_header:0008",
+     "arxiv_id": "2609.27980",
+     "section": "3 Results",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27980v1:section_header:0006",
+     "arxiv_id": "2609.27980",
+     "section": "2 Methods",
+     "relevant": false
+    }
+   ],
+   "answer": "Danish was the most underrepresented language in the initial training of Whisper and took the largest hit to performance after pruning, but it also recovered the most despite the distillation data being English-only.[1]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "With Danish being the most underrepresented language in the initial training of Whisper it is expected to take the largest hit to performance as seen in Table 1 . It is, however, also the language that recovers the most despite the data used for distillation being English-only. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 2779,
+    "output_tokens": 68
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q46",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "What throughput did the guaranteed network slice get in the static 90/10 allocation under a deep channel null?",
+   "evidence": "37.1 Mbps",
+   "arxiv_id": "2609.27337",
+   "hits": [
+    {
+     "chunk_id": "2609.27337v1:section_header:0023",
+     "arxiv_id": "2609.27337",
+     "section": "V Hardware Transfer and Inspectable Decisions > V-A Hardware Testbed Setup",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27337v1:section_header:0034",
+     "arxiv_id": "2609.27337",
+     "section": "V Hardware Transfer and Inspectable Decisions > V-F Hardware Confirmation",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27337v1:section_header:0032",
+     "arxiv_id": "2609.27337",
+     "section": "V Hardware Transfer and Inspectable Decisions > V-F Hardware Confirmation",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27337v1:section_header:0061",
+     "arxiv_id": "2609.27337",
+     "section": "Appendix A Four-Slice Prompts and Controller Code > A-A Task Prompt",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27337v1:section_header:0000",
+     "arxiv_id": "2609.27337",
+     "section": "Abstract",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27337v1:section_header:0001",
+     "arxiv_id": "2609.27337",
+     "section": "I Introduction",
+     "relevant": false
+    }
+   ],
+   "answer": "In the static 90/10 deep-null run, the guaranteed slice's mean throughput is 37.1 Mbps at a 90% commanded PRB share, well below its 80 Mbps target.[1]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "In the static 90/10 deep-null run, the guaranteed slice’s mean throughput is 37.1 Mbps at a 90% commanded PRB share, well below its 80 Mbps target. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 3383,
+    "output_tokens": 69
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q47",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "fact",
+   "question": "In cryptocurrency volatility forecasting, what is the loss-to-model variation ratio under MSE-log?",
+   "evidence": "3.71",
+   "arxiv_id": "2609.27024",
+   "hits": [
+    {
+     "chunk_id": "2609.27024v1:section_header:0022",
+     "arxiv_id": "2609.27024",
+     "section": "5 Results > 5.2 RQ2: Forecast Level Explains Most Raw Loss Variation",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27024v1:section_header:0019",
+     "arxiv_id": "2609.27024",
+     "section": "5 Results > 5.1 RQ1: Loss Choice Is a Major Source of Raw Variation",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27024v1:section_header:0017",
+     "arxiv_id": "2609.27024",
+     "section": "5 Results > 5.1 RQ1: Loss Choice Is a Major Source of Raw Variation",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27024v1:section_header:0023",
+     "arxiv_id": "2609.27024",
+     "section": "5 Results > 5.3 RQ3: Forecast-Level Differences Propagate to Value-at-Risk",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27024v1:section_header:0008",
+     "arxiv_id": "2609.27024",
+     "section": "3 Methodology > 3.1 Loss Functions",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27024v1:section_header:0021",
+     "arxiv_id": "2609.27024",
+     "section": "5 Results > 5.2 RQ2: Forecast Level Explains Most Raw Loss Variation",
+     "relevant": false
+    }
+   ],
+   "answer": "Under MSE-log, the loss-to-model ratio is 3.71[1], indicating that loss choice explains about 3.7 times more variation than model choice in cryptocurrency volatility forecasting.",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 1,
+     "cited_text": "The loss-to-model ratio remains above one under MSE-log (3.71) and HMAE (3.98). "
+    }
+   ],
+   "usage": {
+    "input_tokens": 2517,
+    "output_tokens": 62
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q48",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "paper",
+   "question": "Is there a recent benchmark that tests whether models can step in before an agent's multi-step trajectory becomes unsafe?",
+   "evidence": "PASTABench",
+   "arxiv_id": "2609.28197",
+   "hits": [
+    {
+     "chunk_id": "2609.16305v1:section_header:0002",
+     "arxiv_id": "2609.16305",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.16305v1:section_header:0040",
+     "arxiv_id": "2609.16305",
+     "section": "6 Experimental Evaluation > 6.2 Preliminary Findings > Long-horizon evaluation exposes delayed failures.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.18909v1:section_header:0004",
+     "arxiv_id": "2609.18909",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.20625v1:section_header:0000",
+     "arxiv_id": "2609.20625",
+     "section": "Abstract",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.25647v1:section_header:0014",
+     "arxiv_id": "2609.25647",
+     "section": "2.4 Calibration Transfer Across Agent Systems > p.6",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28197v1:section_header:0003",
+     "arxiv_id": "2609.28197",
+     "section": "1 Introduction",
+     "relevant": false
+    }
+   ],
+   "answer": "Yes, there is recent work addressing this. PASTABench identifies a key limitation of existing trajectory-level evaluations: they are typically conducted post-hoc, delivering a verdict only after the sequence has ended, offering no opportunity for timely intervention.[1] This suggests PASTABench is designed to address the need for proactive safety assessment during agent trajectories rather than only after completion.\n\nHowever, the document excerpt provided does not contain sufficient detail about how PASTABench specifically implements early intervention or step-in capabilities. The indexed papers acknowledge this as an important research direction, but do not fully describe a benchmark that explicitly tests models' ability to intervene before trajectories become unsafe.",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 5,
+     "cited_text": "However, these approaches still exhibit two key limitations: (1) step-level evaluations treat each action in isolation, failing to account for how risks accumulate across a trajectory; and (2) trajectory-level evaluations are typically conducted post-hoc, delivering a verdict only after the sequence has ended, offering no opportunity for timely intervention."
+    }
+   ],
+   "usage": {
+    "input_tokens": 3541,
+    "output_tokens": 162
+   },
+   "outcome": "hedged",
+   "language_ok": true,
+   "retrieved": false,
+   "cited_relevant": false,
+   "evidence_cited": false
+  },
+  {
+   "id": "q49",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "paper",
+   "question": "Find a paper that sets KV cache compression by a target risk level instead of a fixed memory budget.",
+   "evidence": "eviction",
+   "arxiv_id": "2609.27981",
+   "hits": [
+    {
+     "chunk_id": "2609.27981v1:section_header:0052",
+     "arxiv_id": "2609.27981",
+     "section": "8 Conclusion",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27981v1:section_header:0008",
+     "arxiv_id": "2609.27981",
+     "section": "2 Related Work > 2.1 KV-cache eviction",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27981v1:section_header:0015",
+     "arxiv_id": "2609.27981",
+     "section": "3 Risk-Controlled KV Deployment > 3.2 Finite-Sample Certification with Fixed-Sequence Testing > Candidate sequence.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27981v1:section_header:0011",
+     "arxiv_id": "2609.27981",
+     "section": "2 Related Work > 2.2 Distribution-free and quantile risk control for inference",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27981v1:section_header:0025",
+     "arxiv_id": "2609.27981",
+     "section": "4 Experimental Setup > 4.3 Reliability Contract and Experimental Details",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.14872v1:section_header:0049",
+     "arxiv_id": "2609.14872",
+     "section": "Limitations",
+     "relevant": false
+    }
+   ],
+   "answer": "The paper \"Risk-Controlled KV-Cache Eviction: From Memory Budgets to Risk Targets\" formulates KV-cache eviction as a reliability-first retention-selection problem by specifying an allowable frequency of material request-level degradation and using calibration data to select a retention policy, rather than fixing a memory budget and evaluating average quality afterward.[1] The framework shifts KV-cache compression from budget-first evaluation toward risk-controlled deployment, providing a principled way to determine how aggressively KV memory can be reduced for a declared population and utility metric.[1]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "We formulate KV-cache eviction as a reliability-first retention-selection problem: rather than fixing a memory budget and evaluating average quality afterward, we specify an allowable frequency of material request-level degradation and use calibration data to select a retention policy. "
+    },
+    {
+     "doc": 0,
+     "cited_text": "The framework therefore shifts KV-cache compression from budget-first evaluation toward risk-controlled deployment, providing a principled way to determine how aggressively KV memory can be reduced for a declared population and utility metric."
+    }
+   ],
+   "usage": {
+    "input_tokens": 3063,
+    "output_tokens": 159
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "q50",
+   "kind": "answerable",
+   "lang": "en",
+   "type": "paper",
+   "question": "Which paper builds an agent that turns business questions into reports by grounding them in an ontology instead of raw documents?",
+   "evidence": "ontology",
+   "arxiv_id": "2609.27257",
+   "hits": [
+    {
+     "chunk_id": "2609.27257v1:section_header:0006",
+     "arxiv_id": "2609.27257",
+     "section": "I Introduction",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27257v1:section_header:0000",
+     "arxiv_id": "2609.27257",
+     "section": "Abstract",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27257v1:section_header:0015",
+     "arxiv_id": "2609.27257",
+     "section": "III Demonstration",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27257v1:section_header:0017",
+     "arxiv_id": "2609.27257",
+     "section": "IV Real-World Enterprise Question Evaluation > IV-A Evaluation Setup",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27257v1:section_header:0009",
+     "arxiv_id": "2609.27257",
+     "section": "II System Overview > II-A OAV: Constructing the Semantic Foundation",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27257v1:section_header:0004",
+     "arxiv_id": "2609.27257",
+     "section": "I Introduction",
+     "relevant": true
+    }
+   ],
+   "answer": "UniDataAgent is an ontology grounded system for reusable question-to-report analysis that separates semantic acquisition from online execution.[1] Ontology grounding achieved 95.0% strict accuracy on real business questions, versus 72.5% for document RAG, especially on structured and compositional tasks.[1] The system has two stages: the Ontology Acquisition and Validation stage (OAV) which builds versioned enterprise ontologies from metadata and business knowledge, and the Question-to-Report Execution (QRE) stage which retrieves semantic contracts for each question, coordinates skills and data tools, validates results, and produces evidence linked reports.[1]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 1,
+     "cited_text": "We present ChinaUnicom DataAgent (UniDataAgent), an ontology grounded system for reusable question-to-report analysis that separates semantic acquisition from online execution. "
+    },
+    {
+     "doc": 1,
+     "cited_text": "Ontology grounding achieved 95.0\\% strict accuracy on real business questions, versus 72.5\\% for document RAG, especially on structured and compositional tasks. "
+    },
+    {
+     "doc": 1,
+     "cited_text": "Ontology Acquisition and Validation stage (OAV) builds versioned enterprise ontologies from metadata, business knowledge, and supporting materials through expert authored business skills, constrained generation, question verification, and selected expert review. Question-to-Report Execution (QRE) stage retrieves semantic contracts for each question, coordinates skills and data tools, validates results, and produces evidence linked reports. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 3135,
+    "output_tokens": 194
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "z01",
+   "kind": "answerable",
+   "lang": "zh",
+   "type": "fact",
+   "question": "混元 A13B 这个 MoE 模型总参数量是多少？和 Qwen3-A22B 比呢？",
+   "evidence": "389B | 72B | 235B | 80B",
+   "arxiv_id": "2609.27284",
+   "hits": [
+    {
+     "chunk_id": "2609.27284v1:section_header:0030",
+     "arxiv_id": "2609.27284",
+     "section": "4 Evaluation > 4.1 Evaluations on Pre-Trained Model > 4.1.2 Evaluation Results",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27284v1:section_header:0031",
+     "arxiv_id": "2609.27284",
+     "section": "4 Evaluation > 4.1 Evaluations on Pre-Trained Model > 4.1.2 Evaluation Results",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27284v1:section_header:0054",
+     "arxiv_id": "2609.27284",
+     "section": "5 Conclusion",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27284v1:section_header:0047",
+     "arxiv_id": "2609.27284",
+     "section": "4 Evaluation > 4.3 Long-Context Evaluation > 4.3.1 Performance on Key Long-Context Benchmarks",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27284v1:section_header:0008",
+     "arxiv_id": "2609.27284",
+     "section": "2 Pre-Training > 2.2 Model Architechture",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27284v1:section_header:0004",
+     "arxiv_id": "2609.27284",
+     "section": "1 Introduction",
+     "relevant": false
+    }
+   ],
+   "answer": "Hunyuan-A13B 的总参数量为 80 亿。[1]\n\n与 Qwen3-A22B 相比，Qwen3-A22B 的总参数量约为 Hunyuan-A13B 的 3 倍，激活参数量约为其 2 倍。[2]具体来说，Qwen3-A22B 的总参数量为 235B，激活参数量为 22B，而 Hunyuan-A13B 的总参数量为 80B，激活参数量为 13B。[3]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 4,
+     "cited_text": "The model features 13 billion active parameters within a total parameter count of 80 billion."
+    },
+    {
+     "doc": 0,
+     "cited_text": "(3) Compared with Qwen3-A22B, the recently released MoE model with about 3 times the total of parameters and about 2 times activated parameters, Hunyuan-A13B outperforms the latter on 7 of 12 evaluation benchmarks, exhibitting comparable capabilities across multiple dimensions."
+    },
+    {
+     "doc": 1,
+     "cited_text": "Model | Hunyuan-Large-1116 | Qwen2.5-72B | Qwen3-A22B | Hunyuan-A13B\nArchitecture | MoE | Dense | MoE | MoE\n# Activated Params | 52B | 72B | 22B | 13B\n# Total Params | 389B | 72B | 235B | 80B\nContext Length | 256K | 128K | 128K | 256K\nGeneral Tasks | | | |\nMMLU | 88.40 | 86.10 | 87.81 | 88.17\nMMLU-Pro | 60.20 | 58.10 | 68.18 | 67.23\nMMLU-Redux | 87.47 | 83.90 | 87.40 | 87.67\nBBH | 86.30 | 85.80 | 88.87 | 87.56\nSuperGPQA | 38.90 | 36.20 | 44.06 | 41.32\nCoding Tasks | | | |\nEvalPlus | 75.69 | 65.93 | 77.60 | 78.64\nMultiPL-E | 59.13 | 60.50 | 65.94 | 69.33\nMBPP | 72.60 | 76.00 | 81.40 | 83.86\nCRUX-I | 57.00 | 57.63 | - | 70.13\nCRUX-O | 60.63 | 66.20 | 79.00 | 77.00\nMath & STEM Tasks | | | |\nMATH | 69.80 | 62.12 | 71.84 | 72.35\nCMATH | 91.30 | 84.80 | - | 91.17"
+    }
+   ],
+   "usage": {
+    "input_tokens": 3898,
+    "output_tokens": 202
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "z02",
+   "kind": "answerable",
+   "lang": "zh",
+   "type": "fact",
+   "question": "多智能体关停破坏那篇论文，比较不同条件下的破坏率用的是什么统计检验？",
+   "evidence": "Boschloo exact test",
+   "arxiv_id": "2609.28274",
+   "hits": [
+    {
+     "chunk_id": "2609.28274v1:section_header:0016",
+     "arxiv_id": "2609.28274",
+     "section": "2 Methods > 2.3 Evaluation > Sabotage Rates.",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.28274v1:section_header:0110",
+     "arxiv_id": "2609.28274",
+     "section": "Appendix C Additional Results > C.4 Goal",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.28274v1:section_header:0108",
+     "arxiv_id": "2609.28274",
+     "section": "Appendix C Additional Results > C.4 Goal",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.28274v1:section_header:0085",
+     "arxiv_id": "2609.28274",
+     "section": "Appendix C Additional Results > C.1 Shutdown Mechanism",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.28274v1:section_header:0116",
+     "arxiv_id": "2609.28274",
+     "section": "Appendix C Additional Results > C.5 Environment",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.28274v1:section_header:0111",
+     "arxiv_id": "2609.28274",
+     "section": "Appendix C Additional Results > C.4 Goal",
+     "relevant": true
+    }
+   ],
+   "answer": "该论文使用双侧Boschloo精确检验（two-sided Boschloo exact test）来比较不同条件下的破坏率，并对每个模型-场景组合分别应用检验，同时在每个检验族内应用Holm-Bonferroni校正（p值设为0.05）。[1]\n\n此外，破坏率使用95% Wilson置信区间报告，破坏率之间的差异使用95% Newcombe混合得分区间报告。[1]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "We compare the sabotage rates between different conditions using a two-sided Boschloo exact test ( Boschloo, 1970 ) , separately for each model-scenario combination, with Holm–Bonferroni correction applied within each family of tests ( $p_{\\text{corr}}$ ) and $\\alpha$ =.05 (each study corresponds to one family of tests)."
+    },
+    {
+     "doc": 0,
+     "cited_text": "We report sabotage rates (%) with 95% Wilson confidence intervals ( Wilson, 1927 ) , and differences between sabotage rates ( $\\Delta$ pp) with 95% Newcombe’s hybrid-score intervals ( Newcombe, 1998 ) . "
+    }
+   ],
+   "usage": {
+    "input_tokens": 2372,
+    "output_tokens": 173
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "z03",
+   "kind": "answerable",
+   "lang": "zh",
+   "type": "finding",
+   "question": "用大模型模拟社会科学实验的被试，和真实实验比，处理效应上有什么系统性偏差？",
+   "evidence": "overestimation of effect sizes",
+   "arxiv_id": "2609.27690",
+   "hits": [
+    {
+     "chunk_id": "2609.27690v1:section_header:0022",
+     "arxiv_id": "2609.27690",
+     "section": "2 Levels of correspondence between synthetic and human responses > 2.3 Experimental correspondence",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.16436v1:section_header:0071",
+     "arxiv_id": "2609.16436",
+     "section": "5 Discussion",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.16436v1:section_header:0010",
+     "arxiv_id": "2609.16436",
+     "section": "2 Related Work > 2.1 Using Generative Agents in Social Science",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.16436v1:section_header:0001",
+     "arxiv_id": "2609.16436",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.16436v1:section_header:0069",
+     "arxiv_id": "2609.16436",
+     "section": "5 Discussion",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.12444v1:section_header:0056",
+     "arxiv_id": "2609.12444",
+     "section": "4 Experimental setup > 4.6 Validity commitments and implementation",
+     "relevant": false
+    }
+   ],
+   "answer": "根据文献资料，大语言模型预测与人类处理效应具有强相关性，但系统性地高估了效应大小[1]。\n\n这是目前已知的主要系统性偏差。然而，文献中并未详细讨论其他具体的系统性偏差来源或偏差的机制。",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "Ashokkumar and colleagues ( 2026 ) validate LLM predictions against a large set of social science experiments, including meta-studies, and find strong correlations with human treatment effects but also a systematic overestimation of effect sizes. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 3058,
+    "output_tokens": 113
+   },
+   "outcome": "hedged",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "z04",
+   "kind": "answerable",
+   "lang": "zh",
+   "type": "fact",
+   "question": "Whisper 编码器剪枝后只用英文音频做蒸馏，哪种语言恢复得最多？",
+   "evidence": "Danish",
+   "arxiv_id": "2609.27980",
+   "hits": [
+    {
+     "chunk_id": "2609.27980v1:section_header:0020",
+     "arxiv_id": "2609.27980",
+     "section": "4 Discussion > 4.3 Multilingual recovery through monolingual distillation",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27980v1:section_header:0021",
+     "arxiv_id": "2609.27980",
+     "section": "4 Discussion > 4.4 Limitations",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27980v1:section_header:0022",
+     "arxiv_id": "2609.27980",
+     "section": "5 Conclusion",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27980v1:section_header:0009",
+     "arxiv_id": "2609.27980",
+     "section": "3 Results",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27980v1:section_header:0008",
+     "arxiv_id": "2609.27980",
+     "section": "3 Results",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27980v1:section_header:0006",
+     "arxiv_id": "2609.27980",
+     "section": "2 Methods",
+     "relevant": false
+    }
+   ],
+   "answer": "丹麦语在Whisper初始训练中代表性不足，因此在剪枝后性能下降最大，但它也是在只使用英文数据蒸馏情况下恢复最多的语言。[1]具体来看，丹麦语从零-shot剪枝后的32.1%下降到蒸馏后的27.3%，恢复了4.8个百分点。[2]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "With Danish being the most underrepresented language in the initial training of Whisper it is expected to take the largest hit to performance as seen in Table 1 . It is, however, also the language that recovers the most despite the data used for distillation being English-only. "
+    },
+    {
+     "doc": 3,
+     "cited_text": "Parentheses show absolute change …\nLanguage | Baseline | Zero-shot | Distilled\nDanish | 23.9 | 32.1 (+8.2) | 27.3 (+3.4)\nEnglish | 15.4 | 16.6 (+1.2) | 16.1 (+0.7)\nGerman | 17.1 | 18.3 (+1.2) | 18.1 (+1.0)\nFrench | 16.3 | 20.7 (+4.4) | 18.7 (+2.5)\nMean | 18.2 | 21.9 (+3.8) | 20.1 (+1.9)"
+    }
+   ],
+   "usage": {
+    "input_tokens": 2802,
+    "output_tokens": 156
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "z05",
+   "kind": "answerable",
+   "lang": "zh",
+   "type": "method",
+   "question": "FleXray 是怎么用 CT 生成训练用的 X 光片的？",
+   "evidence": "physics-based analytical X-ray renderer",
+   "arxiv_id": "2609.26756",
+   "hits": [
+    {
+     "chunk_id": "2609.26756v2:section_header:0011",
+     "arxiv_id": "2609.26756",
+     "section": "Results > FleXray learns full-body X-ray segmentation from a generative data engine.",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.26756v2:section_header:0056",
+     "arxiv_id": "2609.26756",
+     "section": "Appendix A Training data engine > A.2 Diffusion-enhanced synthetic X-rays > Diffusion model-based enhancement.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26756v2:section_header:0041",
+     "arxiv_id": "2609.26756",
+     "section": "Discussion > Conclusion.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26756v2:section_header:0004",
+     "arxiv_id": "2609.26756",
+     "section": "Body",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26756v2:section_header:0042",
+     "arxiv_id": "2609.26756",
+     "section": "Appendix A Training data engine",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26756v2:section_header:0054",
+     "arxiv_id": "2609.26756",
+     "section": "Appendix A Training data engine > A.2 Diffusion-enhanced synthetic X-rays",
+     "relevant": false
+    }
+   ],
+   "answer": "FleXray 使用物理基础的解析型 X 光渲染器从多个 CT 源生成训练用的数字重建射线照片(DRRs),这些渲染器根据指定的扫描仪内部参数和外部参数从 CT 体积生成图像。[1]\n\n在每个训练迭代中,系统会采样解剖学目标、视角、视野、放大倍数和投影几何,同时也随机化每个器官的衰减以模拟器官密度变化。[1]因为多个结构可能对同一检测器像素有贡献,系统会独立投影每个 3D 解剖学掩膜,生成的目标保留了 X 光解剖学的密集、重叠特性,而不是强加相互排斥的分割图。[1]\n\n此外,为了减少合成 DRRs 与临床 X 光之间的域差异,研究团队还通过应用预训练的文本条件图像编辑扩散模型来增强 DRRs。[2]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "We train on DRRs sampled on-the-fly during training from multiple CT sources ( Figure 1 c,d; Sections A.1 and 2 ). A physics-based analytical X-ray renderer [ 23 ] generates these images from the CT volumes and specified scanner intrinsics and extrinsics. "
+    },
+    {
+     "doc": 0,
+     "cited_text": "At each training iteration, we sample an anatomical target, viewpoint, field of view, magnification, and projection geometry. We also randomize per-organ attenuation to simulate organ density variations independently of acquisition geometry ( Figure 2 a; Section A.1 ). "
+    },
+    {
+     "doc": 0,
+     "cited_text": "Because several structures can contribute to the same detector pixel, we project every 3D anatomical mask independently. The resulting targets preserve the dense, overlapping nature of X-ray anatomy rather than imposing a mutually exclusive segmentation map ( Figure 1 c,d; Section A.1 )."
+    },
+    {
+     "doc": 5,
+     "cited_text": "To reduce this domain shift, we further generate a dataset of enhanced DRRs by applying a pretrained text-conditioned image editing diffusion model. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 2660,
+    "output_tokens": 383
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "z06",
+   "kind": "answerable",
+   "lang": "zh",
+   "type": "fact",
+   "question": "R3Con 用 Qwen3.5-35B-A3B 在 CorpusQA 上准确率多少？",
+   "evidence": "70.64%",
+   "arxiv_id": "2609.27173",
+   "hits": [
+    {
+     "chunk_id": "2609.27173v1:section_header:0035",
+     "arxiv_id": "2609.27173",
+     "section": "6 Results > 6.1 Overall Performance and Cost",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27173v1:section_header:0109",
+     "arxiv_id": "2609.27173",
+     "section": "Appendix D Detailed Results > D.2 R3Con – Detailed Analyses > D.2.5 Effect of Rounds",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27173v1:section_header:0038",
+     "arxiv_id": "2609.27173",
+     "section": "6 Results > 6.3 Can’t Claude Code Do It?",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27173v1:section_header:0005",
+     "arxiv_id": "2609.27173",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27173v1:section_header:0097",
+     "arxiv_id": "2609.27173",
+     "section": "Appendix D Detailed Results > D.1 Evaluating Baselines with Smaller Models",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.27173v1:section_header:0116",
+     "arxiv_id": "2609.27173",
+     "section": "Appendix D Detailed Results > D.4 Standard Errors for Main Results",
+     "relevant": false
+    }
+   ],
+   "answer": "R3Con 在 CorpusQA 上使用 Qwen3.5-35B-A3B 达到了 70.64±2.52 的准确率。[1]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 5,
+     "cited_text": "On CorpusQA, R3Con achieves $70.64\\pm 2.52$ accuracy, compared with $50.76\\pm 2.76$ for the strongest baseline, a $19.88$ percentage-point improvement. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 3466,
+    "output_tokens": 68
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": false,
+   "evidence_cited": false
+  },
+  {
+   "id": "z07",
+   "kind": "answerable",
+   "lang": "zh",
+   "type": "paper",
+   "question": "最近有没有评测模型能否在智能体多步操作变危险之前及时打断的基准？",
+   "evidence": "PASTABench",
+   "arxiv_id": "2609.28197",
+   "hits": [
+    {
+     "chunk_id": "2609.28197v1:section_header:0032",
+     "arxiv_id": "2609.28197",
+     "section": "4 Experiments > 4.2 Main Results",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.16305v1:section_header:0002",
+     "arxiv_id": "2609.16305",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.22882v1:section_header:0057",
+     "arxiv_id": "2609.22882",
+     "section": "47 Thornley, supra note 15, at 1653-80. > p.19",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.22882v1:section_header:0073",
+     "arxiv_id": "2609.22882",
+     "section": "72 Shapira et al., supra note 12. > p.24",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28197v1:section_header:0003",
+     "arxiv_id": "2609.28197",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.28197v1:section_header:0021",
+     "arxiv_id": "2609.28197",
+     "section": "3 Benchmark > 3.2 Data construction > Stage 3: Trajectory Synthesis with Temporal Risk Evolution",
+     "relevant": false
+    }
+   ],
+   "answer": "有的。最近的研究认识到，智能体风险不是表现为明显有害的单一回应，而是随着智能体行动和环境变化而在多个步骤中逐步出现的，这使得安全成为必须持续评估的轨迹级属性。[1]\n\nPASTABench基准通过分析\"中断的时间精度\"来研究模型的及时打断能力，包括分析完美中断、提前中断和延迟中断的分布，以刻画模型的时间行为。[2]\n\n研究发现，几乎所有模型的延迟中断率都低于1%，表明对显性危害的反应式检测不再是主要挑战，真正的关键差异在于前瞻性校准——许多模型表现出过度防守行为，对良性信号做出提前中断反应。[2]即使是表现最好的模型也存在时间精度不足的问题，GPT-4o实现了最高的完美中断率，仅为40.74%，而Gemini-3-Pro为39.42%，意味着两者都在大多数情况下未能在最优时刻进行干预。[2]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 4,
+     "cited_text": "Agentic risks seldom appear as overtly harmful individual responses; instead, they emerge progressively across multiple steps as the agent acts and the environment changes. This makes safety a trajectory-level property that must be continuously assessed. "
+    },
+    {
+     "doc": 0,
+     "cited_text": "Temporal Precision of Interruptions. Beyond risk identification, proactive safety requires precise temporal judgment. We analyze the distribution of Perfect , Early , and Late interruptions to characterize model timing behavior (Table 2 ). "
+    },
+    {
+     "doc": 0,
+     "cited_text": "Notably, nearly all models exhibit Late interruption rates below 1%, indicating that reactive detection of overt hazards is no longer the primary challenge. Instead, the critical differentiator lies in anticipatory calibration: many models display over-defensive behavior, interrupting prematurely in response to benign signals. "
+    },
+    {
+     "doc": 0,
+     "cited_text": "Even models with strong overall performance fall short in temporal precision—GPT-4o achieves the highest Perfect Interruption rate at only 40.74%, followed by Gemini-3-Pro at 39.42%, meaning both fail to intervene at the optimal moment in the majority of cases. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 4370,
+    "output_tokens": 420
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": false,
+   "cited_relevant": false,
+   "evidence_cited": false
+  },
+  {
+   "id": "z08",
+   "kind": "answerable",
+   "lang": "zh",
+   "type": "method",
+   "question": "针对推荐系统里智能体的多阶段投毒攻击，利用的是相似度推荐的什么特性？",
+   "evidence": "positive feedback loop",
+   "arxiv_id": "2609.27155",
+   "hits": [
+    {
+     "chunk_id": "2609.27155v1:section_header:0016",
+     "arxiv_id": "2609.27155",
+     "section": "3 Problem Setup > 3.2 Threat Model Setup > Attack goal.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27155v1:section_header:0017",
+     "arxiv_id": "2609.27155",
+     "section": "4 The Poisoning Attack Algorithm > High-Level Attack Strategy.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27155v1:section_header:0004",
+     "arxiv_id": "2609.27155",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27155v1:section_header:0093",
+     "arxiv_id": "2609.27155",
+     "section": "Appendix D Additional Experiment Results > D.1 Additional Results > Impact of models used in calculating the attack",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27155v1:section_header:0091",
+     "arxiv_id": "2609.27155",
+     "section": "Appendix D Additional Experiment Results > D.1 Additional Results > Impact of models used in calculating the attack",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27155v1:section_header:0056",
+     "arxiv_id": "2609.27155",
+     "section": "6 Conclusion",
+     "relevant": false
+    }
+   ],
+   "answer": "根据文献内容，这项研究针对相似度推荐系统中的智能体进行的多阶段投毒攻击，利用的是点赞评分机制的特性：精心设计的多阶段投毒文章链可以将点赞评分机制转向对系统不利，点赞早期阶段的文章会触发一个反馈循环，将后续相似度较低的文章拉入推荐流中[1]。\n\n更具体地说，攻击者的目标是触发一个自我强化的反馈循环：一旦受害智能体与投毒文章互动，点赞评分机制会逐步增加后续推荐中投毒文章的比例，最终即使相似度很低的投毒文章也会被推荐并占据受害者信息流的大部分[2]。\n\n因此，这种攻击利用的核心特性是**点赞评分机制与用户-文章相似度之间的相互作用关系**，以及由此产生的正反馈循环效应。",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 5,
+     "cited_text": "We show, both theoretically and empirically, that a carefully designed multi-stage chain of poisoned posts can turn the like-score mechanism against the system: liking early-stage posts triggers a feedback loop that pulls later, less similar posts into the feed. "
+    },
+    {
+     "doc": 0,
+     "cited_text": "The attacker’s objective is to trigger a self-reinforcing feedback loop: once the victim agent engages with a poisoned post, the like-score mechanism progressively increases the proportion of poisoned posts in subsequent recommendations. Eventually, even poisoned posts with low user–post similarity are recommended and occupy a substantial portion of the victim’s feed."
+    }
+   ],
+   "usage": {
+    "input_tokens": 2307,
+    "output_tokens": 343
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": false,
+   "cited_relevant": false,
+   "evidence_cited": false
+  },
+  {
+   "id": "z09",
+   "kind": "answerable",
+   "lang": "zh",
+   "type": "fact",
+   "question": "风险可控的 KV 缓存淘汰方法，用了多少个长上下文任务来校准？",
+   "evidence": "12 tasks",
+   "arxiv_id": "2609.27981",
+   "hits": [
+    {
+     "chunk_id": "2609.27981v1:section_header:0001",
+     "arxiv_id": "2609.27981",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27981v1:section_header:0052",
+     "arxiv_id": "2609.27981",
+     "section": "8 Conclusion",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27981v1:section_header:0031",
+     "arxiv_id": "2609.27981",
+     "section": "5 Results > 5.1 LongBench Results > 5.1.1 Selected Operating Points and Held-out Evaluation",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27981v1:section_header:0006",
+     "arxiv_id": "2609.27981",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27981v1:section_header:0039",
+     "arxiv_id": "2609.27981",
+     "section": "5 Results > 5.3 Request-Adaptive Certification with ReFreeKV",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27981v1:section_header:0019",
+     "arxiv_id": "2609.27981",
+     "section": "3 Risk-Controlled KV Deployment > 3.2 Finite-Sample Certification with Fixed-Sequence Testing > Fixed-sequence selection and fallback.",
+     "relevant": false
+    }
+   ],
+   "answer": "根据提供的文档，我无法找到具体说明使用了多少个长上下文任务来进行校准的信息。\n\n文档中提到了使用任务分层校准设计为声明的任务均衡人群提供有限样本保证[1]，以及在LongBench上进行了校准[2]，但没有明确指出总共使用了多少个具体的长上下文任务进行校准。文档主要关注的是风险控制框架本身和在不同模型及压缩器上的实证结果，而不是校准任务数量的具体细节。",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 3,
+     "cited_text": "Our task-stratified calibration design provides a finite-sample guarantee for the declared task-balanced population. "
+    },
+    {
+     "doc": 4,
+     "cited_text": "Under the pre-specified contract $(\\tau,\\epsilon,\\delta)=(.10,.05,.05)$ , fixed-sequence LTT certifies $T=.0005$ (39/1200 CAL events, 3.25%); the next threshold, $T=.001$ , is not certified despite its 4.42% empirical CAL risk. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 2909,
+    "output_tokens": 205
+   },
+   "outcome": "hedged",
+   "language_ok": true,
+   "retrieved": false,
+   "cited_relevant": false,
+   "evidence_cited": false
+  },
+  {
+   "id": "z10",
+   "kind": "answerable",
+   "lang": "zh",
+   "type": "fact",
+   "question": "TraceVIC 去重之后还剩多少个引入漏洞的提交案例做五折交叉验证？",
+   "evidence": "755 cases",
+   "arxiv_id": "2609.26711",
+   "hits": [
+    {
+     "chunk_id": "2609.26711v1:section_header:0038",
+     "arxiv_id": "2609.26711",
+     "section": "6 Evaluation > 6.2 Experimental Protocol",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.26711v1:section_header:0099",
+     "arxiv_id": "2609.26711",
+     "section": "Appendix I Failure Analysis",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26711v1:section_header:0097",
+     "arxiv_id": "2609.26711",
+     "section": "Appendix H Computational Cost",
+     "relevant": true
+    },
+    {
+     "chunk_id": "2609.26711v1:section_header:0092",
+     "arxiv_id": "2609.26711",
+     "section": "Appendix G Addition Cases Structural Pattern",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26711v1:section_header:0060",
+     "arxiv_id": "2609.26711",
+     "section": "6 Evaluation > 6.4 RQ2: Generalizability",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26711v1:section_header:0096",
+     "arxiv_id": "2609.26711",
+     "section": "Appendix H Computational Cost",
+     "relevant": false
+    }
+   ],
+   "answer": "TraceVIC 去重后还剩 755 个案例进行五折交叉验证。[1]",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "Both are evaluated under an identical 5-fold cross-validation procedure over 755 cases remaining after removing 25 duplicated VIC-VFC pairs from the 780-instance filtered dataset. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 2885,
+    "output_tokens": 47
+   },
+   "outcome": "answered",
+   "language_ok": true,
+   "retrieved": true,
+   "cited_relevant": true,
+   "evidence_cited": true
+  },
+  {
+   "id": "u01",
+   "kind": "unanswerable",
+   "lang": "en",
+   "type": "fabricated",
+   "question": "What speedup does the SparseLoom attention kernel report over FlashAttention-3?",
+   "evidence": null,
+   "arxiv_id": null,
+   "hits": [
+    {
+     "chunk_id": "2609.23130v1:section_header:0013",
+     "arxiv_id": "2609.23130",
+     "section": "3 How the Optimization Boundary Expanded > 3.2 The engine becomes hardware-aware",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.20971v1:section_header:0052",
+     "arxiv_id": "2609.20971",
+     "section": "6 Related Work > Efficient attention kernels.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27373v1:section_header:0010",
+     "arxiv_id": "2609.27373",
+     "section": "2 Related Work",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.24089v1:section_header:0043",
+     "arxiv_id": "2609.24089",
+     "section": "6 Discussion",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.20971v1:section_header:0028",
+     "arxiv_id": "2609.20971",
+     "section": "5 Results > 5.1 Long-context acceleration",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.24089v1:section_header:0029",
+     "arxiv_id": "2609.24089",
+     "section": "5 Experiments > 5.1 Attention-Layer kernel scaling",
+     "relevant": false
+    }
+   ],
+   "answer": "The indexed papers do not contain information about a \"SparseLoom\" attention kernel or any comparisons with FlashAttention-3. While the papers discuss various attention optimization techniques including FlashAttention-3, RBS-Attention, MInference, and others, none of them mention SparseLoom or provide speedup comparisons for that specific kernel.",
+   "stop_reason": "end_turn",
+   "citations": [],
+   "usage": {
+    "input_tokens": 3072,
+    "output_tokens": 80
+   },
+   "outcome": "abstained",
+   "language_ok": true
+  },
+  {
+   "id": "u02",
+   "kind": "unanswerable",
+   "lang": "en",
+   "type": "fabricated",
+   "question": "How many tasks are in the AgentGauntlet benchmark, and how do frontier agents score on it?",
+   "evidence": null,
+   "arxiv_id": null,
+   "hits": [
+    {
+     "chunk_id": "2609.24972v1:section_header:0056",
+     "arxiv_id": "2609.24972",
+     "section": "Appendix A Evaluation > A.8 Frontier-Eng",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.23363v1:section_header:0019",
+     "arxiv_id": "2609.23363",
+     "section": "III Benchmark Construction and Evaluation > III-A Task Construction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.23490v1:section_header:0009",
+     "arxiv_id": "2609.23490",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26826v1:section_header:0027",
+     "arxiv_id": "2609.26826",
+     "section": "3 What an All-Fail Score Can Support > Reliability and sensitivity of the adjudication.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.19607v1:section_header:0006",
+     "arxiv_id": "2609.19607",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.17439v1:section_header:0022",
+     "arxiv_id": "2609.17439",
+     "section": "II Results > II.4 Benchmark results",
+     "relevant": false
+    }
+   ],
+   "answer": "I don't have information about an \"AgentGauntlet\" benchmark in the provided papers. The indexed documents discuss several other benchmarks including Frontier-Eng, TicTacBench, BabelArena, Terminal-Bench, QIQCBench, and others, but none of them appear to be called AgentGauntlet. If you're looking for information about a specific benchmark, please let me know its name or provide the relevant paper, and I'd be happy to help.",
+   "stop_reason": "end_turn",
+   "citations": [],
+   "usage": {
+    "input_tokens": 3093,
+    "output_tokens": 112
+   },
+   "outcome": "abstained",
+   "language_ok": true
+  },
+  {
+   "id": "u03",
+   "kind": "unanswerable",
+   "lang": "en",
+   "type": "fabricated",
+   "question": "What reward model does Tessellate-RL use to train math reasoning?",
+   "evidence": null,
+   "arxiv_id": null,
+   "hits": [
+    {
+     "chunk_id": "2609.27284v1:section_header:0018",
+     "arxiv_id": "2609.27284",
+     "section": "3 Post-training > 3.1 Reasoning-oriented Fine-Tuning > 3.1.2 Reasoning-oriented RL Stage",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27572v1:section_header:0011",
+     "arxiv_id": "2609.27572",
+     "section": "2 Related Work",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.19465v1:section_header:0083",
+     "arxiv_id": "2609.19465",
+     "section": "Appendix C Experiment details > C.5 Reinforcement learning (RL) post-training > Training framework.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.15987v1:section_header:0001",
+     "arxiv_id": "2609.15987",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.13997v1:section_header:0002",
+     "arxiv_id": "2609.13997",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.13849v1:section_header:0044",
+     "arxiv_id": "2609.13849",
+     "section": "Appendix C Related Work",
+     "relevant": false
+    }
+   ],
+   "answer": "The indexed papers do not contain information about Tessellate-RL or what reward model it uses for training math reasoning. I cannot answer this question based on the provided documents.",
+   "stop_reason": "end_turn",
+   "citations": [],
+   "usage": {
+    "input_tokens": 3355,
+    "output_tokens": 40
+   },
+   "outcome": "abstained",
+   "language_ok": true
+  },
+  {
+   "id": "u04",
+   "kind": "unanswerable",
+   "lang": "en",
+   "type": "fabricated",
+   "question": "What compression ratio does KVFold achieve on LongBench?",
+   "evidence": null,
+   "arxiv_id": null,
+   "hits": [
+    {
+     "chunk_id": "2609.24298v1:section_header:0005",
+     "arxiv_id": "2609.24298",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.24298v1:section_header:0118",
+     "arxiv_id": "2609.24298",
+     "section": "Appendix I Additional empirical results > Calibration robustness.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.24298v1:section_header:0045",
+     "arxiv_id": "2609.24298",
+     "section": "6 Results > Joint K+V compression.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.24298v1:section_header:0119",
+     "arxiv_id": "2609.24298",
+     "section": "Appendix I Additional empirical results > Calibration robustness.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.24298v1:section_header:0127",
+     "arxiv_id": "2609.24298",
+     "section": "Appendix J Long-context retrieval on RULER > Joint K+V splits on RULER.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.24298v1:section_header:0035",
+     "arxiv_id": "2609.24298",
+     "section": "6 Results > Main comparison.",
+     "relevant": false
+    }
+   ],
+   "answer": "I cannot find any information about \"KVFold\" or its compression ratio on LongBench in the provided documents. The papers discuss KV-COBRA and compare it to baselines like KIVI, KVQuant, GEAR, TurboQuant, SVDq, and KQ-SVD, but KVFold is not mentioned in these excerpts.",
+   "stop_reason": "end_turn",
+   "citations": [],
+   "usage": {
+    "input_tokens": 3200,
+    "output_tokens": 86
+   },
+   "outcome": "abstained",
+   "language_ok": true
+  },
+  {
+   "id": "u05",
+   "kind": "unanswerable",
+   "lang": "en",
+   "type": "fabricated",
+   "question": "Which languages does the Polyglot-Judge evaluator support?",
+   "evidence": null,
+   "arxiv_id": null,
+   "hits": [
+    {
+     "chunk_id": "2609.13422v1:section_header:0015",
+     "arxiv_id": "2609.13422",
+     "section": "Appendix A Related Work > A.1 LLM-as-a-Judge",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.22793v1:section_header:0000",
+     "arxiv_id": "2609.22793",
+     "section": "Abstract",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.13824v1:section_header:0009",
+     "arxiv_id": "2609.13824",
+     "section": "2 Related Work > 2.2 LLM-as-a-Judge",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.16906v1:section_header:0041",
+     "arxiv_id": "2609.16906",
+     "section": "5 Results > 5.3 Human Evaluation",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.20152v1:section_header:0008",
+     "arxiv_id": "2609.20152",
+     "section": "1. Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.21490v1:section_header:0034",
+     "arxiv_id": "2609.21490",
+     "section": "6 Error-Annotation Results",
+     "relevant": false
+    }
+   ],
+   "answer": "The indexed papers do not contain information about which languages the Polyglot-Judge evaluator supports. While several papers discuss multilingual evaluation and LLM judges across different languages, none of them specifically mention or describe a \"Polyglot-Judge\" evaluator or its language capabilities.",
+   "stop_reason": "end_turn",
+   "citations": [],
+   "usage": {
+    "input_tokens": 2958,
+    "output_tokens": 63
+   },
+   "outcome": "abstained",
+   "language_ok": true
+  },
+  {
+   "id": "u06",
+   "kind": "unanswerable",
+   "lang": "en",
+   "type": "fabricated",
+   "question": "What did the HelixMoE technical report find about expert routing collapse?",
+   "evidence": null,
+   "arxiv_id": null,
+   "hits": [
+    {
+     "chunk_id": "2609.13058v1:section_header:0068",
+     "arxiv_id": "2609.13058",
+     "section": "5 Related Work > Reinforcement Learning for MoE-based LLMs.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.15172v1:section_header:0090",
+     "arxiv_id": "2609.15172",
+     "section": "V EXPERIMENTS > V-D Parameter Analysis > Loss function (RQ4)",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.13058v1:section_header:0004",
+     "arxiv_id": "2609.13058",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.18470v1:section_header:0047",
+     "arxiv_id": "2609.18470",
+     "section": "IV Experiment > IV-G Polarity and Intensity Routing During Training",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.18688v1:section_header:0013",
+     "arxiv_id": "2609.18688",
+     "section": "4 Results > 4.1 Aggregate Results",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.25809v1:section_header:0053",
+     "arxiv_id": "2609.25809",
+     "section": "7 Implications for dynamic expert pruning > 7.3 Designing allocation for tight budgets",
+     "relevant": false
+    }
+   ],
+   "answer": "I cannot find any information about HelixMoE or its findings regarding expert routing collapse in the provided documents. The indexed papers discuss various Mixture-of-Experts (MoE) architectures and routing mechanisms, but none of them appear to be the HelixMoE technical report you're asking about.\n\nIf you have the HelixMoE paper available, please share it and I'd be happy to answer your question about its findings on expert routing collapse.",
+   "stop_reason": "end_turn",
+   "citations": [],
+   "usage": {
+    "input_tokens": 3380,
+    "output_tokens": 105
+   },
+   "outcome": "abstained",
+   "language_ok": true
+  },
+  {
+   "id": "u07",
+   "kind": "unanswerable",
+   "lang": "en",
+   "type": "fabricated",
+   "question": "How does the MirrorMind memory module decide what an agent should forget?",
+   "evidence": null,
+   "arxiv_id": null,
+   "hits": [
+    {
+     "chunk_id": "2609.25130v1:section_header:0002",
+     "arxiv_id": "2609.25130",
+     "section": "I Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.16289v1:section_header:0005",
+     "arxiv_id": "2609.16289",
+     "section": "2 Model",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.18461v2:section_header:0010",
+     "arxiv_id": "2609.18461",
+     "section": "2 Related Work > Agentic Memory Management.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.18849v1:section_header:0043",
+     "arxiv_id": "2609.18849",
+     "section": "4. How Good Is It, and What Does It Cost?",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.24663v1:section_header:0045",
+     "arxiv_id": "2609.24663",
+     "section": "4 Experiments > 4.5 How Does Forgetting Manifest in Self-Evolving Agents? > Forgetting is sparse and tail-dominated.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.23986v1:section_header:0009",
+     "arxiv_id": "2609.23986",
+     "section": "2 Background and Motivation > 2.1 Agentic Memory",
+     "relevant": false
+    }
+   ],
+   "answer": "I cannot find information about a \"MirrorMind memory module\" in the provided papers. The indexed documents discuss various memory management approaches in AI agents, but none of them mention MirrorMind specifically. \n\nIf you're looking for information about how agents decide what to forget, the papers do discuss this topic generally—for example, one paper discusses anchoring claims to the content they came from and withdrawing claims when that content changes, though this approach has high recall but poor precision because most changes to a file do not affect most claims about it[1]. However, this doesn't describe MirrorMind.\n\nIf you have a specific paper about MirrorMind or can clarify which system you're asking about, I'd be happy to help further.",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 0,
+     "cited_text": "Systems in this line anchor a claim to the content it came from and withdraw the claim when that content changes [ 1 ] . This has recall near one and poor precision, because most changes to a file do not affect most claims about it."
+    }
+   ],
+   "usage": {
+    "input_tokens": 2948,
+    "output_tokens": 183
+   },
+   "outcome": "hedged",
+   "language_ok": true
+  },
+  {
+   "id": "u08",
+   "kind": "unanswerable",
+   "lang": "en",
+   "type": "fabricated",
+   "question": "What hallucination rate does VeriChain reach on TruthfulQA?",
+   "evidence": null,
+   "arxiv_id": null,
+   "hits": [
+    {
+     "chunk_id": "2609.22043v1:section_header:0003",
+     "arxiv_id": "2609.22043",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.21227v1:section_header:0023",
+     "arxiv_id": "2609.21227",
+     "section": "4 Consistency–Diversity Trade-off Analysis",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.21096v1:section_header:0034",
+     "arxiv_id": "2609.21096",
+     "section": "IV Experiments > IV-D Results",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.21096v1:section_header:0035",
+     "arxiv_id": "2609.21096",
+     "section": "IV Experiments > IV-D Results",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.22043v1:section_header:0035",
+     "arxiv_id": "2609.22043",
+     "section": "5 Experimental Evaluation > 5.2 End-to-End Hallucination Suppression (RQ1)",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.25176v1:section_header:0064",
+     "arxiv_id": "2609.25176",
+     "section": "6 Evaluation: Intelligence, Action, Interaction and Realtime > 6.5 Reliability and safety",
+     "relevant": false
+    }
+   ],
+   "answer": "The indexed papers do not contain information about VeriChain's hallucination rate on TruthfulQA. While the papers discuss various approaches to detecting and mitigating hallucinations on the TruthfulQA dataset, none of them mention or evaluate VeriChain specifically.",
+   "stop_reason": "end_turn",
+   "citations": [],
+   "usage": {
+    "input_tokens": 3518,
+    "output_tokens": 65
+   },
+   "outcome": "abstained",
+   "language_ok": true
+  },
+  {
+   "id": "u09",
+   "kind": "unanswerable",
+   "lang": "en",
+   "type": "fabricated",
+   "question": "What data was the Quillfeather code model trained on?",
+   "evidence": null,
+   "arxiv_id": null,
+   "hits": [
+    {
+     "chunk_id": "2609.18310v3:section_header:0003",
+     "arxiv_id": "2609.18310",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.16076v1:section_header:0203",
+     "arxiv_id": "2609.16076",
+     "section": "Appendix I Case Studies of Base Model and Trained Model",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.16076v1:section_header:0136",
+     "arxiv_id": "2609.16076",
+     "section": "Appendix C Training Setting > C.3 Supervised Fine-Tuning (SFT) > Data Configurations.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.12708v2:section_header:0187",
+     "arxiv_id": "2609.12708",
+     "section": "9. Threats to Validity",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.12708v2:section_header:0076",
+     "arxiv_id": "2609.12708",
+     "section": "4. Dataset > 4.1. Generation of LLM-Authored Code",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.18842v2:section_header:0001",
+     "arxiv_id": "2609.18842",
+     "section": "1 Introduction",
+     "relevant": false
+    }
+   ],
+   "answer": "The indexed papers do not contain any information about a \"Quillfeather code model\" or its training data. I cannot answer this question based on the provided documents.",
+   "stop_reason": "end_turn",
+   "citations": [],
+   "usage": {
+    "input_tokens": 3181,
+    "output_tokens": 38
+   },
+   "outcome": "abstained",
+   "language_ok": true
+  },
+  {
+   "id": "u10",
+   "kind": "unanswerable",
+   "lang": "en",
+   "type": "fabricated",
+   "question": "What context length does the Orca-Nova model support?",
+   "evidence": null,
+   "arxiv_id": null,
+   "hits": [
+    {
+     "chunk_id": "2609.14320v1:section_header:0028",
+     "arxiv_id": "2609.14320",
+     "section": "5 Experiments > 5.1 Experiment Setup > Context Length Extension.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.22452v1:section_header:0011",
+     "arxiv_id": "2609.22452",
+     "section": "2 Related Works > 2.2 Long-Context Modeling and Benchmarks",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26718v1:section_header:0042",
+     "arxiv_id": "2609.26718",
+     "section": "Appendix A Related Works > A.1 Long-Context Modeling",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.14320v1:section_header:0105",
+     "arxiv_id": "2609.14320",
+     "section": "Appendix G Pre-Training Experiment Details > G.2 Long-Context Continual Pre-Training",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.14320v1:section_header:0104",
+     "arxiv_id": "2609.14320",
+     "section": "Appendix G Pre-Training Experiment Details > G.2 Long-Context Continual Pre-Training",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26300v1:section_header:0063",
+     "arxiv_id": "2609.26300",
+     "section": "Appendix C Evaluation Configuration > C.3 Evaluation Details > Context handling.",
+     "relevant": false
+    }
+   ],
+   "answer": "I cannot find information about the Orca-Nova model's context length in the provided documents. The indexed papers focus on context window extension techniques and benchmarks for various models like Qwen, Llama, and DeltaNet-based architectures, but they do not mention Orca-Nova or its supported context length.",
+   "stop_reason": "end_turn",
+   "citations": [],
+   "usage": {
+    "input_tokens": 3428,
+    "output_tokens": 73
+   },
+   "outcome": "abstained",
+   "language_ok": true
+  },
+  {
+   "id": "u11",
+   "kind": "unanswerable",
+   "lang": "en",
+   "type": "fabricated",
+   "question": "How does DriftGuard detect distribution shift in deployed LLM agents?",
+   "evidence": null,
+   "arxiv_id": null,
+   "hits": [
+    {
+     "chunk_id": "2609.23215v1:section_header:0057",
+     "arxiv_id": "2609.23215",
+     "section": "8 Limitations > Drift result is a single point estimate.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.23257v1:section_header:0005",
+     "arxiv_id": "2609.23257",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.22712v1:section_header:0032",
+     "arxiv_id": "2609.22712",
+     "section": "4 Safety and Robustness > 4.3 Robustness to Distribution Shift",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.18346v1:section_header:0108",
+     "arxiv_id": "2609.18346",
+     "section": "Appendix L Detailed Collusiveness Statistics > Prompt effects on distributions.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.23215v1:section_header:0021",
+     "arxiv_id": "2609.23215",
+     "section": "4 Failure Mode I: Belief-Drift Blindness > 4.2 Diagnostic",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.23257v1:section_header:0012",
+     "arxiv_id": "2609.23257",
+     "section": "3 Methodology > 3.1 Overview",
+     "relevant": false
+    }
+   ],
+   "answer": "I cannot find information about \"DriftGuard\" in the provided papers. The indexed documents do not contain any discussion of a system or method called DriftGuard.\n\nHowever, if you're interested in how distribution shift detection works in LLM-based systems, the papers do discuss some approaches. For example, CTRL performs test-time adaptation by detecting distribution shift from input statistics alone, without relying on ground-truth labels[1], and test-time adaptation requires no ground-truth labels, enabling adaptation to distribution shifts using only input statistics[2].\n\nIf you have a specific paper about DriftGuard or would like to know more about the approaches discussed in these papers, please let me know.",
+   "stop_reason": "end_turn",
+   "citations": [
+    {
+     "doc": 1,
+     "cited_text": "CTRL performs test-time adaptation by detecting distribution shift from input statistics alone, without relying on ground-truth labels, and operates efficiently with low LLM overhead by leveraging clustered held-out training samples. "
+    },
+    {
+     "doc": 5,
+     "cited_text": "Critically, test-time adaptation requires no ground-truth labels , enabling adaptation to distribution shifts using only input statistics. "
+    }
+   ],
+   "usage": {
+    "input_tokens": 2799,
+    "output_tokens": 179
+   },
+   "outcome": "hedged",
+   "language_ok": true
+  },
+  {
+   "id": "u12",
+   "kind": "unanswerable",
+   "lang": "zh",
+   "type": "fabricated",
+   "question": "LumenRAG 在多跳问答上比标准 RAG 提升了多少？",
+   "evidence": null,
+   "arxiv_id": null,
+   "hits": [
+    {
+     "chunk_id": "2609.23056v1:section_header:0025",
+     "arxiv_id": "2609.23056",
+     "section": "5 Results > 5.2 Question-level Performance Differences",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.18099v1:section_header:0000",
+     "arxiv_id": "2609.18099",
+     "section": "Abstract",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.23056v1:section_header:0043",
+     "arxiv_id": "2609.23056",
+     "section": "Appendix 0.A Supplementary TFCAD Results",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.23735v2:section_header:0150",
+     "arxiv_id": "2609.23735",
+     "section": "Appendix C Additional Details: Scientific Question Answering > C.1 Single-paper QA > Complete condition set (PeerQA).",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.23880v1:section_header:0046",
+     "arxiv_id": "2609.23880",
+     "section": "4 Experiments > 4.5 Integration in RAG Scenarios",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.25303v1:section_header:0031",
+     "arxiv_id": "2609.25303",
+     "section": "4 Results",
+     "relevant": false
+    }
+   ],
+   "answer": "我查阅了提供的文件，但没有找到关于 LumenRAG 在多跳问答上相比标准 RAG 提升多少的信息。这些文件讨论的是其他 RAG 系统的性能，如 EffiRAG、Q-TIE 和 ScholarStack 等，但没有包含 LumenRAG 的相关评估数据。\n\n如果您需要了解 LumenRAG 的性能信息，您可能需要查阅其他包含该系统的论文或资料。",
+   "stop_reason": "end_turn",
+   "citations": [],
+   "usage": {
+    "input_tokens": 3350,
+    "output_tokens": 155
+   },
+   "outcome": "abstained",
+   "language_ok": true
+  },
+  {
+   "id": "u13",
+   "kind": "unanswerable",
+   "lang": "zh",
+   "type": "fabricated",
+   "question": "SparseLoom 注意力内核相比 FlashAttention-3 快多少？",
+   "evidence": null,
+   "arxiv_id": null,
+   "hits": [
+    {
+     "chunk_id": "2609.24089v1:section_header:0111",
+     "arxiv_id": "2609.24089",
+     "section": "Appendix N Head-dimension sensitivity",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27373v1:section_header:0010",
+     "arxiv_id": "2609.27373",
+     "section": "2 Related Work",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.20971v1:section_header:0052",
+     "arxiv_id": "2609.20971",
+     "section": "6 Related Work > Efficient attention kernels.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.24089v1:section_header:0005",
+     "arxiv_id": "2609.24089",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.24089v1:section_header:0029",
+     "arxiv_id": "2609.24089",
+     "section": "5 Experiments > 5.1 Attention-Layer kernel scaling",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.24089v1:section_header:0043",
+     "arxiv_id": "2609.24089",
+     "section": "6 Discussion",
+     "relevant": false
+    }
+   ],
+   "answer": "我很抱歉，所提供的文档中没有包含关于 SparseLoom 注意力内核与 FlashAttention-3 性能对比的信息。这些文档主要讨论的是 FlashBoB（一个用于softmax注意力的反向传播算法）和其他一些注意力优化方法，但没有提到 SparseLoom 或与 FlashAttention-3 的具体性能对比数据。\n\n如果您需要了解这方面的信息，我建议查阅 SparseLoom 的原始论文或官方文档。",
+   "stop_reason": "end_turn",
+   "citations": [],
+   "usage": {
+    "input_tokens": 3437,
+    "output_tokens": 168
+   },
+   "outcome": "abstained",
+   "language_ok": true
+  },
+  {
+   "id": "u14",
+   "kind": "unanswerable",
+   "lang": "zh",
+   "type": "fabricated",
+   "question": "HelixMoE 技术报告关于专家路由坍塌有什么发现？",
+   "evidence": null,
+   "arxiv_id": null,
+   "hits": [
+    {
+     "chunk_id": "2609.13770v1:section_header:0065",
+     "arxiv_id": "2609.13770",
+     "section": "Appendix C Supplementary Analysis > C.4 Additional Teacher-forcing Next-token Prediction Metrics: Probability and Rank",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.13770v1:section_header:0048",
+     "arxiv_id": "2609.13770",
+     "section": "5 Analysis: Data Scaling, Cross-model, KL Drift, Explicit KL Anchor, and Trajectory Quality > 5.6 Structural constraint preserves the integrity of reasoning trajectories.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.23592v1:section_header:0009",
+     "arxiv_id": "2609.23592",
+     "section": "3 Layout complexity is the wrong variable > 3.3 The benefit is not predictable before inference",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.16051v1:section_header:0094",
+     "arxiv_id": "2609.16051",
+     "section": "Appendix A Additional Data and Methods > A.5. Interview Guide",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.21651v2:section_header:0054",
+     "arxiv_id": "2609.21651",
+     "section": "3 Pipeline Design > 3.6 Route B: Computer Vision Model Orchestration",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.26826v1:section_header:0018",
+     "arxiv_id": "2609.26826",
+     "section": "3 What an All-Fail Score Can Support",
+     "relevant": false
+    }
+   ],
+   "answer": "我无法在提供的文档中找到关于\"HelixMoE\"技术报告或关于专家路由坍塌的信息。\n\n提供的文档涉及其他主题，如培训专家模型、文档解析、AI代理、作物病害诊断和任务难度评估，但没有包含HelixMoE相关的内容。\n\n如果您有HelixMoE的相关论文或文档，请提供相应的材料，我很乐意为您分析其中关于专家路由坍塌的发现。",
+   "stop_reason": "end_turn",
+   "citations": [],
+   "usage": {
+    "input_tokens": 3248,
+    "output_tokens": 162
+   },
+   "outcome": "abstained",
+   "language_ok": true
+  },
+  {
+   "id": "u15",
+   "kind": "unanswerable",
+   "lang": "en",
+   "type": "out_of_scope",
+   "question": "When will GPT-7 be released and what is its context window?",
+   "evidence": null,
+   "arxiv_id": null,
+   "hits": [
+    {
+     "chunk_id": "2609.15100v2:section_header:0003",
+     "arxiv_id": "2609.15100",
+     "section": "Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.14652v1:section_header:0024",
+     "arxiv_id": "2609.14652",
+     "section": "DBLP-QuAD 3.1",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.18346v1:section_header:0072",
+     "arxiv_id": "2609.18346",
+     "section": "Appendix B Model Descriptions > GPT-5.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.20779v1:section_header:0043",
+     "arxiv_id": "2609.20779",
+     "section": "6 Discussion > Context provision and scope.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.19944v1:section_header:0129",
+     "arxiv_id": "2609.19944",
+     "section": "Appendix L Execution Cost Details > Compute reporting.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.16590v1:section_header:0022",
+     "arxiv_id": "2609.16590",
+     "section": "5 Methods > 5.2 LLM response collection > ChatGPT Health",
+     "relevant": false
+    }
+   ],
+   "answer": "The indexed papers do not contain information about GPT-7's release date or context window. The papers discuss existing models like GPT-5, GPT-5.3, GPT-5.4, and GPT-4o, but there is no mention of GPT-7 in any of them.",
+   "stop_reason": "end_turn",
+   "citations": [],
+   "usage": {
+    "input_tokens": 2801,
+    "output_tokens": 70
+   },
+   "outcome": "abstained",
+   "language_ok": true
+  },
+  {
+   "id": "u16",
+   "kind": "unanswerable",
+   "lang": "en",
+   "type": "out_of_scope",
+   "question": "What is the population of Reykjavik?",
+   "evidence": null,
+   "arxiv_id": null,
+   "hits": [
+    {
+     "chunk_id": "2609.22375v1:section_header:0012",
+     "arxiv_id": "2609.22375",
+     "section": "3. Results > p.5",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.18341v1:section_header:0017",
+     "arxiv_id": "2609.18341",
+     "section": "3. Study Design > 3.3. Metros",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.22375v1:section_header:0014",
+     "arxiv_id": "2609.22375",
+     "section": "3. Results > p.6",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.22375v1:section_header:0019",
+     "arxiv_id": "2609.22375",
+     "section": "4. Discussion > p.8",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.13899v1:section_header:0014",
+     "arxiv_id": "2609.13899",
+     "section": "3 The URCHIN System > A single horizontal layer.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.14770v1:section_header:0133",
+     "arxiv_id": "2609.14770",
+     "section": "Appendix L Prompt Templates",
+     "relevant": false
+    }
+   ],
+   "answer": "The indexed papers do not contain information about the population of Reykjavik. The papers discuss topics such as bias in Wikidata coverage, AI provider recommendations in U.S. metropolitan areas, spiking neural networks, and NLP research generalization, but none of them provide data about Reykjavik's population.",
+   "stop_reason": "end_turn",
+   "citations": [],
+   "usage": {
+    "input_tokens": 3560,
+    "output_tokens": 73
+   },
+   "outcome": "abstained",
+   "language_ok": true
+  },
+  {
+   "id": "u17",
+   "kind": "unanswerable",
+   "lang": "en",
+   "type": "out_of_scope",
+   "question": "Which country will win the 2030 FIFA World Cup?",
+   "evidence": null,
+   "arxiv_id": null,
+   "hits": [
+    {
+     "chunk_id": "2609.22497v1:section_header:0025",
+     "arxiv_id": "2609.22497",
+     "section": "Body > p.11",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.12495v1:section_header:0015",
+     "arxiv_id": "2609.12495",
+     "section": "Body > p.6",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.12495v1:section_header:0010",
+     "arxiv_id": "2609.12495",
+     "section": "Body > p.4",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.12495v1:section_header:0020",
+     "arxiv_id": "2609.12495",
+     "section": "Body > p.6",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.12495v1:section_header:0008",
+     "arxiv_id": "2609.12495",
+     "section": "Body > p.3",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.22497v1:section_header:0058",
+     "arxiv_id": "2609.22497",
+     "section": "Body > p.22",
+     "relevant": false
+    }
+   ],
+   "answer": "I cannot answer this question based on the indexed papers. The papers discuss forecasts for the 2026 FIFA World Cup, not the 2030 FIFA World Cup. Additionally, even for 2026, the papers contain research methodologies and intermediate results rather than final predictions about which country will win.",
+   "stop_reason": "end_turn",
+   "citations": [],
+   "usage": {
+    "input_tokens": 2229,
+    "output_tokens": 66
+   },
+   "outcome": "abstained",
+   "language_ok": true
+  },
+  {
+   "id": "u18",
+   "kind": "unanswerable",
+   "lang": "en",
+   "type": "out_of_scope",
+   "question": "How tall is the Burj Khalifa?",
+   "evidence": null,
+   "arxiv_id": null,
+   "hits": [
+    {
+     "chunk_id": "2609.28049v1:section_header:0051",
+     "arxiv_id": "2609.28049",
+     "section": "3 Corpus and Setting",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.19853v2:section_header:0113",
+     "arxiv_id": "2609.19853",
+     "section": "7 Evaluation > 7.6 A prompt-only baseline on an external corpus",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.13003v1:section_header:0100",
+     "arxiv_id": "2609.13003",
+     "section": "Appendix E Cohort Generation Prompts > E.6 Surface-flipped cohort: inspectable examples > Pair 2: History myths.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.27173v1:section_header:0063",
+     "arxiv_id": "2609.27173",
+     "section": "Appendix B Running Example > B.2 Evidence Attribution",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.25939v1:section_header:0055",
+     "arxiv_id": "2609.25939",
+     "section": "Appendix F Compute Resources",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.23064v1:section_header:0251",
+     "arxiv_id": "2609.23064",
+     "section": "Appendix F Qualitative Benchmark Cases and Multimodal Fire-World Visualizations",
+     "relevant": false
+    }
+   ],
+   "answer": "I cannot find information about the height of the Burj Khalifa in the indexed papers provided. These papers cover topics like sports video understanding, AI cinematic expression, LLM benchmarks, and fire dynamics simulation, but none of them discuss the Burj Khalifa or its height.",
+   "stop_reason": "end_turn",
+   "citations": [],
+   "usage": {
+    "input_tokens": 3294,
+    "output_tokens": 65
+   },
+   "outcome": "abstained",
+   "language_ok": true
+  },
+  {
+   "id": "u19",
+   "kind": "unanswerable",
+   "lang": "zh",
+   "type": "out_of_scope",
+   "question": "GPT-7 什么时候发布？上下文窗口有多大？",
+   "evidence": null,
+   "arxiv_id": null,
+   "hits": [
+    {
+     "chunk_id": "2609.25677v1:section_header:0027",
+     "arxiv_id": "2609.25677",
+     "section": "3. Methodology > 3.3. Design and data collection",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.16590v1:section_header:0020",
+     "arxiv_id": "2609.16590",
+     "section": "5 Methods > 5.2 LLM response collection",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.15100v2:section_header:0003",
+     "arxiv_id": "2609.15100",
+     "section": "Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.18346v1:section_header:0072",
+     "arxiv_id": "2609.18346",
+     "section": "Appendix B Model Descriptions > GPT-5.",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.16590v1:section_header:0022",
+     "arxiv_id": "2609.16590",
+     "section": "5 Methods > 5.2 LLM response collection > ChatGPT Health",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.15100v2:section_header:0045",
+     "arxiv_id": "2609.15100",
+     "section": "Detector Responses to the Collection > .4 Comparison with our April GPT-Image-2 release",
+     "relevant": false
+    }
+   ],
+   "answer": "根据提供的文档，我找不到关于GPT-7发布时间或上下文窗口大小的信息。\n\n这些文档讨论的是GPT-4o-mini、GPT-5.4-mini、GPT-5.3和GPT-5等模型，但都没有提及GPT-7的相关信息。如果您想了解GPT-7的信息，这些索引论文无法提供答案。",
+   "stop_reason": "end_turn",
+   "citations": [],
+   "usage": {
+    "input_tokens": 2814,
+    "output_tokens": 124
+   },
+   "outcome": "abstained",
+   "language_ok": true
+  },
+  {
+   "id": "u20",
+   "kind": "unanswerable",
+   "lang": "zh",
+   "type": "out_of_scope",
+   "question": "雷克雅未克有多少人口？",
+   "evidence": null,
+   "arxiv_id": null,
+   "hits": [
+    {
+     "chunk_id": "2609.16639v3:section_header:0111",
+     "arxiv_id": "2609.16639",
+     "section": "Appendix E Case Study > E.2 Counting",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.16639v3:section_header:0112",
+     "arxiv_id": "2609.16639",
+     "section": "Appendix E Case Study > E.2 Counting",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.16627v1:section_header:0029",
+     "arxiv_id": "2609.16627",
+     "section": "3 Results > 3.1 Study Population and Website Corpus",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.18431v1:section_header:0001",
+     "arxiv_id": "2609.18431",
+     "section": "1 Introduction",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.22375v1:section_header:0014",
+     "arxiv_id": "2609.22375",
+     "section": "3. Results > p.6",
+     "relevant": false
+    },
+    {
+     "chunk_id": "2609.23071v1:section_header:0549",
+     "arxiv_id": "2609.23071",
+     "section": "Appendix A Appendix > A.1 Cultural Safety > A.1.13 Global culture seeds",
+     "relevant": false
+    }
+   ],
+   "answer": "我无法从提供的文档中找到关于雷克雅未克人口的信息。这些文档主要讨论的是AI研究论文的内容，包括视觉语言模型、稀有病诊断、维基数据中的人类覆盖偏差等话题，但都不包含有关雷克雅未克人口的数据。",
+   "stop_reason": "end_turn",
+   "citations": [],
+   "usage": {
+    "input_tokens": 3781,
+    "output_tokens": 108
+   },
+   "outcome": "abstained",
+   "language_ok": true
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+{"id": "u01", "lang": "en", "type": "fabricated", "absent": ["sparseloom"], "question": "What speedup does the SparseLoom attention kernel report over FlashAttention-3?"}
+{"id": "u02", "lang": "en", "type": "fabricated", "absent": ["agentgauntlet"], "question": "How many tasks are in the AgentGauntlet benchmark, and how do frontier agents score on it?"}
+{"id": "u03", "lang": "en", "type": "fabricated", "absent": ["tessellate-rl"], "question": "What reward model does Tessellate-RL use to train math reasoning?"}
+{"id": "u04", "lang": "en", "type": "fabricated", "absent": ["kvfold"], "question": "What compression ratio does KVFold achieve on LongBench?"}
+{"id": "u05", "lang": "en", "type": "fabricated", "absent": ["polyglot-judge"], "question": "Which languages does the Polyglot-Judge evaluator support?"}
+{"id": "u06", "lang": "en", "type": "fabricated", "absent": ["helixmoe"], "question": "What did the HelixMoE technical report find about expert routing collapse?"}
+{"id": "u07", "lang": "en", "type": "fabricated", "absent": ["mirrormind"], "question": "How does the MirrorMind memory module decide what an agent should forget?"}
+{"id": "u08", "lang": "en", "type": "fabricated", "absent": ["verichain"], "question": "What hallucination rate does VeriChain reach on TruthfulQA?"}
+{"id": "u09", "lang": "en", "type": "fabricated", "absent": ["quillfeather"], "question": "What data was the Quillfeather code model trained on?"}
+{"id": "u10", "lang": "en", "type": "fabricated", "absent": ["orca-nova"], "question": "What context length does the Orca-Nova model support?"}
+{"id": "u11", "lang": "en", "type": "fabricated", "absent": ["driftguard"], "question": "How does DriftGuard detect distribution shift in deployed LLM agents?"}
+{"id": "u12", "lang": "zh", "type": "fabricated", "absent": ["lumenrag"], "question": "LumenRAG 在多跳问答上比标准 RAG 提升了多少？"}
+{"id": "u13", "lang": "zh", "type": "fabricated", "absent": ["sparseloom"], "question": "SparseLoom 注意力内核相比 FlashAttention-3 快多少？"}
+{"id": "u14", "lang": "zh", "type": "fabricated", "absent": ["helixmoe"], "question": "HelixMoE 技术报告关于专家路由坍塌有什么发现？"}
+{"id": "u15", "lang": "en", "type": "out_of_scope", "absent": ["gpt-7"], "question": "When will GPT-7 be released and what is its context window?"}
+{"id": "u16", "lang": "en", "type": "out_of_scope", "absent": ["reykjavik"], "question": "What is the population of Reykjavik?"}
+{"id": "u17", "lang": "en", "type": "out_of_scope", "absent": ["2030 world cup", "2030 fifa"], "question": "Which country will win the 2030 FIFA World Cup?"}
+{"id": "u18", "lang": "en", "type": "out_of_scope", "absent": ["burj khalifa"], "question": "How tall is the Burj Khalifa?"}
+{"id": "u19", "lang": "zh", "type": "out_of_scope", "absent": ["gpt-7"], "question": "GPT-7 什么时候发布？上下文窗口有多大？"}
+{"id": "u20", "lang": "zh", "type": "out_of_scope", "absent": ["reykjavik"], "question": "雷克雅未克有多少人口？"}

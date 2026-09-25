@@ -162,10 +162,29 @@ After the FTS5 switch the cross-encoder took about 320 of the 400 ms per query. 
 
 Cutting passages saves compute but reorders results, so it was not used. Half precision changes one question's top six without moving its relevant passage: in the full evaluation, every question's first relevant rank and top three are identical to fp32, and every metric is unchanged. A query now takes 171 ms end to end; before the keyword index and reranker changes it took 593 ms. Half precision is applied only on a GPU; on CPU the reranker stays in fp32.
 
+### Answer quality
+
+Retrieval metrics say whether the right passage reached the model, not what the model did with it. `eval/run_answers.py` runs the production pipeline (hybrid search, reranking, the top six passages to Claude Haiku 4.5 with citations) on the 60 questions plus 20 the corpus cannot answer. Fourteen of those ask about methods, models and benchmarks that do not exist but are named like real ones (SparseLoom, HelixMoE, AgentGauntlet, with three in Chinese); six are out of scope (GPT-7's release date, the population of Reykjavik). The script refuses to run if any of their key terms occurs anywhere in the corpus. Requests go through the Message Batches API at half price; the run cost $0.15.
+
+Rules score every answer first: declined (no citations), hedged (citations plus a phrase such as "do not mention"), whether it cites the labeled passage, and whether a cited span contains the evidence. Every answer the rules could not settle was then read against its question and cited passages: all 20 unanswerable questions and 25 of the 60 others (`eval/results/answers-20260925-204531-review.json`).
+
+| Questions | n | Correct | Declined | Wrong |
+|---|---|---|---|---|
+| Answerable, labeled passage among the six | 52 | 48 | 1 | 3 |
+| Answerable, labeled passage not retrieved | 8 | 5 | 2 | 1 |
+| Not answerable from the corpus | 20 | — | 20 | 0 |
+
+- **Nothing was invented for unanswerable questions.** All 20 were declined. For two (MirrorMind, DriftGuard) the model said the name does not appear, then cited related work on the general topic without attributing it to the name.
+- **The facts are cited; the wrong step is not.** In q18 the labeled passage was not retrieved. The model cited RULER's 13 tasks from the target paper and LongBench's 21 tasks from a different paper, then concluded in an uncited final sentence that 34 tasks were used; the paper used 12. The same question in Chinese (z09) was declined. In q38 the model cited one category's range (0.0% to 32.6%) and continued, without a citation, that 0.0% was the lowest rate on the benchmark; the lowest overall rate across models is 44.60%. Both answers look grounded because every number in them has a citation nearby. In q11 the model applied the question's wording ("almost completely missing") to a different compliance area than the paper does.
+- **Chinese answers can mistranslate magnitudes.** z01 renders 80 billion parameters as "80 亿" (8 billion), then says 80B in the next sentence.
+- **Most apparent misses are label artifacts.** Five of the eight questions whose labeled passage was not retrieved were answered correctly from another chunk of the same paper. The one decline despite a retrieved passage (q01) was right: the six passages mention the loss, but none says it is the one recommended. The evidence labels are too strict for answers and too lenient for retrieval, which is why rules alone cannot score this.
+- Every answer came back in the language of its question.
+
 ### Limitations
 
 - One person wrote the questions and the evidence labels, and 50 questions is a small sample: a difference of 0.06 in hit@5 is three questions.
 - The 10 Chinese questions were used while building the translation step (including choosing glossary terms), so they act as a development set, not a held-out test. The glossary only contains general AI terms, not terms specific to any question.
+- Answer verdicts come from one reviewer, and 35 answers that cite the labeled passage and state the evidence verbatim were counted correct without being read.
 - Evidence matching is lenient in one direction and strict in the other: a chunk that contains the evidence string for an unrelated reason still counts, while a chunk that gives the answer in other words does not (see q29 above).
 
 ## Next iterations
@@ -173,7 +192,7 @@ Cutting passages saves compute but reorders results, so it was not used. Half pr
 Each item is a question the evaluation can answer:
 
 1. **Time-aware ranking.** The date filter is a hard cutoff. Add a recency prior and detect "latest / recent" intent, with new questions whose correct answer depends on publication date.
-2. **Answer-level evaluation.** Measure abstention on questions the corpus cannot answer, and check that every cited span actually contains the supporting evidence.
+2. **Flagging uncited conclusions.** In q18 and q38 the wrong step is an uncited sentence that derives a number from cited facts. Does flagging uncited sentences that contain numbers catch both without flagging the 53 correct answers, and would asking the model to cite or drop such sentences fix them?
 3. **A larger, independent question set.** 100+ questions, a separate held-out Chinese set, and a second annotator.
 4. **Where the evidence comes from.** 32 of the 60 passages retrieved for the ten featured questions come from Introduction or Related Work sections, which describe earlier work second-hand: the KV-cache answer cites one paper's summary of SnapKV and PyramidKV, and that summary does not match how those methods work. The diffusion-model question, which asks about a field, drew all six passages from a single paper. Does a per-paper cap, or down-weighting related-work sections for "what's new" questions, broaden the answers without costing hit@k?
 
@@ -207,6 +226,7 @@ Answer generation needs an Anthropic API key in `ANTHROPIC_API_KEY`:
 ```bash
 .venv/bin/python -m rag.generate "How are recent papers handling memory for long-horizon LLM agents?"
 .venv/bin/python -m rag.precompute                 # regenerate the featured answers
+.venv/bin/python -m eval.run_answers              # answer-level evaluation via the Batch API (about $0.15)
 ENABLE_LIVE_ANSWERS=1 .venv/bin/python -m app.server
 ```
 
@@ -215,6 +235,7 @@ ENABLE_LIVE_ANSWERS=1 .venv/bin/python -m app.server
 ```
 ingest/   fetch_arxiv.py  parse.py  chunk.py  build_chunks.py
 rag/      index.py  keyword_index.py  retrieve.py  translate.py  generate.py  precompute.py
-eval/     questions.jsonl  validate.py  run_retrieval.py  candidate_recall.py  compare.py  rerank_latency.py  results/
+eval/     questions.jsonl  unanswerable.jsonl  validate.py  run_retrieval.py  candidate_recall.py  compare.py
+          rerank_latency.py  run_answers.py  results/
 app/      server.py  static/index.html  featured_answers.json
 ```

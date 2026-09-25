@@ -3,10 +3,8 @@ import json
 from datetime import datetime, timezone
 
 from app.server import FEATURED_PATH
-from rag.generate import DEFAULT_MODEL, answer
+from rag.generate import DEFAULT_MODEL, PRICE_PER_MTOK, answer
 from rag.translate import needs_translation
-
-PRICE_PER_MTOK = {"claude-haiku-4-5": (1.00, 5.00)}
 
 FEATURED_QUESTIONS = [
     "How are recent papers handling memory for long-horizon LLM agents?",

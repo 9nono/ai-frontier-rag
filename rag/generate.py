@@ -10,6 +10,7 @@ DEFAULT_MODEL = "claude-haiku-4-5"
 FALLBACK_MODELS = {"claude-opus-5"}
 NO_EFFORT_MODELS = {"claude-haiku-4-5"}
 TOP_K = 6
+PRICE_PER_MTOK = {"claude-haiku-4-5": (1.00, 5.00)}  # USD per million input / output tokens
 
 SYSTEM = """You answer questions about recent AI research papers using only the paper excerpts provided.
 - Support every factual claim with the excerpts and cite them.
@@ -39,7 +40,7 @@ def _question_turn(question):
     return question
 
 
-def _request(model, effort, hits, question):
+def build_request(question, hits, model=DEFAULT_MODEL, effort="low"):
     kwargs = dict(
         model=model,
         max_tokens=4000,
@@ -52,7 +53,11 @@ def _request(model, effort, hits, question):
     if model in FALLBACK_MODELS:
         kwargs["betas"] = ["server-side-fallback-2026-07-01"]
         kwargs["fallbacks"] = "default"
-    return anthropic.Anthropic().beta.messages.create(**kwargs)
+    return kwargs
+
+
+def _request(model, effort, hits, question):
+    return anthropic.Anthropic().beta.messages.create(**build_request(question, hits, model, effort))
 
 
 def _render(response, hits):
