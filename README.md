@@ -112,7 +112,7 @@ The same 60 questions against the full two-week corpus (the 300 original papers 
 
 Eight times more text means eight times more near-misses. Every retriever loses some precision; hybrid search loses the most (hit@5 0.86 → 0.72), and reranking recovers most of it (0.88). Two problems surfaced that did not exist at 300 papers:
 
-- **Reranking can only reorder what it is given.** Hybrid hit@10 is 0.86, so for some questions the right passage is not among the 30 candidates sent to the reranker.
+- **Reranking can only reorder what it is given.** Hybrid search puts a relevant passage among the 30 candidates sent to the reranker for 46 of 50 English questions and 7 of 10 Chinese ones (`eval/candidate_recall.py`). Reranked hit@10 is also 0.92, so the reranker already brings every relevant passage it receives into the top 10; the ceiling is the pool. Widening the pool to 100 would contain all 50 English passages and 9 of the 10 Chinese ones.
 - **BM25 is the slow part.** `rank_bm25` scores all 190k chunks in Python for every query: 212 ms, most of hybrid search's 242 ms. Vector search over the same chunks takes 10 ms.
 
 ### Limitations

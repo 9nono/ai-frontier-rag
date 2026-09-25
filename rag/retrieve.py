@@ -8,6 +8,7 @@ from sentence_transformers import CrossEncoder
 from rag.index import DEVICE, MAX_SEQ_TOKENS, embed_queries, get_collection, load_chunks
 
 RRF_K = 60
+HYBRID_POOL = 50
 RERANK_CANDIDATES = 30
 RERANKERS = {
     "minilm": "cross-encoder/ms-marco-MiniLM-L-12-v2",
@@ -84,7 +85,7 @@ def bm25_search(query, strategy, k=10, since=None):
     return hits
 
 
-def hybrid_search(query, strategy, model_key="bge-small", k=10, since=None, pool=50):
+def hybrid_search(query, strategy, model_key="bge-small", k=10, since=None, pool=HYBRID_POOL):
     fused = {}
     for results in (vector_search(query, strategy, model_key, pool, since), bm25_search(query, strategy, pool, since)):
         for rank, hit in enumerate(results, 1):
