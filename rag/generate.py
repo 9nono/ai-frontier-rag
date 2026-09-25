@@ -1,5 +1,6 @@
 import argparse
 import json
+import re
 
 import anthropic
 
@@ -11,6 +12,10 @@ FALLBACK_MODELS = {"claude-opus-5"}
 NO_EFFORT_MODELS = {"claude-haiku-4-5"}
 TOP_K = 6
 PRICE_PER_MTOK = {"claude-haiku-4-5": (1.00, 5.00)}  # USD per million input / output tokens
+# A number standing on its own (13, 0.0%, 34.5×, 80B), not digits inside a name such as GPT-5.3 or Qwen3-A22B.
+NUMBER = re.compile(r"(?<![A-Za-z0-9_.\-])\d+(?:[.,]\d+)*(?:%|×|x|[kKMBT])?(?![A-Za-z0-9_\-])")
+LIST_MARKER = re.compile(r"^\s*\d+[.)]\s+", re.MULTILINE)
+SENTENCE_END = re.compile(r"(?<=[.!?])\s+|(?<=[。！？])")
 
 SYSTEM = """You answer questions about recent AI research papers using only the paper excerpts provided.
 - Support every factual claim with the excerpts and cite them.
@@ -82,16 +87,34 @@ def _render(response, hits):
     return "".join(parts).strip(), sorted(sources.values(), key=lambda s: s["n"])
 
 
+def text_blocks(response):
+    return [{"text": b.text, "cited": bool(b.citations)} for b in response.content if b.type == "text"]
+
+
+def uncited_numbers(blocks):
+    """Sentences outside every citation that state a number: where a total or a comparison can be derived
+    from cited facts without support."""
+    flagged = []
+    for block in blocks:
+        if block["cited"]:
+            continue
+        for sentence in SENTENCE_END.split(LIST_MARKER.sub("", block["text"])):
+            if NUMBER.search(sentence):
+                flagged.append(sentence.strip())
+    return flagged
+
+
 def answer(question, model=DEFAULT_MODEL, effort="low", k=TOP_K, **search_kwargs):
     hits = search(question, k=k, **search_kwargs)
     response = _request(model, effort, hits, question)
     usage = {"input_tokens": response.usage.input_tokens, "output_tokens": response.usage.output_tokens}
     if response.stop_reason == "refusal":
-        return {"question": question, "answer": None, "refused": True, "sources": [], "hits": hits,
-                "model": response.model, "usage": usage}
+        return {"question": question, "answer": None, "refused": True, "sources": [], "unsupported": [],
+                "hits": hits, "model": response.model, "usage": usage}
     text, sources = _render(response, hits)
-    return {"question": question, "answer": text, "refused": False, "sources": sources, "hits": hits,
-            "model": response.model, "usage": usage}
+    return {"question": question, "answer": text, "refused": False, "sources": sources,
+            "unsupported": uncited_numbers(text_blocks(response)), "hits": hits, "model": response.model,
+            "usage": usage}
 
 
 def main():
@@ -108,6 +131,10 @@ def main():
         print(result["answer"], "\n")
         for s in result["sources"]:
             print(f"[{s['n']}] {s['title']} (arXiv:{s['arxiv_id']}) — {s['section']}")
+        if result["unsupported"]:
+            print("\nNumbers stated without a citation (check them against the sources):")
+            for sentence in result["unsupported"]:
+                print(f"  - {sentence}")
     print(f"\nmodel={result['model']} usage={json.dumps(result['usage'])}")
 
 

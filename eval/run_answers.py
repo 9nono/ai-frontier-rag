@@ -3,10 +3,11 @@ import json
 import re
 import time
 from datetime import datetime
+from pathlib import Path
 
 import anthropic
 
-from rag.generate import DEFAULT_MODEL, PRICE_PER_MTOK, TOP_K, _render, build_request
+from rag.generate import DEFAULT_MODEL, PRICE_PER_MTOK, TOP_K, _render, build_request, text_blocks, uncited_numbers
 from rag.keyword_index import _connection, tokenize
 from rag.retrieve import search
 from rag.translate import needs_translation
@@ -63,7 +64,8 @@ def prepare(answerable, unanswerable):
 
 def generate_sync(items):
     client = anthropic.Anthropic()
-    return {item["id"]: client.messages.create(**build_request(item["question"], item["_hits"])) for item in items}
+    return {item["id"]: client.messages.create(**build_request(item["question"], item["_hits"]))
+            for item in items}, None
 
 
 def generate_batch(items, resume=None):
@@ -90,7 +92,7 @@ def generate_batch(items, resume=None):
         if entry.result.type != "succeeded":
             raise SystemExit(f"{entry.custom_id}: {entry.result.type}")
         responses[entry.custom_id] = entry.result.message
-    return responses
+    return responses, batch.id
 
 
 def attach(items, responses):
@@ -98,6 +100,7 @@ def attach(items, responses):
         response = responses[item["id"]]
         text, _ = _render(response, item["_hits"])
         item["answer"] = text
+        item["blocks"] = text_blocks(response)
         item["stop_reason"] = response.stop_reason
         item["citations"] = [
             {"doc": c.document_index, "cited_text": c.cited_text}
@@ -118,6 +121,7 @@ def classify(item):
 def score(items):
     for item in items:
         item["outcome"] = classify(item)
+        item["uncited_numbers"] = uncited_numbers(item.get("blocks", []))
         answer = item["answer"] or ""
         item["language_ok"] = needs_translation(answer) == (item["lang"] == "zh")
         if item["kind"] == "answerable":
@@ -150,6 +154,7 @@ def score(items):
                          "by_type": {t: by_outcome([i for i in una if i["type"] == t])
                                      for t in sorted({i["type"] for i in una})}},
         "language_mismatch": ids([i for i in items if not i["language_ok"]]),
+        "uncited_numbers": ids([i for i in items if i["uncited_numbers"]]),
     }
     return summary
 
@@ -173,6 +178,21 @@ def print_summary(s):
         if u["outcomes"][outcome]:
             print(f"    {outcome}: {', '.join(u['outcomes'][outcome])}")
     print(f"language mismatches: {', '.join(s['language_mismatch']) or 'none'}")
+    print(f"answers stating a number without a citation: {', '.join(s['uncited_numbers']) or 'none'}")
+
+
+def print_against_review(items, review_path):
+    """How the uncited-number flag lines up with the manual verdicts (unreviewed answers count as correct)."""
+    with open(review_path, encoding="utf-8") as f:
+        verdicts = {k: v["verdict"] for k, v in json.load(f)["verdicts"].items()}
+    groups = {}
+    for item in items:
+        verdict = verdicts.get(item["id"], "correct")
+        groups.setdefault(verdict, []).append(item)
+    print(f"uncited-number flag against the review ({review_path.name}):")
+    for verdict, rows in sorted(groups.items()):
+        flagged = [r["id"] for r in rows if r["uncited_numbers"]]
+        print(f"  {verdict:20s} {len(flagged):2d}/{len(rows):2d} flagged  {', '.join(flagged)}")
 
 
 def main():
@@ -188,6 +208,9 @@ def main():
         with open(args.rescore, encoding="utf-8") as f:
             run = json.load(f)
         print_summary(score(run["items"]))
+        review = Path(args.rescore).with_name(Path(args.rescore).stem + "-review.json")
+        if review.exists():
+            print_against_review(run["items"], review)
         return
 
     answerable, unanswerable = load_questions(), load_unanswerable()
@@ -195,7 +218,7 @@ def main():
     if args.limit:
         answerable, unanswerable = answerable[:args.limit], unanswerable[:args.limit]
     items = prepare(answerable, unanswerable)
-    responses = generate_sync(items) if args.sync else generate_batch(items, args.resume)
+    responses, batch_id = generate_sync(items) if args.sync else generate_batch(items, args.resume)
     attach(items, responses)
     summary = score(items)
 
@@ -204,11 +227,12 @@ def main():
     tokens_out = sum(i["usage"]["output_tokens"] for i in items)
     cost = (tokens_in * in_price + tokens_out * out_price) / 1e6 * (1 if args.sync else BATCH_DISCOUNT)
     print_summary(summary)
-    print(f"{tokens_in} input / {tokens_out} output tokens, ${cost:.4f} ({'direct' if args.sync else 'batch'})")
+    paid = "already paid when the batch was submitted" if args.resume else "direct" if args.sync else "batch"
+    print(f"{tokens_in} input / {tokens_out} output tokens, ${cost:.4f} ({paid})")
 
     stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
     with open(RESULTS_DIR / f"answers-{stamp}.json", "w", encoding="utf-8") as f:
-        json.dump({"model": DEFAULT_MODEL, "mode": "sync" if args.sync else "batch", "top_k": TOP_K,
+        json.dump({"model": DEFAULT_MODEL, "mode": "sync" if args.sync else "batch", "batch_id": batch_id, "top_k": TOP_K,
                    "cost_usd": cost, "summary": summary, "items": items}, f, ensure_ascii=False, indent=1)
 
 

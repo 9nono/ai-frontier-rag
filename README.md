@@ -180,6 +180,16 @@ Rules score every answer first: declined (no citations), hedged (citations plus 
 - **Most apparent misses are label artifacts.** Five of the eight questions whose labeled passage was not retrieved were answered correctly from another chunk of the same paper. The one decline despite a retrieved passage (q01) was right: the six passages mention the loss, but none says it is the one recommended. The evidence labels are too strict for answers and too lenient for retrieval, which is why rules alone cannot score this.
 - Every answer came back in the language of its question.
 
+**Flagging uncited numbers.** The Citations API returns an answer as text blocks, each with or without citations. `uncited_numbers()` in `rag/generate.py` takes the uncited blocks and returns their sentences that state a standalone number (13, 0.0%, 80B, but not the digits in GPT-5.3). Checked against the review:
+
+| Review verdict | Flagged |
+|---|---|
+| Wrong | 2 / 4 (q18, q38) |
+| Correct | 2 / 53 (q10, q47) |
+| Declined | 1 / 23 (u17) |
+
+It catches both wrong answers whose error is an uncited step; the other two (q11, z01) are wrong inside cited text, which this check does not look at. Of the false alarms, q10 is a correct derivation (235B against 80B, "about 2.9 times"), the same kind of step that went wrong in q18; q47 rounds a cited 3.71 to 3.7; u17 mentions two years while declining. Ignoring numbers that already appear in a cited span would clear q47, but also q38, whose 0.0% is cited and then misapplied, so the rule was left as it is rather than tuned on 80 answers. `rag.generate` and the web page list the flagged sentences under the answer as ones to check against the sources.
+
 ### Limitations
 
 - One person wrote the questions and the evidence labels, and 50 questions is a small sample: a difference of 0.06 in hit@5 is three questions.
@@ -192,7 +202,7 @@ Rules score every answer first: declined (no citations), hedged (citations plus 
 Each item is a question the evaluation can answer:
 
 1. **Time-aware ranking.** The date filter is a hard cutoff. Add a recency prior and detect "latest / recent" intent, with new questions whose correct answer depends on publication date.
-2. **Flagging uncited conclusions.** In q18 and q38 the wrong step is an uncited sentence that derives a number from cited facts. Does flagging uncited sentences that contain numbers catch both without flagging the 53 correct answers, and would asking the model to cite or drop such sentences fix them?
+2. **Preventing uncited conclusions.** The flag finds q18 and q38 after the fact. Does telling the model that every number needs a citation, and that numbers from different papers must not be combined, prevent them without making correct answers decline more often? A full re-run through the Batch API costs about $0.15.
 3. **A larger, independent question set.** 100+ questions, a separate held-out Chinese set, and a second annotator.
 4. **Where the evidence comes from.** 32 of the 60 passages retrieved for the ten featured questions come from Introduction or Related Work sections, which describe earlier work second-hand: the KV-cache answer cites one paper's summary of SnapKV and PyramidKV, and that summary does not match how those methods work. The diffusion-model question, which asks about a field, drew all six passages from a single paper. Does a per-paper cap, or down-weighting related-work sections for "what's new" questions, broaden the answers without costing hit@k?
 

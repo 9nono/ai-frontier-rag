@@ -35,7 +35,7 @@ def main():
         result = answer(question, translate=True)
         usage = result["usage"]
         cost += usage["input_tokens"] / 1e6 * in_price + usage["output_tokens"] / 1e6 * out_price
-        item = {k: result[k] for k in ("question", "answer", "refused", "sources", "model", "usage")}
+        item = {k: result[k] for k in ("question", "answer", "refused", "sources", "unsupported", "model", "usage")}
         item["generated_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
         kept[question] = item
         wrong_language = needs_translation(question) and not needs_translation(result["answer"] or "")

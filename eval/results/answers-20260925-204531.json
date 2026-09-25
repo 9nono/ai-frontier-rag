@@ -1,6 +1,7 @@
 {
  "model": "claude-haiku-4-5",
  "mode": "batch",
+ "batch_id": "msgbatch_014oADPAk3ff1fu99zGDfWSz",
  "top_k": 6,
  "cost_usd": 0.1492185,
  "summary": {
@@ -155,7 +156,14 @@
     }
    }
   },
-  "language_mismatch": []
+  "language_mismatch": [],
+  "uncited_numbers": [
+   "q10",
+   "q18",
+   "q38",
+   "q47",
+   "u17"
+  ]
  },
  "items": [
   {
@@ -205,6 +213,12 @@
     }
    ],
    "answer": "The indexed papers do not contain information about which training loss the authors recommend for all models despite it losing in a few settings. While the papers discuss various loss functions tested in their experiments (Token-level Max-Margin loss, Negative Log Likelihood, Contrastive loss, and Max-Margin loss), they do not explicitly state a recommendation for a particular loss across all models or acknowledge it performing worse in some settings.",
+   "blocks": [
+    {
+     "text": "The indexed papers do not contain information about which training loss the authors recommend for all models despite it losing in a few settings. While the papers discuss various loss functions tested in their experiments (Token-level Max-Margin loss, Negative Log Likelihood, Contrastive loss, and Max-Margin loss), they do not explicitly state a recommendation for a particular loss across all models or acknowledge it performing worse in some settings.",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [],
    "usage": {
@@ -212,6 +226,7 @@
     "output_tokens": 91
    },
    "outcome": "abstained",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": false,
@@ -264,6 +279,20 @@
     }
    ],
    "answer": "The indexed papers do not contain specific information about what value of the explanatory weight (λ) was picked for the causal interactive learning experiments or how it was tuned.\n\nWhile the papers discuss the importance of tuning this parameter—for lower values of λ, the explanatory signal is too weak to override data-driven evidence and most feedback is ignored, whereas as λ grows, the framework progressively accepts more of the expert's feedback, regardless of correctness, eventually collapsing into the biased expert's flawed mental model[1]—the specific experimental values and tuning procedures are not provided in the available excerpts.",
+   "blocks": [
+    {
+     "text": "The indexed papers do not contain specific information about what value of the explanatory weight (λ) was picked for the causal interactive learning experiments or how it was tuned.\n\nWhile the papers discuss the importance of tuning this parameter—",
+     "cited": false
+    },
+    {
+     "text": "for lower values of λ, the explanatory signal is too weak to override data-driven evidence and most feedback is ignored, whereas as λ grows, the framework progressively accepts more of the expert's feedback, regardless of correctness, eventually collapsing into the biased expert's flawed mental model",
+     "cited": true
+    },
+    {
+     "text": "—the specific experimental values and tuning procedures are not provided in the available excerpts.",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -276,6 +305,7 @@
     "output_tokens": 154
    },
    "outcome": "hedged",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": false,
    "cited_relevant": false,
@@ -328,6 +358,12 @@
     }
    ],
    "answer": "After removing 25 duplicated VIC-VFC pairs from the 780-instance filtered dataset, 755 cases remained for the 5-fold cross-validation procedure.[1]",
+   "blocks": [
+    {
+     "text": "After removing 25 duplicated VIC-VFC pairs from the 780-instance filtered dataset, 755 cases remained for the 5-fold cross-validation procedure.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -340,6 +376,7 @@
     "output_tokens": 57
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -392,6 +429,12 @@
     }
    ],
    "answer": "A two-sided Boschloo exact test was used to compare sabotage rates between different conditions, separately for each model-scenario combination, with Holm–Bonferroni correction applied within each family of tests and α = .05.[1]",
+   "blocks": [
+    {
+     "text": "A two-sided Boschloo exact test was used to compare sabotage rates between different conditions, separately for each model-scenario combination, with Holm–Bonferroni correction applied within each family of tests and α = .05.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -404,6 +447,7 @@
     "output_tokens": 72
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -456,6 +500,12 @@
     }
    ],
    "answer": "State features are scaled to [0,1] and then mapped to rotation angles in [0,π] before being encoded into the parameterised quantum circuit.[1]",
+   "blocks": [
+    {
+     "text": "State features are scaled to [0,1] and then mapped to rotation angles in [0,π] before being encoded into the parameterised quantum circuit.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -468,6 +518,7 @@
     "output_tokens": 52
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -520,6 +571,12 @@
     }
    ],
    "answer": "With 650 demonstrations, latent-only retraining of the flow cuts per-step L1 by approximately 27%.[1]",
+   "blocks": [
+    {
+     "text": "With 650 demonstrations, latent-only retraining of the flow cuts per-step L1 by approximately 27%.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -532,6 +589,7 @@
     "output_tokens": 48
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -584,6 +642,28 @@
     }
    ],
    "answer": "The contrastive learning objective for open-set authorship verification works as if solving many implicit authorship attribution proxy tasks. This interpretation follows the view of InfoNCE as a categorical cross-entropy objective over one positive and many negative samples, where the model is trained to identify the positive example among the batch candidates.[1]\n\nAdditionally, the results suggest that learning useful representations for authorial style can be done efficiently on each text independently.[1] This method benefits from large batch sizes that have many negative instances.[1]",
+   "blocks": [
+    {
+     "text": "The contrastive learning objective for open-set authorship verification works as if solving many implicit authorship attribution proxy tasks. This interpretation follows the view of InfoNCE as a categorical cross-entropy objective over one positive and many negative samples, where the model is trained to identify the positive example among the batch candidates.",
+     "cited": true
+    },
+    {
+     "text": "\n\nAdditionally, ",
+     "cited": false
+    },
+    {
+     "text": "the results suggest that learning useful representations for authorial style can be done efficiently on each text independently.",
+     "cited": true
+    },
+    {
+     "text": " ",
+     "cited": false
+    },
+    {
+     "text": "This method benefits from large batch sizes that have many negative instances.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -604,6 +684,7 @@
     "output_tokens": 155
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -656,6 +737,12 @@
     }
    ],
    "answer": "When using receipts instead of actions, the mean interval width decreased from 0.0872 for action logs to 0.0436 for receipts, a 50.0% reduction.[1]",
+   "blocks": [
+    {
+     "text": "When using receipts instead of actions, the mean interval width decreased from 0.0872 for action logs to 0.0436 for receipts, a 50.0% reduction.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -668,6 +755,7 @@
     "output_tokens": 61
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -720,6 +808,40 @@
     }
    ],
    "answer": "FLINT uses three propagation strategies: trajectory reprojection (traj), SAM3 instance propagation (sam3), and STEGO cluster propagation (stego).[1]\n\nThese strategies work as follows:\n\n1. Trajectory reprojection projects the vehicle's future 2.0 s wheel corridor into the image as the positive region; negatives are sampled outside a dilated margin around that corridor, excluding sky and an automatically fitted vehicle-hood mask.[1]\n\n2. SAM3 instance propagation uses SAM3's text-prompted instance segmentation over an 11-term terrain vocabulary; any instance whose area overlaps the driven corridor by at least 5% is labeled positive in full, propagating the sparse trajectory signal to the entire coherent surface it lies on.[2]\n\n3. STEGO cluster propagation is mentioned as one of the three strategies that define positive and negative regions differently from the same underlying signal[3], though specific details about this method are not provided in the excerpts.",
+   "blocks": [
+    {
+     "text": "FLINT uses three propagation strategies: trajectory reprojection (traj), SAM3 instance propagation (sam3), and STEGO cluster propagation (stego).",
+     "cited": true
+    },
+    {
+     "text": "\n\nThese strategies work as follows:\n\n1. ",
+     "cited": false
+    },
+    {
+     "text": "Trajectory reprojection projects the vehicle's future 2.0 s wheel corridor into the image as the positive region; negatives are sampled outside a dilated margin around that corridor, excluding sky and an automatically fitted vehicle-hood mask.",
+     "cited": true
+    },
+    {
+     "text": "\n\n2. ",
+     "cited": false
+    },
+    {
+     "text": "SAM3 instance propagation uses SAM3's text-prompted instance segmentation over an 11-term terrain vocabulary; any instance whose area overlaps the driven corridor by at least 5% is labeled positive in full, propagating the sparse trajectory signal to the entire coherent surface it lies on.",
+     "cited": true
+    },
+    {
+     "text": "\n\n3. ",
+     "cited": false
+    },
+    {
+     "text": "STEGO cluster propagation is mentioned as one of the three strategies that define positive and negative regions differently from the same underlying signal",
+     "cited": true
+    },
+    {
+     "text": ", though specific details about this method are not provided in the excerpts.",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -744,6 +866,7 @@
     "output_tokens": 279
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -796,6 +919,24 @@
     }
    ],
    "answer": "Hunyuan-A13B contains 80 billion total parameters[1], while Qwen3-A22B has 235 billion total parameters[2]. This means Qwen3-A22B has approximately 2.9 times more total parameters than Hunyuan-A13B.",
+   "blocks": [
+    {
+     "text": "Hunyuan-A13B contains 80 billion total parameters",
+     "cited": true
+    },
+    {
+     "text": ", while ",
+     "cited": false
+    },
+    {
+     "text": "Qwen3-A22B has 235 billion total parameters",
+     "cited": true
+    },
+    {
+     "text": ". This means Qwen3-A22B has approximately 2.9 times more total parameters than Hunyuan-A13B.",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -812,6 +953,9 @@
     "output_tokens": 100
    },
    "outcome": "answered",
+   "uncited_numbers": [
+    "This means Qwen3-A22B has approximately 2.9 times more total parameters than Hunyuan-A13B."
+   ],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -864,6 +1008,12 @@
     }
    ],
    "answer": "Transparency & Copyright was almost completely missing, with total stagnation across the entire sector. Training data transparency registered absolute zero variance, with none of the evaluated papers providing or planning copyright-compliant dataset documentation, marking a collective failure regarding transparency obligations.[1]",
+   "blocks": [
+    {
+     "text": "Transparency & Copyright was almost completely missing, with total stagnation across the entire sector. Training data transparency registered absolute zero variance, with none of the evaluated papers providing or planning copyright-compliant dataset documentation, marking a collective failure regarding transparency obligations.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -880,6 +1030,7 @@
     "output_tokens": 74
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": false,
@@ -932,6 +1083,12 @@
     }
    ],
    "answer": "When LLM predictions are validated against a large set of social science experiments, researchers find strong correlations with human treatment effects but also a systematic overestimation of effect sizes.[1]",
+   "blocks": [
+    {
+     "text": "When LLM predictions are validated against a large set of social science experiments, researchers find strong correlations with human treatment effects but also a systematic overestimation of effect sizes.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -944,6 +1101,7 @@
     "output_tokens": 56
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -996,6 +1154,20 @@
     }
    ],
    "answer": "When testing whether Step Law holds for very small language models, a 2,048-token BPE tokenizer trained on TinyStories replaced the ~50K-token GPT-2 BPE vocabulary.[1] This change was made because at model sizes on the order of 0.25–2.0M parameters, the GPT-2 tokenizer's 50K-token vocabulary makes the embedding and output layers disproportionately large relative to the transformer blocks, which would confound measurements of the backbone model's optimal hyperparameters with the cost of an oversized vocabulary projection.[2]",
+   "blocks": [
+    {
+     "text": "When testing whether Step Law holds for very small language models, a 2,048-token BPE tokenizer trained on TinyStories replaced the ~50K-token GPT-2 BPE vocabulary.",
+     "cited": true
+    },
+    {
+     "text": " ",
+     "cited": false
+    },
+    {
+     "text": "This change was made because at model sizes on the order of 0.25–2.0M parameters, the GPT-2 tokenizer's 50K-token vocabulary makes the embedding and output layers disproportionately large relative to the transformer blocks, which would confound measurements of the backbone model's optimal hyperparameters with the cost of an oversized vocabulary projection.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -1012,6 +1184,7 @@
     "output_tokens": 167
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -1064,6 +1237,12 @@
     }
    ],
    "answer": "The sample used to compare document-based and sentence-based translation methods in TransBERT consisted of 1000 life sciences abstracts.[1]",
+   "blocks": [
+    {
+     "text": "The sample used to compare document-based and sentence-based translation methods in TransBERT consisted of 1000 life sciences abstracts.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -1076,6 +1255,7 @@
     "output_tokens": 49
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -1128,6 +1308,20 @@
     }
    ],
    "answer": "No, swapping the reference extractor does not change how systems are ranked. Using either the SRL-based extractor or the alternative NP+NER extractor, the fidelity and coverage scores yielded the same ordering (OSE-AI > OSE-IE > SWiPE > OSE-AE > Peirce), with Kendall's τ_b = 1.0 indicating agreement across every pairwise comparison.[1] The extraction algorithm affects the absolute values while preserving the same comparative pattern across the two tested approaches.[1]",
+   "blocks": [
+    {
+     "text": "No, swapping the reference extractor does not change how systems are ranked. Using either the SRL-based extractor or the alternative NP+NER extractor, the fidelity and coverage scores yielded the same ordering (OSE-AI > OSE-IE > SWiPE > OSE-AE > Peirce), with Kendall's τ_b = 1.0 indicating agreement across every pairwise comparison.",
+     "cited": true
+    },
+    {
+     "text": " ",
+     "cited": false
+    },
+    {
+     "text": "The extraction algorithm affects the absolute values while preserving the same comparative pattern across the two tested approaches.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -1144,6 +1338,7 @@
     "output_tokens": 159
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -1196,6 +1391,12 @@
     }
    ],
    "answer": "ERC-LG, which uses JL projection, is approximately 34.5× faster on ogbn-arxiv compared with ERC-CG, which uses CG without JL projection.[1]",
+   "blocks": [
+    {
+     "text": "ERC-LG, which uses JL projection, is approximately 34.5× faster on ogbn-arxiv compared with ERC-CG, which uses CG without JL projection.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -1208,6 +1409,7 @@
     "output_tokens": 62
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -1260,6 +1462,20 @@
     }
    ],
    "answer": "CLIP-RN50 achieved a peak encoding accuracy of r=0.659±0.043, compared with CLIP-ViT-B/32's r=0.476±0.049 using the standard transformer representation.[1] However, when individual patch tokens were retained using the CLS + all patches concatenated representation, CLIP-ViT reached a substantially higher peak encoding accuracy of r=0.640±0.048, approaching the r=0.659±0.043 achieved by CLIP-RN50.[1]",
+   "blocks": [
+    {
+     "text": "CLIP-RN50 achieved a peak encoding accuracy of r=0.659±0.043, compared with CLIP-ViT-B/32's r=0.476±0.049 using the standard transformer representation.",
+     "cited": true
+    },
+    {
+     "text": " However, ",
+     "cited": false
+    },
+    {
+     "text": "when individual patch tokens were retained using the CLS + all patches concatenated representation, CLIP-ViT reached a substantially higher peak encoding accuracy of r=0.640±0.048, approaching the r=0.659±0.043 achieved by CLIP-RN50.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -1276,6 +1492,7 @@
     "output_tokens": 151
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -1328,6 +1545,24 @@
     }
    ],
    "answer": "The RULER benchmark provides 13 controlled long-context tasks covering needle-in-a-haystack retrieval, variable tracking, word extraction, and question answering, and all 13 tasks were evaluated at a 32K context length.[1] Additionally, LongBench tests transfer to 21 heterogeneous document tasks with contexts reaching up to 65k tokens.[2]\n\nSo the papers used two main benchmarks: RULER with 13 tasks and LongBench with 21 tasks, for a total of 34 long-context benchmark tasks.",
+   "blocks": [
+    {
+     "text": "The RULER benchmark provides 13 controlled long-context tasks covering needle-in-a-haystack retrieval, variable tracking, word extraction, and question answering, and all 13 tasks were evaluated at a 32K context length.",
+     "cited": true
+    },
+    {
+     "text": " Additionally, ",
+     "cited": false
+    },
+    {
+     "text": "LongBench tests transfer to 21 heterogeneous document tasks with contexts reaching up to 65k tokens.",
+     "cited": true
+    },
+    {
+     "text": "\n\nSo the papers used two main benchmarks: RULER with 13 tasks and LongBench with 21 tasks, for a total of 34 long-context benchmark tasks.",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -1344,6 +1579,9 @@
     "output_tokens": 159
    },
    "outcome": "answered",
+   "uncited_numbers": [
+    "So the papers used two main benchmarks: RULER with 13 tasks and LongBench with 21 tasks, for a total of 34 long-context benchmark tasks."
+   ],
    "language_ok": true,
    "retrieved": false,
    "cited_relevant": false,
@@ -1396,6 +1634,20 @@
     }
    ],
    "answer": "When memory is expanded by about 20 GB on A100-80GB, EMA shows a 10% increase in latency.[1] This increase is primarily due to larger batch sizes enabled by the expanded capacity, which increase per-iteration compute time, and DMA synchronization and coordination overhead between the memory slice processes.[1]",
+   "blocks": [
+    {
+     "text": "When memory is expanded by about 20 GB on A100-80GB, EMA shows a 10% increase in latency.",
+     "cited": true
+    },
+    {
+     "text": " ",
+     "cited": false
+    },
+    {
+     "text": "This increase is primarily due to larger batch sizes enabled by the expanded capacity, which increase per-iteration compute time, and DMA synchronization and coordination overhead between the memory slice processes.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -1412,6 +1664,7 @@
     "output_tokens": 101
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -1464,6 +1717,12 @@
     }
    ],
    "answer": "MICRO evaluates K=12 candidates with M=128 trajectories, chosen for computational practicality.[1]",
+   "blocks": [
+    {
+     "text": "MICRO evaluates K=12 candidates with M=128 trajectories, chosen for computational practicality.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -1476,6 +1735,7 @@
     "output_tokens": 43
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -1528,6 +1788,40 @@
     }
    ],
    "answer": "Grover's quantum search algorithm provides a quadratic reduction in oracle-query complexity over exhaustive maximum-likelihood (ML) search[1]. More specifically, as the number of devices increases, the ML search space grows exponentially as B=2^K, whereas the number of Grover iterations grows as O(√B)[2]. \n\nTo illustrate with a concrete example, for K=6 devices, Grover requires only 12 oracle calls compared with 64 ML comparisons, corresponding to a 5.3× reduction in search operations[2]. Despite this computational advantage, numerical results show that the proposed approach closely approaches ML performance while substantially reducing the number of search iterations[1].",
+   "blocks": [
+    {
+     "text": "Grover's quantum search algorithm provides a quadratic reduction in oracle-query complexity over exhaustive maximum-likelihood (ML) search",
+     "cited": true
+    },
+    {
+     "text": ". More specifically, ",
+     "cited": false
+    },
+    {
+     "text": "as the number of devices increases, the ML search space grows exponentially as B=2^K, whereas the number of Grover iterations grows as O(√B)",
+     "cited": true
+    },
+    {
+     "text": ". \n\nTo illustrate with a concrete example, ",
+     "cited": false
+    },
+    {
+     "text": "for K=6 devices, Grover requires only 12 oracle calls compared with 64 ML comparisons, corresponding to a 5.3× reduction in search operations",
+     "cited": true
+    },
+    {
+     "text": ". Despite this computational advantage, ",
+     "cited": false
+    },
+    {
+     "text": "numerical results show that the proposed approach closely approaches ML performance while substantially reducing the number of search iterations",
+     "cited": true
+    },
+    {
+     "text": ".",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -1552,6 +1846,7 @@
     "output_tokens": 211
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": false,
@@ -1604,6 +1899,12 @@
     }
    ],
    "answer": "The SAMSum dataset is used for the dialogue summarization task, containing 14,731 training samples and 1,637 evaluation samples.[1]",
+   "blocks": [
+    {
+     "text": "The SAMSum dataset is used for the dialogue summarization task, containing 14,731 training samples and 1,637 evaluation samples.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -1616,6 +1917,7 @@
     "output_tokens": 50
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -1668,6 +1970,16 @@
     }
    ],
    "answer": "The split-half Spearman agreement for ranking interfering sounds had a median of 0.975 and minimum of 0.906, with the male/female split giving 0.968.[1] This indicates very high stability in the rankings across the resampling approach used.",
+   "blocks": [
+    {
+     "text": "The split-half Spearman agreement for ranking interfering sounds had a median of 0.975 and minimum of 0.906, with the male/female split giving 0.968.",
+     "cited": true
+    },
+    {
+     "text": " This indicates very high stability in the rankings across the resampling approach used.",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -1680,6 +1992,7 @@
     "output_tokens": 78
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -1732,6 +2045,24 @@
     }
    ],
    "answer": "40 real enterprise questions from six operational domains were evaluated[1], and UniDataAgent was compared with document RAG in the same enterprise data environment[1].",
+   "blocks": [
+    {
+     "text": "40 real enterprise questions from six operational domains were evaluated",
+     "cited": true
+    },
+    {
+     "text": ", and ",
+     "cited": false
+    },
+    {
+     "text": "UniDataAgent was compared with document RAG in the same enterprise data environment",
+     "cited": true
+    },
+    {
+     "text": ".",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -1748,6 +2079,7 @@
     "output_tokens": 64
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -1800,6 +2132,16 @@
     }
    ],
    "answer": "When labeling utterances, the annotators achieved a Cohen's κ=0.83 inter-annotator agreement[1].",
+   "blocks": [
+    {
+     "text": "When labeling utterances, the annotators achieved a Cohen's κ=0.83 inter-annotator agreement",
+     "cited": true
+    },
+    {
+     "text": ".",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -1812,6 +2154,7 @@
     "output_tokens": 45
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -1864,6 +2207,12 @@
     }
    ],
    "answer": "R3Con achieves 71% accuracy on CorpusQA using Qwen3.5-35B-A3B (3B active parameters).[1]",
+   "blocks": [
+    {
+     "text": "R3Con achieves 71% accuracy on CorpusQA using Qwen3.5-35B-A3B (3B active parameters).",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -1876,6 +2225,7 @@
     "output_tokens": 56
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": false,
@@ -1928,6 +2278,12 @@
     }
    ],
    "answer": "In the generated environments, the RL-trained policy had a modest policy shift of D_KL(π_trained||π_Base) = 0.089 nats per assistant token on held-out trajectory states.[1]",
+   "blocks": [
+    {
+     "text": "In the generated environments, the RL-trained policy had a modest policy shift of D_KL(π_trained||π_Base) = 0.089 nats per assistant token on held-out trajectory states.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -1940,6 +2296,7 @@
     "output_tokens": 67
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -1992,6 +2349,36 @@
     }
    ],
    "answer": "FleXray generates labeled synthetic X-rays by doing ray-projection through CT volumes and their labels from different viewing angles.[1] More specifically, it renders DRRs (Digitally Reconstructed Radiographs) by integrating CT attenuation along source-to-detector rays, randomly sampling parameters including source-to-detector distance, detector spacing, C-arm rotational and translational parameters, and projection geometry from dataset-specific ranges.[2]\n\nTo bridge the gap between synthetic and real radiographs, FleXray uses generative image-editing models to introduce clinical appearance factors that are difficult to model analytically, including scanner artifacts, text overlays, scatter, and other higher-order effects.[3] Additionally, because whole-body CT collections often omit some regions that are commonly imaged with X-rays (e.g., the hands and feet), the method supplements its CT training sources with real X-ray datasets to close coverage gaps.[3]",
+   "blocks": [
+    {
+     "text": "FleXray generates labeled synthetic X-rays by doing ray-projection through CT volumes and their labels from different viewing angles.",
+     "cited": true
+    },
+    {
+     "text": " More specifically, ",
+     "cited": false
+    },
+    {
+     "text": "it renders DRRs (Digitally Reconstructed Radiographs) by integrating CT attenuation along source-to-detector rays, randomly sampling parameters including source-to-detector distance, detector spacing, C-arm rotational and translational parameters, and projection geometry from dataset-specific ranges.",
+     "cited": true
+    },
+    {
+     "text": "\n\nTo bridge the gap between synthetic and real radiographs, ",
+     "cited": false
+    },
+    {
+     "text": "FleXray uses generative image-editing models to introduce clinical appearance factors that are difficult to model analytically, including scanner artifacts, text overlays, scatter, and other higher-order effects.",
+     "cited": true
+    },
+    {
+     "text": " Additionally, ",
+     "cited": false
+    },
+    {
+     "text": "because whole-body CT collections often omit some regions that are commonly imaged with X-rays (e.g., the hands and feet), the method supplements its CT training sources with real X-ray datasets to close coverage gaps.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -2016,6 +2403,7 @@
     "output_tokens": 270
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": false,
    "cited_relevant": false,
@@ -2068,6 +2456,28 @@
     }
    ],
    "answer": "The multi-stage poisoning attack takes advantage of the like-score mechanism in similarity-based recommenders, turning it against the system by having the agent like early-stage posts trigger a feedback loop that pulls later, less similar posts into the feed.[1] \n\nMore specifically, the attack constructs poisoned posts with varying degrees of similarity to the target user's profile, first inducing the victim to like posts that are highly similar to the profile and then gradually steering it toward liking less similar posts.[2] Once the victim agent engages with a poisoned post, the like-score mechanism progressively increases the proportion of poisoned posts in subsequent recommendations, eventually recommending even poisoned posts with low user–post similarity.[3]",
+   "blocks": [
+    {
+     "text": "The multi-stage poisoning attack takes advantage of the like-score mechanism in similarity-based recommenders, turning it against the system by having the agent like early-stage posts trigger a feedback loop that pulls later, less similar posts into the feed.",
+     "cited": true
+    },
+    {
+     "text": " \n\nMore specifically, ",
+     "cited": false
+    },
+    {
+     "text": "the attack constructs poisoned posts with varying degrees of similarity to the target user's profile, first inducing the victim to like posts that are highly similar to the profile and then gradually steering it toward liking less similar posts.",
+     "cited": true
+    },
+    {
+     "text": " ",
+     "cited": false
+    },
+    {
+     "text": "Once the victim agent engages with a poisoned post, the like-score mechanism progressively increases the proportion of poisoned posts in subsequent recommendations, eventually recommending even poisoned posts with low user–post similarity.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -2088,6 +2498,7 @@
     "output_tokens": 205
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": false,
    "cited_relevant": false,
@@ -2140,6 +2551,12 @@
     }
    ],
    "answer": "The method achieves an agreement-weighted F1 of 0.8125 for grounding the target group, averaged over scenes containing 4 to more than 20 people.[1]",
+   "blocks": [
+    {
+     "text": "The method achieves an agreement-weighted F1 of 0.8125 for grounding the target group, averaged over scenes containing 4 to more than 20 people.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -2152,6 +2569,7 @@
     "output_tokens": 59
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -2204,6 +2622,28 @@
     }
    ],
    "answer": "In steerable pluralistic alignment, two training-free reuse methods are used to hit a new target objective weight: nearest-model selection, using the trained model whose weight is closest to the target, and parameter merging, blending the LoRA adapters of the two neighbouring trained models.[1]\n\nParameter merging (the interpolation approach) has the smallest combined gap from a directly trained target model but is not uniformly best across all weights. Merging is an interpolation heuristic, not an optimization procedure for the target weight.[2] A continuum of trade-offs can be covered by reusing a few trained models, with parameter merging having the smallest combined gap from direct training and nearest-model selection serving as a simple fallback.[3]",
+   "blocks": [
+    {
+     "text": "In steerable pluralistic alignment, two training-free reuse methods are used to hit a new target objective weight: nearest-model selection, using the trained model whose weight is closest to the target, and parameter merging, blending the LoRA adapters of the two neighbouring trained models.",
+     "cited": true
+    },
+    {
+     "text": "\n\n",
+     "cited": false
+    },
+    {
+     "text": "Parameter merging (the interpolation approach) has the smallest combined gap from a directly trained target model but is not uniformly best across all weights. Merging is an interpolation heuristic, not an optimization procedure for the target weight.",
+     "cited": true
+    },
+    {
+     "text": " ",
+     "cited": false
+    },
+    {
+     "text": "A continuum of trade-offs can be covered by reusing a few trained models, with parameter merging having the smallest combined gap from direct training and nearest-model selection serving as a simple fallback.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -2224,6 +2664,7 @@
     "output_tokens": 209
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -2276,6 +2717,16 @@
     }
    ],
    "answer": "CMI-GT (ground-truth causal shortcuts) raises accuracy to 87.2% under larger timestep settings[1] for diffusion language models. However, the paper does not provide a more detailed breakdown of accuracy across different specific numbers of decoding steps beyond this figure.",
+   "blocks": [
+    {
+     "text": "CMI-GT (ground-truth causal shortcuts) raises accuracy to 87.2% under larger timestep settings",
+     "cited": true
+    },
+    {
+     "text": " for diffusion language models. However, the paper does not provide a more detailed breakdown of accuracy across different specific numbers of decoding steps beyond this figure.",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -2288,6 +2739,7 @@
     "output_tokens": 76
    },
    "outcome": "hedged",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -2340,6 +2792,20 @@
     }
    ],
    "answer": "According to the LatWeave positioning table, selective prediction methods use probabilistic thresholding to decide when to abstain.[1] More specifically, existing abstention is almost entirely probabilistic confidence thresholding, whose risk–coverage trade-off drifts with the task.[2]",
+   "blocks": [
+    {
+     "text": "According to the LatWeave positioning table, selective prediction methods use probabilistic thresholding to decide when to abstain.",
+     "cited": true
+    },
+    {
+     "text": " More specifically, ",
+     "cited": false
+    },
+    {
+     "text": "existing abstention is almost entirely probabilistic confidence thresholding, whose risk–coverage trade-off drifts with the task.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -2356,6 +2822,7 @@
     "output_tokens": 93
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -2408,6 +2875,48 @@
     }
    ],
    "answer": "ACERT incorporates information from preceding utterances into the target utterance's features[1] through a specific technical process:\n\n1. **Context aggregation**: Frame-level features are split into target frames and context frames, and the context frames are aggregated through temporal mean pooling to produce a pooled vector[1].\n\n2. **Feature fusion**: The pooled vector is added to every target frame, followed by a feed-forward network with residual connections and LayerNorm[1].\n\n3. **Classification**: Temporal average pooling over the enriched target frames produces an utterance-level representation, which is then passed through a classification head to predict emotion classes[1].\n\nOverall, ACERT aggregates the conversational context through temporal mean pooling and fuses it with the target utterance's features[2], allowing the model to leverage emotional continuity from preceding dialogue when recognizing emotions in the current utterance.",
+   "blocks": [
+    {
+     "text": "ACERT incorporates information from preceding utterances into the target utterance's features",
+     "cited": true
+    },
+    {
+     "text": " through a specific technical process:\n\n1. **Context aggregation**: ",
+     "cited": false
+    },
+    {
+     "text": "Frame-level features are split into target frames and context frames, and the context frames are aggregated through temporal mean pooling to produce a pooled vector",
+     "cited": true
+    },
+    {
+     "text": ".\n\n2. **Feature fusion**: ",
+     "cited": false
+    },
+    {
+     "text": "The pooled vector is added to every target frame, followed by a feed-forward network with residual connections and LayerNorm",
+     "cited": true
+    },
+    {
+     "text": ".\n\n3. **Classification**: ",
+     "cited": false
+    },
+    {
+     "text": "Temporal average pooling over the enriched target frames produces an utterance-level representation, which is then passed through a classification head to predict emotion classes",
+     "cited": true
+    },
+    {
+     "text": ".\n\nOverall, ",
+     "cited": false
+    },
+    {
+     "text": "ACERT aggregates the conversational context through temporal mean pooling and fuses it with the target utterance's features",
+     "cited": true
+    },
+    {
+     "text": ", allowing the model to leverage emotional continuity from preceding dialogue when recognizing emotions in the current utterance.",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -2436,6 +2945,7 @@
     "output_tokens": 274
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -2488,6 +2998,20 @@
     }
    ],
    "answer": "The CLIP visual encoder was deliberately omitted from the original SpecMaskFoley model for the Passing artwork.[1] This removal was necessary because the CLIP visual encoder proved to be a significant bottleneck for real-time inference, and its removal was crucial to ensure the stable, low-latency performance required for the interactive installation.[2]",
+   "blocks": [
+    {
+     "text": "The CLIP visual encoder was deliberately omitted from the original SpecMaskFoley model for the Passing artwork.",
+     "cited": true
+    },
+    {
+     "text": " ",
+     "cited": false
+    },
+    {
+     "text": "This removal was necessary because the CLIP visual encoder proved to be a significant bottleneck for real-time inference, and its removal was crucial to ensure the stable, low-latency performance required for the interactive installation.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -2504,6 +3028,7 @@
     "output_tokens": 110
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -2556,6 +3081,12 @@
     }
    ],
    "answer": "KAIKO shows the strongest center-related encoding, followed by H-Optimus-1.[1]",
+   "blocks": [
+    {
+     "text": "KAIKO shows the strongest center-related encoding, followed by H-Optimus-1.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -2568,6 +3099,7 @@
     "output_tokens": 40
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -2620,6 +3152,12 @@
     }
    ],
    "answer": "256 users from PersonaLens were used to evaluate continual personalization with sparse feedback, with each user interested in exactly 17 domains.[1]",
+   "blocks": [
+    {
+     "text": "256 users from PersonaLens were used to evaluate continual personalization with sparse feedback, with each user interested in exactly 17 domains.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -2632,6 +3170,7 @@
     "output_tokens": 50
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -2684,6 +3223,16 @@
     }
    ],
    "answer": "The Procedural Safety Gap category proved most challenging, with effective interruption rates ranging from 0.0% to 32.6%[1], making 0.0% the lowest effective interruption rate observed on the benchmark. However, the document does not specify which model achieved this 0.0% rate.",
+   "blocks": [
+    {
+     "text": "The Procedural Safety Gap category proved most challenging, with effective interruption rates ranging from 0.0% to 32.6%",
+     "cited": true
+    },
+    {
+     "text": ", making 0.0% the lowest effective interruption rate observed on the benchmark. However, the document does not specify which model achieved this 0.0% rate.",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -2696,6 +3245,10 @@
     "output_tokens": 84
    },
    "outcome": "hedged",
+   "uncited_numbers": [
+    ", making 0.0% the lowest effective interruption rate observed on the benchmark.",
+    "However, the document does not specify which model achieved this 0.0% rate."
+   ],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": false,
@@ -2748,6 +3301,16 @@
     }
    ],
    "answer": "The Native Decomp strategy produced the lowest share of hallucinated claims at 8.3%, compared to English-to-English (10.0%), NLLB Translate (16.8%), LLM Translate (13.2%), and Cross Decomp (9.2%)[1].",
+   "blocks": [
+    {
+     "text": "The Native Decomp strategy produced the lowest share of hallucinated claims at 8.3%, compared to English-to-English (10.0%), NLLB Translate (16.8%), LLM Translate (13.2%), and Cross Decomp (9.2%)",
+     "cited": true
+    },
+    {
+     "text": ".",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -2760,6 +3323,7 @@
     "output_tokens": 84
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -2812,6 +3376,12 @@
     }
    ],
    "answer": "TwinCheck uses 20,000 category-stratified percentile bootstrap resamples to obtain 95% confidence intervals.[1]",
+   "blocks": [
+    {
+     "text": "TwinCheck uses 20,000 category-stratified percentile bootstrap resamples to obtain 95% confidence intervals.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -2824,6 +3394,7 @@
     "output_tokens": 46
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -2876,6 +3447,24 @@
     }
    ],
    "answer": "Astra remained first under both weight alternatives (0.25/0.75 and 0.75/0.25), with significant improvements over each setting's best fixed policy.[1] However, the paired 95% interval against the best fixed policy included zero when testing repeated runs on 100 cases, so the repeated ranking did not establish statistical superiority.[1] So while Astra's top ranking appears robust to the weight sensitivity test, the statistical evidence for superiority is mixed depending on which evaluation is considered.",
+   "blocks": [
+    {
+     "text": "Astra remained first under both weight alternatives (0.25/0.75 and 0.75/0.25), with significant improvements over each setting's best fixed policy.",
+     "cited": true
+    },
+    {
+     "text": " However, ",
+     "cited": false
+    },
+    {
+     "text": "the paired 95% interval against the best fixed policy included zero when testing repeated runs on 100 cases, so the repeated ranking did not establish statistical superiority.",
+     "cited": true
+    },
+    {
+     "text": " So while Astra's top ranking appears robust to the weight sensitivity test, the statistical evidence for superiority is mixed depending on which evaluation is considered.",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -2892,6 +3481,7 @@
     "output_tokens": 141
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -2944,6 +3534,40 @@
     }
    ],
    "answer": "The system achieves only 26.8% overall match rate[1] in matching expected actions. However, performance varied significantly by configuration: high_belief_discrepancy achieves 0%, while high_power achieves only 10%[1]. The poor performance is partly due to a systemic issue—every intent across every configuration resolved to HARVEST_SUSTAINABLE_SHARED[2], so only HARVEST_SUSTAINABLE_SHARED (when expected) achieves 100% match rate[1].",
+   "blocks": [
+    {
+     "text": "The system achieves only 26.8% overall match rate",
+     "cited": true
+    },
+    {
+     "text": " in matching expected actions. However, performance varied significantly by configuration: ",
+     "cited": false
+    },
+    {
+     "text": "high_belief_discrepancy achieves 0%, while high_power achieves only 10%",
+     "cited": true
+    },
+    {
+     "text": ". The poor performance is partly due to a systemic issue—",
+     "cited": false
+    },
+    {
+     "text": "every intent across every configuration resolved to HARVEST_SUSTAINABLE_SHARED",
+     "cited": true
+    },
+    {
+     "text": ", so ",
+     "cited": false
+    },
+    {
+     "text": "only HARVEST_SUSTAINABLE_SHARED (when expected) achieves 100% match rate",
+     "cited": true
+    },
+    {
+     "text": ".",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -2968,6 +3592,7 @@
     "output_tokens": 168
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -3020,6 +3645,16 @@
     }
    ],
    "answer": "On DevEval, BM25 RAG achieves DR@10/15/20 of 0.261/0.296/0.322, while FeatLens improves these to 0.461/0.501/0.517[1].",
+   "blocks": [
+    {
+     "text": "On DevEval, BM25 RAG achieves DR@10/15/20 of 0.261/0.296/0.322, while FeatLens improves these to 0.461/0.501/0.517",
+     "cited": true
+    },
+    {
+     "text": ".",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -3032,6 +3667,7 @@
     "output_tokens": 76
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -3084,6 +3720,28 @@
     }
    ],
    "answer": "In the GPT-assisted condition, participants were allowed to use LLMs such as ChatGPT for assistance but were explicitly instructed to paraphrase the generated content before typing their responses.[1] Additionally, copy-and-paste functionality was disabled, as were auto-correct, grammar tools, and browser extensions.[1]\n\nIt's important to note that in this study, \"GPT-assisted\" refers specifically to responses written by paraphrasing GPT-generated content rather than to the broader range of possible GPT-assisted writing practices.[1]",
+   "blocks": [
+    {
+     "text": "In the GPT-assisted condition, participants were allowed to use LLMs such as ChatGPT for assistance but were explicitly instructed to paraphrase the generated content before typing their responses.",
+     "cited": true
+    },
+    {
+     "text": " Additionally, ",
+     "cited": false
+    },
+    {
+     "text": "copy-and-paste functionality was disabled, as were auto-correct, grammar tools, and browser extensions.",
+     "cited": true
+    },
+    {
+     "text": "\n\nIt's important to note that ",
+     "cited": false
+    },
+    {
+     "text": "in this study, \"GPT-assisted\" refers specifically to responses written by paraphrasing GPT-generated content rather than to the broader range of possible GPT-assisted writing practices.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -3104,6 +3762,7 @@
     "output_tokens": 163
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -3156,6 +3815,12 @@
     }
    ],
    "answer": "Danish was the most underrepresented language in the initial training of Whisper and took the largest hit to performance after pruning, but it also recovered the most despite the distillation data being English-only.[1]",
+   "blocks": [
+    {
+     "text": "Danish was the most underrepresented language in the initial training of Whisper and took the largest hit to performance after pruning, but it also recovered the most despite the distillation data being English-only.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -3168,6 +3833,7 @@
     "output_tokens": 68
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -3220,6 +3886,12 @@
     }
    ],
    "answer": "In the static 90/10 deep-null run, the guaranteed slice's mean throughput is 37.1 Mbps at a 90% commanded PRB share, well below its 80 Mbps target.[1]",
+   "blocks": [
+    {
+     "text": "In the static 90/10 deep-null run, the guaranteed slice's mean throughput is 37.1 Mbps at a 90% commanded PRB share, well below its 80 Mbps target.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -3232,6 +3904,7 @@
     "output_tokens": 69
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -3284,6 +3957,16 @@
     }
    ],
    "answer": "Under MSE-log, the loss-to-model ratio is 3.71[1], indicating that loss choice explains about 3.7 times more variation than model choice in cryptocurrency volatility forecasting.",
+   "blocks": [
+    {
+     "text": "Under MSE-log, the loss-to-model ratio is 3.71",
+     "cited": true
+    },
+    {
+     "text": ", indicating that loss choice explains about 3.7 times more variation than model choice in cryptocurrency volatility forecasting.",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -3296,6 +3979,9 @@
     "output_tokens": 62
    },
    "outcome": "answered",
+   "uncited_numbers": [
+    ", indicating that loss choice explains about 3.7 times more variation than model choice in cryptocurrency volatility forecasting."
+   ],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -3348,6 +4034,16 @@
     }
    ],
    "answer": "Yes, there is recent work addressing this. PASTABench identifies a key limitation of existing trajectory-level evaluations: they are typically conducted post-hoc, delivering a verdict only after the sequence has ended, offering no opportunity for timely intervention.[1] This suggests PASTABench is designed to address the need for proactive safety assessment during agent trajectories rather than only after completion.\n\nHowever, the document excerpt provided does not contain sufficient detail about how PASTABench specifically implements early intervention or step-in capabilities. The indexed papers acknowledge this as an important research direction, but do not fully describe a benchmark that explicitly tests models' ability to intervene before trajectories become unsafe.",
+   "blocks": [
+    {
+     "text": "Yes, there is recent work addressing this. PASTABench identifies a key limitation of existing trajectory-level evaluations: they are typically conducted post-hoc, delivering a verdict only after the sequence has ended, offering no opportunity for timely intervention.",
+     "cited": true
+    },
+    {
+     "text": " This suggests PASTABench is designed to address the need for proactive safety assessment during agent trajectories rather than only after completion.\n\nHowever, the document excerpt provided does not contain sufficient detail about how PASTABench specifically implements early intervention or step-in capabilities. The indexed papers acknowledge this as an important research direction, but do not fully describe a benchmark that explicitly tests models' ability to intervene before trajectories become unsafe.",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -3360,6 +4056,7 @@
     "output_tokens": 162
    },
    "outcome": "hedged",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": false,
    "cited_relevant": false,
@@ -3412,6 +4109,20 @@
     }
    ],
    "answer": "The paper \"Risk-Controlled KV-Cache Eviction: From Memory Budgets to Risk Targets\" formulates KV-cache eviction as a reliability-first retention-selection problem by specifying an allowable frequency of material request-level degradation and using calibration data to select a retention policy, rather than fixing a memory budget and evaluating average quality afterward.[1] The framework shifts KV-cache compression from budget-first evaluation toward risk-controlled deployment, providing a principled way to determine how aggressively KV memory can be reduced for a declared population and utility metric.[1]",
+   "blocks": [
+    {
+     "text": "The paper \"Risk-Controlled KV-Cache Eviction: From Memory Budgets to Risk Targets\" formulates KV-cache eviction as a reliability-first retention-selection problem by specifying an allowable frequency of material request-level degradation and using calibration data to select a retention policy, rather than fixing a memory budget and evaluating average quality afterward.",
+     "cited": true
+    },
+    {
+     "text": " ",
+     "cited": false
+    },
+    {
+     "text": "The framework shifts KV-cache compression from budget-first evaluation toward risk-controlled deployment, providing a principled way to determine how aggressively KV memory can be reduced for a declared population and utility metric.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -3428,6 +4139,7 @@
     "output_tokens": 159
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -3480,6 +4192,28 @@
     }
    ],
    "answer": "UniDataAgent is an ontology grounded system for reusable question-to-report analysis that separates semantic acquisition from online execution.[1] Ontology grounding achieved 95.0% strict accuracy on real business questions, versus 72.5% for document RAG, especially on structured and compositional tasks.[1] The system has two stages: the Ontology Acquisition and Validation stage (OAV) which builds versioned enterprise ontologies from metadata and business knowledge, and the Question-to-Report Execution (QRE) stage which retrieves semantic contracts for each question, coordinates skills and data tools, validates results, and produces evidence linked reports.[1]",
+   "blocks": [
+    {
+     "text": "UniDataAgent is an ontology grounded system for reusable question-to-report analysis that separates semantic acquisition from online execution.",
+     "cited": true
+    },
+    {
+     "text": " ",
+     "cited": false
+    },
+    {
+     "text": "Ontology grounding achieved 95.0% strict accuracy on real business questions, versus 72.5% for document RAG, especially on structured and compositional tasks.",
+     "cited": true
+    },
+    {
+     "text": " ",
+     "cited": false
+    },
+    {
+     "text": "The system has two stages: the Ontology Acquisition and Validation stage (OAV) which builds versioned enterprise ontologies from metadata and business knowledge, and the Question-to-Report Execution (QRE) stage which retrieves semantic contracts for each question, coordinates skills and data tools, validates results, and produces evidence linked reports.",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -3500,6 +4234,7 @@
     "output_tokens": 194
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -3552,6 +4287,28 @@
     }
    ],
    "answer": "Hunyuan-A13B 的总参数量为 80 亿。[1]\n\n与 Qwen3-A22B 相比，Qwen3-A22B 的总参数量约为 Hunyuan-A13B 的 3 倍，激活参数量约为其 2 倍。[2]具体来说，Qwen3-A22B 的总参数量为 235B，激活参数量为 22B，而 Hunyuan-A13B 的总参数量为 80B，激活参数量为 13B。[3]",
+   "blocks": [
+    {
+     "text": "Hunyuan-A13B 的总参数量为 80 亿。",
+     "cited": true
+    },
+    {
+     "text": "\n\n与 Qwen3-A22B 相比，",
+     "cited": false
+    },
+    {
+     "text": "Qwen3-A22B 的总参数量约为 Hunyuan-A13B 的 3 倍，激活参数量约为其 2 倍。",
+     "cited": true
+    },
+    {
+     "text": "具体来说，",
+     "cited": false
+    },
+    {
+     "text": "Qwen3-A22B 的总参数量为 235B，激活参数量为 22B，而 Hunyuan-A13B 的总参数量为 80B，激活参数量为 13B。",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -3572,6 +4329,7 @@
     "output_tokens": 202
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -3624,6 +4382,20 @@
     }
    ],
    "answer": "该论文使用双侧Boschloo精确检验（two-sided Boschloo exact test）来比较不同条件下的破坏率，并对每个模型-场景组合分别应用检验，同时在每个检验族内应用Holm-Bonferroni校正（p值设为0.05）。[1]\n\n此外，破坏率使用95% Wilson置信区间报告，破坏率之间的差异使用95% Newcombe混合得分区间报告。[1]",
+   "blocks": [
+    {
+     "text": "该论文使用双侧Boschloo精确检验（two-sided Boschloo exact test）来比较不同条件下的破坏率，并对每个模型-场景组合分别应用检验，同时在每个检验族内应用Holm-Bonferroni校正（p值设为0.05）。",
+     "cited": true
+    },
+    {
+     "text": "\n\n此外，",
+     "cited": false
+    },
+    {
+     "text": "破坏率使用95% Wilson置信区间报告，破坏率之间的差异使用95% Newcombe混合得分区间报告。",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -3640,6 +4412,7 @@
     "output_tokens": 173
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -3692,6 +4465,20 @@
     }
    ],
    "answer": "根据文献资料，大语言模型预测与人类处理效应具有强相关性，但系统性地高估了效应大小[1]。\n\n这是目前已知的主要系统性偏差。然而，文献中并未详细讨论其他具体的系统性偏差来源或偏差的机制。",
+   "blocks": [
+    {
+     "text": "根据文献资料，",
+     "cited": false
+    },
+    {
+     "text": "大语言模型预测与人类处理效应具有强相关性，但系统性地高估了效应大小",
+     "cited": true
+    },
+    {
+     "text": "。\n\n这是目前已知的主要系统性偏差。然而，文献中并未详细讨论其他具体的系统性偏差来源或偏差的机制。",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -3704,6 +4491,7 @@
     "output_tokens": 113
    },
    "outcome": "hedged",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -3756,6 +4544,20 @@
     }
    ],
    "answer": "丹麦语在Whisper初始训练中代表性不足，因此在剪枝后性能下降最大，但它也是在只使用英文数据蒸馏情况下恢复最多的语言。[1]具体来看，丹麦语从零-shot剪枝后的32.1%下降到蒸馏后的27.3%，恢复了4.8个百分点。[2]",
+   "blocks": [
+    {
+     "text": "丹麦语在Whisper初始训练中代表性不足，因此在剪枝后性能下降最大，但它也是在只使用英文数据蒸馏情况下恢复最多的语言。",
+     "cited": true
+    },
+    {
+     "text": "具体来看，",
+     "cited": false
+    },
+    {
+     "text": "丹麦语从零-shot剪枝后的32.1%下降到蒸馏后的27.3%，恢复了4.8个百分点。",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -3772,6 +4574,7 @@
     "output_tokens": 156
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -3824,6 +4627,32 @@
     }
    ],
    "answer": "FleXray 使用物理基础的解析型 X 光渲染器从多个 CT 源生成训练用的数字重建射线照片(DRRs),这些渲染器根据指定的扫描仪内部参数和外部参数从 CT 体积生成图像。[1]\n\n在每个训练迭代中,系统会采样解剖学目标、视角、视野、放大倍数和投影几何,同时也随机化每个器官的衰减以模拟器官密度变化。[1]因为多个结构可能对同一检测器像素有贡献,系统会独立投影每个 3D 解剖学掩膜,生成的目标保留了 X 光解剖学的密集、重叠特性,而不是强加相互排斥的分割图。[1]\n\n此外,为了减少合成 DRRs 与临床 X 光之间的域差异,研究团队还通过应用预训练的文本条件图像编辑扩散模型来增强 DRRs。[2]",
+   "blocks": [
+    {
+     "text": "FleXray 使用物理基础的解析型 X 光渲染器从多个 CT 源生成训练用的数字重建射线照片(DRRs),这些渲染器根据指定的扫描仪内部参数和外部参数从 CT 体积生成图像。",
+     "cited": true
+    },
+    {
+     "text": "\n\n",
+     "cited": false
+    },
+    {
+     "text": "在每个训练迭代中,系统会采样解剖学目标、视角、视野、放大倍数和投影几何,同时也随机化每个器官的衰减以模拟器官密度变化。",
+     "cited": true
+    },
+    {
+     "text": "因为多个结构可能对同一检测器像素有贡献,系统会独立投影每个 3D 解剖学掩膜,生成的目标保留了 X 光解剖学的密集、重叠特性,而不是强加相互排斥的分割图。",
+     "cited": true
+    },
+    {
+     "text": "\n\n此外,",
+     "cited": false
+    },
+    {
+     "text": "为了减少合成 DRRs 与临床 X 光之间的域差异,研究团队还通过应用预训练的文本条件图像编辑扩散模型来增强 DRRs。",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -3848,6 +4677,7 @@
     "output_tokens": 383
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -3900,6 +4730,12 @@
     }
    ],
    "answer": "R3Con 在 CorpusQA 上使用 Qwen3.5-35B-A3B 达到了 70.64±2.52 的准确率。[1]",
+   "blocks": [
+    {
+     "text": "R3Con 在 CorpusQA 上使用 Qwen3.5-35B-A3B 达到了 70.64±2.52 的准确率。",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -3912,6 +4748,7 @@
     "output_tokens": 68
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": false,
@@ -3964,6 +4801,36 @@
     }
    ],
    "answer": "有的。最近的研究认识到，智能体风险不是表现为明显有害的单一回应，而是随着智能体行动和环境变化而在多个步骤中逐步出现的，这使得安全成为必须持续评估的轨迹级属性。[1]\n\nPASTABench基准通过分析\"中断的时间精度\"来研究模型的及时打断能力，包括分析完美中断、提前中断和延迟中断的分布，以刻画模型的时间行为。[2]\n\n研究发现，几乎所有模型的延迟中断率都低于1%，表明对显性危害的反应式检测不再是主要挑战，真正的关键差异在于前瞻性校准——许多模型表现出过度防守行为，对良性信号做出提前中断反应。[2]即使是表现最好的模型也存在时间精度不足的问题，GPT-4o实现了最高的完美中断率，仅为40.74%，而Gemini-3-Pro为39.42%，意味着两者都在大多数情况下未能在最优时刻进行干预。[2]",
+   "blocks": [
+    {
+     "text": "有的。",
+     "cited": false
+    },
+    {
+     "text": "最近的研究认识到，智能体风险不是表现为明显有害的单一回应，而是随着智能体行动和环境变化而在多个步骤中逐步出现的，这使得安全成为必须持续评估的轨迹级属性。",
+     "cited": true
+    },
+    {
+     "text": "\n\n",
+     "cited": false
+    },
+    {
+     "text": "PASTABench基准通过分析\"中断的时间精度\"来研究模型的及时打断能力，包括分析完美中断、提前中断和延迟中断的分布，以刻画模型的时间行为。",
+     "cited": true
+    },
+    {
+     "text": "\n\n",
+     "cited": false
+    },
+    {
+     "text": "研究发现，几乎所有模型的延迟中断率都低于1%，表明对显性危害的反应式检测不再是主要挑战，真正的关键差异在于前瞻性校准——许多模型表现出过度防守行为，对良性信号做出提前中断反应。",
+     "cited": true
+    },
+    {
+     "text": "即使是表现最好的模型也存在时间精度不足的问题，GPT-4o实现了最高的完美中断率，仅为40.74%，而Gemini-3-Pro为39.42%，意味着两者都在大多数情况下未能在最优时刻进行干预。",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -3988,6 +4855,7 @@
     "output_tokens": 420
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": false,
    "cited_relevant": false,
@@ -4040,6 +4908,28 @@
     }
    ],
    "answer": "根据文献内容，这项研究针对相似度推荐系统中的智能体进行的多阶段投毒攻击，利用的是点赞评分机制的特性：精心设计的多阶段投毒文章链可以将点赞评分机制转向对系统不利，点赞早期阶段的文章会触发一个反馈循环，将后续相似度较低的文章拉入推荐流中[1]。\n\n更具体地说，攻击者的目标是触发一个自我强化的反馈循环：一旦受害智能体与投毒文章互动，点赞评分机制会逐步增加后续推荐中投毒文章的比例，最终即使相似度很低的投毒文章也会被推荐并占据受害者信息流的大部分[2]。\n\n因此，这种攻击利用的核心特性是**点赞评分机制与用户-文章相似度之间的相互作用关系**，以及由此产生的正反馈循环效应。",
+   "blocks": [
+    {
+     "text": "根据文献内容，这项研究针对相似度推荐系统中的智能体进行的多阶段投毒攻击，利用的是",
+     "cited": false
+    },
+    {
+     "text": "点赞评分机制的特性：精心设计的多阶段投毒文章链可以将点赞评分机制转向对系统不利，点赞早期阶段的文章会触发一个反馈循环，将后续相似度较低的文章拉入推荐流中",
+     "cited": true
+    },
+    {
+     "text": "。\n\n更具体地说，",
+     "cited": false
+    },
+    {
+     "text": "攻击者的目标是触发一个自我强化的反馈循环：一旦受害智能体与投毒文章互动，点赞评分机制会逐步增加后续推荐中投毒文章的比例，最终即使相似度很低的投毒文章也会被推荐并占据受害者信息流的大部分",
+     "cited": true
+    },
+    {
+     "text": "。\n\n因此，这种攻击利用的核心特性是**点赞评分机制与用户-文章相似度之间的相互作用关系**，以及由此产生的正反馈循环效应。",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -4056,6 +4946,7 @@
     "output_tokens": 343
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": false,
    "cited_relevant": false,
@@ -4108,6 +4999,28 @@
     }
    ],
    "answer": "根据提供的文档，我无法找到具体说明使用了多少个长上下文任务来进行校准的信息。\n\n文档中提到了使用任务分层校准设计为声明的任务均衡人群提供有限样本保证[1]，以及在LongBench上进行了校准[2]，但没有明确指出总共使用了多少个具体的长上下文任务进行校准。文档主要关注的是风险控制框架本身和在不同模型及压缩器上的实证结果，而不是校准任务数量的具体细节。",
+   "blocks": [
+    {
+     "text": "根据提供的文档，我无法找到具体说明使用了多少个长上下文任务来进行校准的信息。\n\n文档中提到了",
+     "cited": false
+    },
+    {
+     "text": "使用任务分层校准设计为声明的任务均衡人群提供有限样本保证",
+     "cited": true
+    },
+    {
+     "text": "，以及在",
+     "cited": false
+    },
+    {
+     "text": "LongBench上进行了校准",
+     "cited": true
+    },
+    {
+     "text": "，但没有明确指出总共使用了多少个具体的长上下文任务进行校准。文档主要关注的是风险控制框架本身和在不同模型及压缩器上的实证结果，而不是校准任务数量的具体细节。",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -4124,6 +5037,7 @@
     "output_tokens": 205
    },
    "outcome": "hedged",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": false,
    "cited_relevant": false,
@@ -4176,6 +5090,12 @@
     }
    ],
    "answer": "TraceVIC 去重后还剩 755 个案例进行五折交叉验证。[1]",
+   "blocks": [
+    {
+     "text": "TraceVIC 去重后还剩 755 个案例进行五折交叉验证。",
+     "cited": true
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -4188,6 +5108,7 @@
     "output_tokens": 47
    },
    "outcome": "answered",
+   "uncited_numbers": [],
    "language_ok": true,
    "retrieved": true,
    "cited_relevant": true,
@@ -4240,6 +5161,12 @@
     }
    ],
    "answer": "The indexed papers do not contain information about a \"SparseLoom\" attention kernel or any comparisons with FlashAttention-3. While the papers discuss various attention optimization techniques including FlashAttention-3, RBS-Attention, MInference, and others, none of them mention SparseLoom or provide speedup comparisons for that specific kernel.",
+   "blocks": [
+    {
+     "text": "The indexed papers do not contain information about a \"SparseLoom\" attention kernel or any comparisons with FlashAttention-3. While the papers discuss various attention optimization techniques including FlashAttention-3, RBS-Attention, MInference, and others, none of them mention SparseLoom or provide speedup comparisons for that specific kernel.",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [],
    "usage": {
@@ -4247,6 +5174,7 @@
     "output_tokens": 80
    },
    "outcome": "abstained",
+   "uncited_numbers": [],
    "language_ok": true
   },
   {
@@ -4296,6 +5224,12 @@
     }
    ],
    "answer": "I don't have information about an \"AgentGauntlet\" benchmark in the provided papers. The indexed documents discuss several other benchmarks including Frontier-Eng, TicTacBench, BabelArena, Terminal-Bench, QIQCBench, and others, but none of them appear to be called AgentGauntlet. If you're looking for information about a specific benchmark, please let me know its name or provide the relevant paper, and I'd be happy to help.",
+   "blocks": [
+    {
+     "text": "I don't have information about an \"AgentGauntlet\" benchmark in the provided papers. The indexed documents discuss several other benchmarks including Frontier-Eng, TicTacBench, BabelArena, Terminal-Bench, QIQCBench, and others, but none of them appear to be called AgentGauntlet. If you're looking for information about a specific benchmark, please let me know its name or provide the relevant paper, and I'd be happy to help.",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [],
    "usage": {
@@ -4303,6 +5237,7 @@
     "output_tokens": 112
    },
    "outcome": "abstained",
+   "uncited_numbers": [],
    "language_ok": true
   },
   {
@@ -4352,6 +5287,12 @@
     }
    ],
    "answer": "The indexed papers do not contain information about Tessellate-RL or what reward model it uses for training math reasoning. I cannot answer this question based on the provided documents.",
+   "blocks": [
+    {
+     "text": "The indexed papers do not contain information about Tessellate-RL or what reward model it uses for training math reasoning. I cannot answer this question based on the provided documents.",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [],
    "usage": {
@@ -4359,6 +5300,7 @@
     "output_tokens": 40
    },
    "outcome": "abstained",
+   "uncited_numbers": [],
    "language_ok": true
   },
   {
@@ -4408,6 +5350,12 @@
     }
    ],
    "answer": "I cannot find any information about \"KVFold\" or its compression ratio on LongBench in the provided documents. The papers discuss KV-COBRA and compare it to baselines like KIVI, KVQuant, GEAR, TurboQuant, SVDq, and KQ-SVD, but KVFold is not mentioned in these excerpts.",
+   "blocks": [
+    {
+     "text": "I cannot find any information about \"KVFold\" or its compression ratio on LongBench in the provided documents. The papers discuss KV-COBRA and compare it to baselines like KIVI, KVQuant, GEAR, TurboQuant, SVDq, and KQ-SVD, but KVFold is not mentioned in these excerpts.",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [],
    "usage": {
@@ -4415,6 +5363,7 @@
     "output_tokens": 86
    },
    "outcome": "abstained",
+   "uncited_numbers": [],
    "language_ok": true
   },
   {
@@ -4464,6 +5413,12 @@
     }
    ],
    "answer": "The indexed papers do not contain information about which languages the Polyglot-Judge evaluator supports. While several papers discuss multilingual evaluation and LLM judges across different languages, none of them specifically mention or describe a \"Polyglot-Judge\" evaluator or its language capabilities.",
+   "blocks": [
+    {
+     "text": "The indexed papers do not contain information about which languages the Polyglot-Judge evaluator supports. While several papers discuss multilingual evaluation and LLM judges across different languages, none of them specifically mention or describe a \"Polyglot-Judge\" evaluator or its language capabilities.",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [],
    "usage": {
@@ -4471,6 +5426,7 @@
     "output_tokens": 63
    },
    "outcome": "abstained",
+   "uncited_numbers": [],
    "language_ok": true
   },
   {
@@ -4520,6 +5476,12 @@
     }
    ],
    "answer": "I cannot find any information about HelixMoE or its findings regarding expert routing collapse in the provided documents. The indexed papers discuss various Mixture-of-Experts (MoE) architectures and routing mechanisms, but none of them appear to be the HelixMoE technical report you're asking about.\n\nIf you have the HelixMoE paper available, please share it and I'd be happy to answer your question about its findings on expert routing collapse.",
+   "blocks": [
+    {
+     "text": "I cannot find any information about HelixMoE or its findings regarding expert routing collapse in the provided documents. The indexed papers discuss various Mixture-of-Experts (MoE) architectures and routing mechanisms, but none of them appear to be the HelixMoE technical report you're asking about.\n\nIf you have the HelixMoE paper available, please share it and I'd be happy to answer your question about its findings on expert routing collapse.",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [],
    "usage": {
@@ -4527,6 +5489,7 @@
     "output_tokens": 105
    },
    "outcome": "abstained",
+   "uncited_numbers": [],
    "language_ok": true
   },
   {
@@ -4576,6 +5539,20 @@
     }
    ],
    "answer": "I cannot find information about a \"MirrorMind memory module\" in the provided papers. The indexed documents discuss various memory management approaches in AI agents, but none of them mention MirrorMind specifically. \n\nIf you're looking for information about how agents decide what to forget, the papers do discuss this topic generally—for example, one paper discusses anchoring claims to the content they came from and withdrawing claims when that content changes, though this approach has high recall but poor precision because most changes to a file do not affect most claims about it[1]. However, this doesn't describe MirrorMind.\n\nIf you have a specific paper about MirrorMind or can clarify which system you're asking about, I'd be happy to help further.",
+   "blocks": [
+    {
+     "text": "I cannot find information about a \"MirrorMind memory module\" in the provided papers. The indexed documents discuss various memory management approaches in AI agents, but none of them mention MirrorMind specifically. \n\nIf you're looking for information about how agents decide what to forget, the papers do discuss this topic generally—for example, one paper discusses ",
+     "cited": false
+    },
+    {
+     "text": "anchoring claims to the content they came from and withdrawing claims when that content changes, though this approach has high recall but poor precision because most changes to a file do not affect most claims about it",
+     "cited": true
+    },
+    {
+     "text": ". However, this doesn't describe MirrorMind.\n\nIf you have a specific paper about MirrorMind or can clarify which system you're asking about, I'd be happy to help further.",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -4588,6 +5565,7 @@
     "output_tokens": 183
    },
    "outcome": "hedged",
+   "uncited_numbers": [],
    "language_ok": true
   },
   {
@@ -4637,6 +5615,12 @@
     }
    ],
    "answer": "The indexed papers do not contain information about VeriChain's hallucination rate on TruthfulQA. While the papers discuss various approaches to detecting and mitigating hallucinations on the TruthfulQA dataset, none of them mention or evaluate VeriChain specifically.",
+   "blocks": [
+    {
+     "text": "The indexed papers do not contain information about VeriChain's hallucination rate on TruthfulQA. While the papers discuss various approaches to detecting and mitigating hallucinations on the TruthfulQA dataset, none of them mention or evaluate VeriChain specifically.",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [],
    "usage": {
@@ -4644,6 +5628,7 @@
     "output_tokens": 65
    },
    "outcome": "abstained",
+   "uncited_numbers": [],
    "language_ok": true
   },
   {
@@ -4693,6 +5678,12 @@
     }
    ],
    "answer": "The indexed papers do not contain any information about a \"Quillfeather code model\" or its training data. I cannot answer this question based on the provided documents.",
+   "blocks": [
+    {
+     "text": "The indexed papers do not contain any information about a \"Quillfeather code model\" or its training data. I cannot answer this question based on the provided documents.",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [],
    "usage": {
@@ -4700,6 +5691,7 @@
     "output_tokens": 38
    },
    "outcome": "abstained",
+   "uncited_numbers": [],
    "language_ok": true
   },
   {
@@ -4749,6 +5741,12 @@
     }
    ],
    "answer": "I cannot find information about the Orca-Nova model's context length in the provided documents. The indexed papers focus on context window extension techniques and benchmarks for various models like Qwen, Llama, and DeltaNet-based architectures, but they do not mention Orca-Nova or its supported context length.",
+   "blocks": [
+    {
+     "text": "I cannot find information about the Orca-Nova model's context length in the provided documents. The indexed papers focus on context window extension techniques and benchmarks for various models like Qwen, Llama, and DeltaNet-based architectures, but they do not mention Orca-Nova or its supported context length.",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [],
    "usage": {
@@ -4756,6 +5754,7 @@
     "output_tokens": 73
    },
    "outcome": "abstained",
+   "uncited_numbers": [],
    "language_ok": true
   },
   {
@@ -4805,6 +5804,28 @@
     }
    ],
    "answer": "I cannot find information about \"DriftGuard\" in the provided papers. The indexed documents do not contain any discussion of a system or method called DriftGuard.\n\nHowever, if you're interested in how distribution shift detection works in LLM-based systems, the papers do discuss some approaches. For example, CTRL performs test-time adaptation by detecting distribution shift from input statistics alone, without relying on ground-truth labels[1], and test-time adaptation requires no ground-truth labels, enabling adaptation to distribution shifts using only input statistics[2].\n\nIf you have a specific paper about DriftGuard or would like to know more about the approaches discussed in these papers, please let me know.",
+   "blocks": [
+    {
+     "text": "I cannot find information about \"DriftGuard\" in the provided papers. The indexed documents do not contain any discussion of a system or method called DriftGuard.\n\nHowever, if you're interested in how distribution shift detection works in LLM-based systems, the papers do discuss some approaches. For example, ",
+     "cited": false
+    },
+    {
+     "text": "CTRL performs test-time adaptation by detecting distribution shift from input statistics alone, without relying on ground-truth labels",
+     "cited": true
+    },
+    {
+     "text": ", and ",
+     "cited": false
+    },
+    {
+     "text": "test-time adaptation requires no ground-truth labels, enabling adaptation to distribution shifts using only input statistics",
+     "cited": true
+    },
+    {
+     "text": ".\n\nIf you have a specific paper about DriftGuard or would like to know more about the approaches discussed in these papers, please let me know.",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [
     {
@@ -4821,6 +5842,7 @@
     "output_tokens": 179
    },
    "outcome": "hedged",
+   "uncited_numbers": [],
    "language_ok": true
   },
   {
@@ -4870,6 +5892,12 @@
     }
    ],
    "answer": "我查阅了提供的文件，但没有找到关于 LumenRAG 在多跳问答上相比标准 RAG 提升多少的信息。这些文件讨论的是其他 RAG 系统的性能，如 EffiRAG、Q-TIE 和 ScholarStack 等，但没有包含 LumenRAG 的相关评估数据。\n\n如果您需要了解 LumenRAG 的性能信息，您可能需要查阅其他包含该系统的论文或资料。",
+   "blocks": [
+    {
+     "text": "我查阅了提供的文件，但没有找到关于 LumenRAG 在多跳问答上相比标准 RAG 提升多少的信息。这些文件讨论的是其他 RAG 系统的性能，如 EffiRAG、Q-TIE 和 ScholarStack 等，但没有包含 LumenRAG 的相关评估数据。\n\n如果您需要了解 LumenRAG 的性能信息，您可能需要查阅其他包含该系统的论文或资料。",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [],
    "usage": {
@@ -4877,6 +5905,7 @@
     "output_tokens": 155
    },
    "outcome": "abstained",
+   "uncited_numbers": [],
    "language_ok": true
   },
   {
@@ -4926,6 +5955,12 @@
     }
    ],
    "answer": "我很抱歉，所提供的文档中没有包含关于 SparseLoom 注意力内核与 FlashAttention-3 性能对比的信息。这些文档主要讨论的是 FlashBoB（一个用于softmax注意力的反向传播算法）和其他一些注意力优化方法，但没有提到 SparseLoom 或与 FlashAttention-3 的具体性能对比数据。\n\n如果您需要了解这方面的信息，我建议查阅 SparseLoom 的原始论文或官方文档。",
+   "blocks": [
+    {
+     "text": "我很抱歉，所提供的文档中没有包含关于 SparseLoom 注意力内核与 FlashAttention-3 性能对比的信息。这些文档主要讨论的是 FlashBoB（一个用于softmax注意力的反向传播算法）和其他一些注意力优化方法，但没有提到 SparseLoom 或与 FlashAttention-3 的具体性能对比数据。\n\n如果您需要了解这方面的信息，我建议查阅 SparseLoom 的原始论文或官方文档。",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [],
    "usage": {
@@ -4933,6 +5968,7 @@
     "output_tokens": 168
    },
    "outcome": "abstained",
+   "uncited_numbers": [],
    "language_ok": true
   },
   {
@@ -4982,6 +6018,12 @@
     }
    ],
    "answer": "我无法在提供的文档中找到关于\"HelixMoE\"技术报告或关于专家路由坍塌的信息。\n\n提供的文档涉及其他主题，如培训专家模型、文档解析、AI代理、作物病害诊断和任务难度评估，但没有包含HelixMoE相关的内容。\n\n如果您有HelixMoE的相关论文或文档，请提供相应的材料，我很乐意为您分析其中关于专家路由坍塌的发现。",
+   "blocks": [
+    {
+     "text": "我无法在提供的文档中找到关于\"HelixMoE\"技术报告或关于专家路由坍塌的信息。\n\n提供的文档涉及其他主题，如培训专家模型、文档解析、AI代理、作物病害诊断和任务难度评估，但没有包含HelixMoE相关的内容。\n\n如果您有HelixMoE的相关论文或文档，请提供相应的材料，我很乐意为您分析其中关于专家路由坍塌的发现。",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [],
    "usage": {
@@ -4989,6 +6031,7 @@
     "output_tokens": 162
    },
    "outcome": "abstained",
+   "uncited_numbers": [],
    "language_ok": true
   },
   {
@@ -5038,6 +6081,12 @@
     }
    ],
    "answer": "The indexed papers do not contain information about GPT-7's release date or context window. The papers discuss existing models like GPT-5, GPT-5.3, GPT-5.4, and GPT-4o, but there is no mention of GPT-7 in any of them.",
+   "blocks": [
+    {
+     "text": "The indexed papers do not contain information about GPT-7's release date or context window. The papers discuss existing models like GPT-5, GPT-5.3, GPT-5.4, and GPT-4o, but there is no mention of GPT-7 in any of them.",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [],
    "usage": {
@@ -5045,6 +6094,7 @@
     "output_tokens": 70
    },
    "outcome": "abstained",
+   "uncited_numbers": [],
    "language_ok": true
   },
   {
@@ -5094,6 +6144,12 @@
     }
    ],
    "answer": "The indexed papers do not contain information about the population of Reykjavik. The papers discuss topics such as bias in Wikidata coverage, AI provider recommendations in U.S. metropolitan areas, spiking neural networks, and NLP research generalization, but none of them provide data about Reykjavik's population.",
+   "blocks": [
+    {
+     "text": "The indexed papers do not contain information about the population of Reykjavik. The papers discuss topics such as bias in Wikidata coverage, AI provider recommendations in U.S. metropolitan areas, spiking neural networks, and NLP research generalization, but none of them provide data about Reykjavik's population.",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [],
    "usage": {
@@ -5101,6 +6157,7 @@
     "output_tokens": 73
    },
    "outcome": "abstained",
+   "uncited_numbers": [],
    "language_ok": true
   },
   {
@@ -5150,6 +6207,12 @@
     }
    ],
    "answer": "I cannot answer this question based on the indexed papers. The papers discuss forecasts for the 2026 FIFA World Cup, not the 2030 FIFA World Cup. Additionally, even for 2026, the papers contain research methodologies and intermediate results rather than final predictions about which country will win.",
+   "blocks": [
+    {
+     "text": "I cannot answer this question based on the indexed papers. The papers discuss forecasts for the 2026 FIFA World Cup, not the 2030 FIFA World Cup. Additionally, even for 2026, the papers contain research methodologies and intermediate results rather than final predictions about which country will win.",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [],
    "usage": {
@@ -5157,6 +6220,10 @@
     "output_tokens": 66
    },
    "outcome": "abstained",
+   "uncited_numbers": [
+    "The papers discuss forecasts for the 2026 FIFA World Cup, not the 2030 FIFA World Cup.",
+    "Additionally, even for 2026, the papers contain research methodologies and intermediate results rather than final predictions about which country will win."
+   ],
    "language_ok": true
   },
   {
@@ -5206,6 +6273,12 @@
     }
    ],
    "answer": "I cannot find information about the height of the Burj Khalifa in the indexed papers provided. These papers cover topics like sports video understanding, AI cinematic expression, LLM benchmarks, and fire dynamics simulation, but none of them discuss the Burj Khalifa or its height.",
+   "blocks": [
+    {
+     "text": "I cannot find information about the height of the Burj Khalifa in the indexed papers provided. These papers cover topics like sports video understanding, AI cinematic expression, LLM benchmarks, and fire dynamics simulation, but none of them discuss the Burj Khalifa or its height.",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [],
    "usage": {
@@ -5213,6 +6286,7 @@
     "output_tokens": 65
    },
    "outcome": "abstained",
+   "uncited_numbers": [],
    "language_ok": true
   },
   {
@@ -5262,6 +6336,12 @@
     }
    ],
    "answer": "根据提供的文档，我找不到关于GPT-7发布时间或上下文窗口大小的信息。\n\n这些文档讨论的是GPT-4o-mini、GPT-5.4-mini、GPT-5.3和GPT-5等模型，但都没有提及GPT-7的相关信息。如果您想了解GPT-7的信息，这些索引论文无法提供答案。",
+   "blocks": [
+    {
+     "text": "根据提供的文档，我找不到关于GPT-7发布时间或上下文窗口大小的信息。\n\n这些文档讨论的是GPT-4o-mini、GPT-5.4-mini、GPT-5.3和GPT-5等模型，但都没有提及GPT-7的相关信息。如果您想了解GPT-7的信息，这些索引论文无法提供答案。",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [],
    "usage": {
@@ -5269,6 +6349,7 @@
     "output_tokens": 124
    },
    "outcome": "abstained",
+   "uncited_numbers": [],
    "language_ok": true
   },
   {
@@ -5318,6 +6399,12 @@
     }
    ],
    "answer": "我无法从提供的文档中找到关于雷克雅未克人口的信息。这些文档主要讨论的是AI研究论文的内容，包括视觉语言模型、稀有病诊断、维基数据中的人类覆盖偏差等话题，但都不包含有关雷克雅未克人口的数据。",
+   "blocks": [
+    {
+     "text": "我无法从提供的文档中找到关于雷克雅未克人口的信息。这些文档主要讨论的是AI研究论文的内容，包括视觉语言模型、稀有病诊断、维基数据中的人类覆盖偏差等话题，但都不包含有关雷克雅未克人口的数据。",
+     "cited": false
+    }
+   ],
    "stop_reason": "end_turn",
    "citations": [],
    "usage": {
@@ -5325,6 +6412,7 @@
     "output_tokens": 108
    },
    "outcome": "abstained",
+   "uncited_numbers": [],
    "language_ok": true
   }
  ]

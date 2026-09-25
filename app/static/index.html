@@ -51,6 +51,8 @@ mark { background: var(--mark); color: inherit; padding: 0 1px; border-radius: 2
 .quote { color: var(--muted); font-style: italic; display: block; margin-top: 2px; overflow-wrap: anywhere; }
 .note { color: var(--muted); font-size: 13.5px; }
 .warn { color: var(--warn); }
+.unsupported { font-size: 13px; margin: 0 0 10px; }
+.unsupported ul { margin: 4px 0 0; padding-left: 18px; }
 .hidden { display: none; }
 </style>
 </head>
@@ -143,11 +145,14 @@ function answerCard(item) {
   const body = esc(item.answer)
     .replace(/\*\*([^*\n]+)\*\*/g, "<strong>$1</strong>")
     .replace(/\[(\d+)\]/g, "<sup>[$1]</sup>");
+  const unsupported = (item.unsupported || []).map((u) => `<li>${esc(u)}</li>`).join("");
   const sources = (item.sources || []).map((s) => `
     <li><b>[${s.n}]</b> <a href="${arxivUrl(s.arxiv_id)}" target="_blank" rel="noopener">${esc(s.title)}</a>
       <span class="note">— ${esc(s.section)}</span>
       ${(s.cited || []).map((c) => `<span class="quote">“${esc(c)}”</span>`).join("")}</li>`).join("");
   div.innerHTML = `<h3>${esc(item.question)}</h3><div class="answer">${body}</div>
+    ${unsupported ? `<div class="unsupported warn"><b>Numbers stated without a citation; check them against the sources:</b>
+      <ul>${unsupported}</ul></div>` : ""}
     ${sources ? `<ol class="sources">${sources}</ol>` : `<p class="note">No excerpt supported an answer.</p>`}`;
   return div;
 }
