@@ -98,16 +98,44 @@ Chinese questions (n = 10), best configuration:
 3. **Reranking only helped once its input matched the index.** The first reranking run passed the cross-encoder the bare passage text and *lowered* MRR (0.649 → 0.605). Giving it the same `title + section` context the index uses raised MRR to 0.749 and hit@1 from 0.50 to 0.64. Paired by question, reranking improved hit@1 on 10 questions and hurt 3; the MRR gain is +0.100 with a 95% bootstrap interval of [+0.005, +0.196], so the gain is real but its size is uncertain.
 4. **Query translation fixed Chinese questions cheaply.** The English embedding model found almost nothing for Chinese questions. A multilingual embedding model (`BAAI/bge-m3`) was the alternative, but it indexed at about 3 chunks/s on this machine versus about 110 chunks/s for `bge-small`, which is impractical at corpus scale. Translating the query instead took hit@5 from 0.20 to 0.80. Most of that gain comes from translation itself; the glossary added one question.
 
+### Scaling to two weeks (2,440 papers, 190k chunks)
+
+The same 60 questions against the full two-week corpus (the 300 original papers plus 2,140 more), `section + header` index only. Latency is the mean per query on an Apple-silicon laptop, embedding and reranking on the GPU.
+
+| Configuration (English, n = 50) | hit@1 | hit@5 | hit@10 | MRR | ms/query | hit@5 at 300 papers |
+|---|---|---|---|---|---|---|
+| BM25 | 0.46 | 0.76 | 0.80 | 0.572 | 349 | 0.78 |
+| Vector | 0.36 | 0.70 | 0.80 | 0.498 | 374 | 0.76 |
+| Hybrid (RRF) | 0.46 | 0.72 | 0.86 | 0.585 | 261 | 0.86 |
+| **Hybrid + rerank** | **0.58** | **0.88** | **0.92** | **0.693** | 872 | 0.92 |
+| Hybrid + rerank, Chinese questions with translation (n = 10) | 0.50 | 0.70 | 0.70 | 0.570 | 802 | 0.80 |
+
+Eight times more text means eight times more near-misses. Every retriever loses some precision; hybrid search loses the most (hit@5 0.86 → 0.72), and reranking recovers most of it (0.88). Two problems surfaced that did not exist at 300 papers:
+
+- **Reranking can only reorder what it is given.** Hybrid hit@10 is 0.86, so for some questions the right passage is not among the 30 candidates sent to the reranker.
+- **BM25 latency grows with the corpus.** `rank_bm25` scores every chunk in Python; going from 23k to 190k chunks took a query from about 40 ms to about 350 ms.
+
 ### Limitations
 
 - One person wrote the questions and the evidence labels, and 50 questions is a small sample: a difference of 0.06 in hit@5 is three questions.
 - The 10 Chinese questions were used while building the translation step (including choosing glossary terms), so they act as a development set, not a held-out test. The glossary only contains general AI terms, not terms specific to any question.
 - Evidence matching is lenient: a chunk that contains the evidence string for an unrelated reason still counts.
 
+## Next iterations
+
+Each item is a question the evaluation can answer:
+
+1. **Rerank pool size.** Does sending 50 or 100 candidates to the reranker instead of 30 recover the passages hybrid search ranks 31st to 100th, and what does it cost in latency?
+2. **Keyword index that scales.** Replace in-memory BM25 with SQLite FTS5; compare latency and hit@k at 190k chunks.
+3. **Time-aware ranking.** The date filter is a hard cutoff. Add a recency prior and detect "latest / recent" intent, with new questions whose correct answer depends on publication date.
+4. **Answer-level evaluation.** Measure abstention on questions the corpus cannot answer, and check that every cited span actually contains the supporting evidence.
+5. **A larger, independent question set.** 100+ questions, a separate held-out Chinese set, and a second annotator.
+
 ## Engineering notes
 
 - **Embedding throughput.** On this Apple-silicon laptop, ONNX on CPU embedded 11 to 17 chunks/s regardless of batch size, CoreML acceleration gave 17.5 chunks/s, and PyTorch on the Apple GPU (MPS) gave 113 chunks/s with identical vectors (cosine similarity 1.0000), so indexing moved to MPS without re-embedding.
-- **Resumable indexing.** Because indexing compares content hashes, an interrupted run picks up where it stopped; this was exercised when the backend was switched mid-run.
+- **Resumable indexing.** Because indexing compares content hashes, an interrupted run picks up where it stopped; this was exercised when the backend was switched mid-run. Growing the corpus to two weeks embedded only the 166,910 new chunks and skipped the 23,354 already indexed.
+- **Ingestion at scale.** 2,440 papers downloaded at one request every 3 seconds with no failures: 2,279 from HTML, 161 from PDF.
 
 ## Running it
 
