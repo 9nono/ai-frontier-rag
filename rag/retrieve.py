@@ -96,7 +96,8 @@ def hybrid_search(query, strategy, model_key="bge-small", k=10, since=None, pool
 def rerank(query, hits, reranker="minilm", k=10):
     if not hits:
         return []
-    scores = _reranker(reranker).predict([(query, h["text"]) for h in hits])
+    passages = [f"{h['title']}\nSection: {h['section']}\n{h['text']}" for h in hits]
+    scores = _reranker(reranker).predict([(query, p) for p in passages])
     ranked = sorted(zip(hits, scores), key=lambda p: p[1], reverse=True)[:k]
     return [{**h, "score": float(s), "source": f"{h['source']}+rerank"} for h, s in ranked]
 
