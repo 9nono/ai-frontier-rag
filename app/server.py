@@ -74,5 +74,11 @@ def api_answer():
     return jsonify(result)
 
 
+def warm_up():
+    search("warm up", method=DEFAULT_METHOD, strategy=DEFAULT_STRATEGY, model_key=DEFAULT_MODEL, k=1, translate=True)
+    search("预热", method=DEFAULT_METHOD, strategy=DEFAULT_STRATEGY, model_key=DEFAULT_MODEL, k=1, translate=True)
+
+
 if __name__ == "__main__":
+    warm_up()
     app.run(host="127.0.0.1", port=int(os.environ.get("PORT", 5077)), debug=False)
