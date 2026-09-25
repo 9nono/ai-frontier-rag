@@ -1,0 +1,446 @@
+[
+ {
+  "question": "How are recent papers handling memory for long-horizon LLM agents?",
+  "answer": "Recent papers on long-horizon LLM agents are addressing memory through several complementary approaches:\n\n**Memory Architecture and Refinement:**\nLLM-based agents deployed in long-term interactive scenarios like personal assistants and continual decision-making must accumulate knowledge across extensive histories and leverage past experiences, making long-term memory foundational.[1] Existing research predominantly follows a forward evolution paradigm where memory updates (addition, deletion, merging) are triggered by newly acquired information.[1]\n\n**Persistent Memory Systems:**\nPersistent memory has become central to long-horizon agents, enabling them to retain past interactions and retrieve relevant experiences, with recent systems substantially improving how histories are constructed, updated, organized, and retrieved.[2]\n\n**Memory Quality and Influence:**\nMemory effectiveness depends on whether the LLM gives each retrieved memory appropriate influence, and post-retrieval filtering cannot guarantee noise-free context since some memories may remain irrelevant or outdated.[3]\n\n**Risk-Aware Evaluation:**\nMemory failures in long-horizon agents are sparse, stateful, high-impact events, such as stale addresses, cross-user disclosures, or silently dropped constraints.[4] Existing benchmarks evaluate memory through QA accuracy, but they measure how well agents remember rather than when memory causes harmful failures.[5]",
+  "refused": false,
+  "sources": [
+   {
+    "n": 1,
+    "arxiv_id": "2609.16053",
+    "title": "Retrieval-Driven Memory Reconsolidation for Long-Term LLM Agents",
+    "section": "1 Introduction",
+    "cited": [
+     "Recent advances in Large Language Model (LLM)-based agents have enabled their deployment in long-term interactive scenarios like personal assistants, long-horizon task collaboration, and continual decision-making ( Zhang et al., 2025 ; Du, 2026 ; Song et al., 2026 ) . In these scenarios, agents must accumulate knowledge across extensive histories and leverage past experiences for future reasoning, making long-term memory a foundational capability of intelligent agents ( Wang et al., 2024 ; Li et al., 2026 ; Fang et al., 2026 ; Chai et al., 2026 ) . ",
+     "As shown in the left part of Figure 1 , existing long-term memory research predominantly follows a forward evolution paradigm, where memory updates, including addition, deletion, and merging of memory units, are triggered exclusively by newly acquired information ( Zhong et al., 2024 ; Hu et al., 2025 ; Wang and Chen, 2025 ) . "
+    ]
+   },
+   {
+    "n": 2,
+    "arxiv_id": "2609.23465",
+    "title": "Propose, Verify, Commit: Evidence-Grounded Memory for Long-Horizon Multi-Actor Conversations",
+    "section": "1 Introduction",
+    "cited": [
+     "Persistent memory has therefore become a central component of long-horizon agents, enabling them to retain past interactions, retrieve relevant experiences, and maintain information across sessions ( Maharana et al., 2024 ; Wu et al., 2025 ) . Recent memory systems have substantially improved how such histories are constructed, updated, organized, and retrieved ( Chhikara et al., 2025 ; Xu et al., 2025 ; Li et al., 2025 ) . "
+    ]
+   },
+   {
+    "n": 3,
+    "arxiv_id": "2609.24259",
+    "title": "MemCalib: Benchmarking and Optimizing Memory Use in LLM Agents",
+    "section": "1 Introduction",
+    "cited": [
+     "Although memory systems may differ in how they form, update, retrieve, and filter memories, their effectiveness ultimately depends on whether the LLM gives each memory in context the appropriate level of influence. Post-retrieval filtering cannot guarantee a noise-free context: some supplied memories may remain irrelevant or outdated, while even useful memories differ in the scope of influence they should have. "
+    ]
+   },
+   {
+    "n": 4,
+    "arxiv_id": "2609.14976",
+    "title": "MemRiskBench: Trace-Aware Risk-Preserving Evaluation for Long-Horizon LLM Agents",
+    "section": "1 Introduction",
+    "cited": [
+     "Memory failures here are not generic task failures but sparse, stateful, high-impact events: a stale address is a nuisance, a cross-user disclosure is serious, and a silently dropped “do not send” constraint is a policy violation. "
+    ]
+   },
+   {
+    "n": 5,
+    "arxiv_id": "2609.14976",
+    "title": "MemRiskBench: Trace-Aware Risk-Preserving Evaluation for Long-Horizon LLM Agents",
+    "section": "1 Introduction",
+    "cited": [
+     "Existing memory-capability benchmarks ( 2025 ; 2024 ; 2025 ; 2025 ; 2025 ) evaluate long-term memory through QA accuracy or information-extraction probes. They measure how well an agent remembers, not when memory causes harmful failures . "
+    ]
+   }
+  ],
+  "model": "claude-haiku-4-5-20251001",
+  "usage": {
+   "input_tokens": 2835,
+   "output_tokens": 385
+  },
+  "generated_at": "2026-09-25T06:42:06+00:00"
+ },
+ {
+  "question": "What new methods reduce KV cache memory for long-context inference?",
+  "answer": "Several new methods reduce KV cache memory for long-context inference:\n\n**KV Cache Compression:**\nSnapKV and PyramidKV are representative methods for reducing the memory and computational overhead of key-value caches in attention. SnapKV compresses long contexts by reusing low-rank snapshots of historical states, while PyramidKV hierarchically partitions the cache into temporal blocks with varying fidelity according to recency and importance.[1]\n\n**Quantization:**\nD-Quant, a driftable entropy coding method for KV cache quantization, enables scaling to larger batch sizes than standard BF16 precision, and reduces KV cache memory by approximately 7× during long-context decoding at 64K tokens.[2]\n\n**KV Selection and Sparsification:**\nEviction methods bound the cache using recency, accumulated attention, heavy-hitter statistics, or prompt-side importance estimates.[3] At inference time, attention can be sparsified by selecting a subset of context units, or KV-cache methods can dynamically select relevant cached tokens without irreversible eviction, which is more suitable for long reasoning generation.[4]\n\nComplementary approaches reduce retained-state costs through low-rank compression, quantization, or memory management.[3]",
+  "refused": false,
+  "sources": [
+   {
+    "n": 1,
+    "arxiv_id": "2609.23587",
+    "title": "On the Efficiency-Safety Dilemma in Large Reasoning Models",
+    "section": "3 Experiment Setup > 3.3 Efficiency LLM Methods",
+    "cited": [
+     "We adopt SnapKV ( Li et al., 2024 ) and PyramidKV ( Cai et al., 2024 ) , two representative methods for reducing the memory and computational overhead of key-value caches in attention. SnapKV compresses long contexts by reusing low-rank snapshots of historical states, while PyramidKV hierarchically partitions the cache into temporal blocks with varying fidelity according to recency and importance. "
+    ]
+   },
+   {
+    "n": 2,
+    "arxiv_id": "2609.19880",
+    "title": "D-Quant: Driftable Entropy Coding for KV Cache Quantization",
+    "section": "5 Experiments > 5.3 Efficiency > D-Quant substantially reduces KV cache memory.",
+    "cited": [
+     "With an $8$ K prompt, BF16 runs out of memory at batch size $64$ , whereas D-Quant scales to batch size $128$ with only $49.4$ GiB peak memory. During long-context decoding, D-Quant reduces the KV cache memory by approximately $7\\times$ at $64$ K. The smaller memory footprint directly enables substantially higher serving capacity under a fixed GPU memory budget."
+    ]
+   },
+   {
+    "n": 3,
+    "arxiv_id": "2609.26300",
+    "title": "CompKV: Compensation-Aware KV Selection for Long-Context LLM Inference",
+    "section": "2 Related Work",
+    "cited": [
+     "To accelerate long-context inference, eviction methods bound the cache using recency, accumulated attention, heavy-hitter statistics, or prompt-side importance estimates ( Xiao et al., 2024b ; Liu et al., 2023 ; Zhang et al., 2023 ; Li et al., 2024 ; Cai et al., 2025 ; Feng et al., 2025 ) . ",
+     "Complementary approaches reduce retained-state costs through low-rank compression ( Saxena et al., 2024 ; Singhania et al., 2024 ; Chang et al., 2025 ) , quantization ( Liu et al., 2024 ; Hooper et al., 2024 ; Kang et al., 2024 ; Li et al., 2025 ) , or memory management ( Kwon et al., 2023 ; Qu et al., 2025 ) . "
+    ]
+   },
+   {
+    "n": 4,
+    "arxiv_id": "2609.13141",
+    "title": "SAS: Simple Attention Sparsification via End-to-End Optimization of Context Ranking",
+    "section": "2 Related Work > Inference time attention sparsification / KV-cache selection.",
+    "cited": [
+     "A practical way to reduce long-context attention cost is to sparsify attention at inference time by selecting a subset of context units without updating the backbone LLM [ Xiao et al., 2024a , Zhang et al., 2023 , Tang et al., 2024 , Jiang et al., 2024 , Yang et al., 2025b , Liu et al., 2025b , Zhang et al., 2025c , Xu et al., 2025 ] . Closely related are KV-cache methods that dynamically select relevant cached tokens without irreversible eviction, which is more suitable for long reasoning generation where future token importance is hard to predict [ Tang et al., 2024 , Zhang et al., 2025a , Hooper et al., 2025 , Liu et al., 2025b , Cai et al., 2025 , Hao et al., 2025 , Mazaré et al., 2025 ] . "
+    ]
+   }
+  ],
+  "model": "claude-haiku-4-5-20251001",
+  "usage": {
+   "input_tokens": 3089,
+   "output_tokens": 367
+  },
+  "generated_at": "2026-09-25T06:42:06+00:00"
+ },
+ {
+  "question": "How is reinforcement learning being used to improve LLM reasoning in these papers?",
+  "answer": "Based on the papers provided, reinforcement learning is being used to improve LLM reasoning in several key ways:\n\n**Core RL Approach for Reasoning:**\nReinforcement learning has become central in training modern LLMs for reasoning, where models sample their own solutions, score them against a verifier or reward, and reinforce the successful ones.[1] Models generate alternative reasoning trajectories and learn directly from task-level outcomes that indicate which ones succeed.[2]\n\n**Test-Time Optimization:**\nRecent test-time reinforcement learning (TTRL) methods improve LLM reasoning capability by leveraging unlabelled test data after pre-training.[3] For example, Perception-Grounded TTRL (PG-TTRL) aligns label-free test-time optimisation with perceptually grounded reasoning, encouraging the model to structure its reasoning more strongly on the audio input.[3]\n\n**Multi-Perspective Reasoning:**\nComplex reasoning problems can be solved more effectively when dynamically transformed into multiple different conceptual perspectives specialized for different reasoning paradigms.[4]\n\n**Efficiency Considerations:**\nRL-based post-training supports reasoning, though repeatedly generating trajectories during training creates a major computational cost.[2] Research is also exploring ways to reduce this cost, such as achieving approximately 16× reduction in required training data through curriculum scheduling algorithms.[5]",
+  "refused": false,
+  "sources": [
+   {
+    "n": 1,
+    "arxiv_id": "2609.26704",
+    "title": "Beyond Repeated Sampling: Learning Search Policies for LLM Reasoning",
+    "section": "1 Introduction",
+    "cited": [
+     "Reinforcement learning has become a central ingredient in training modern large language models (LLMs), particularly for reasoning: a model is improved by sampling its own solutions, scoring them against a verifier or reward, and reinforcing the successful ones ( Shao et al., 2024 ; Olmo et al., 2025 ) . "
+    ]
+   },
+   {
+    "n": 2,
+    "arxiv_id": "2609.25463",
+    "title": "Rollout Efficiency in Reinforcement Learning for Reasoning Large Language Models: A Taxonomy and Future Directions",
+    "section": "1. Introduction",
+    "cited": [
+     "Reinforcement learning (RL) offers a complementary approach: models generate alternative reasoning trajectories and learn directly from task-level outcomes that indicate which ones succeed. ",
+     "Although RL-based post-training also supports alignment and safety, this survey focuses on reasoning, where repeatedly generating trajectories during training creates a major computational cost. "
+    ]
+   },
+   {
+    "n": 3,
+    "arxiv_id": "2609.23589",
+    "title": "Listen Then Reason: Perception-Grounded Test-Time Reinforcement Learning for Large Audio-Language Models",
+    "section": "Abstract",
+    "cited": [
+     "Recent test-time reinforcement learning (TTRL) methods further improve LLM reasoning capability by leveraging unlabelled test data after pre-training. ",
+     "Building on this, we propose Perception-Grounded TTRL (PG-TTRL), which aligns label-free test-time optimisation with perceptually grounded reasoning, encouraging the model to structure its reasoning more strongly on the audio input. "
+    ]
+   },
+   {
+    "n": 4,
+    "arxiv_id": "2609.21554",
+    "title": "MIRAGE: Multi-Perspective Creative Language Model Reasoning with Reinforcement Learning Guidance",
+    "section": "4 Proposed Method",
+    "cited": [
+     "The core insight is that complex reasoning problems can be solved more effectively when dynamically transformed into multiple different conceptual perspectives specialized for different reasoning paradigms."
+    ]
+   },
+   {
+    "n": 5,
+    "arxiv_id": "2609.13997",
+    "title": "Unlocking the Unsolvable: Teacher-Guided Curriculum for Data-Efficient RLVR",
+    "section": "Appendix H Broader Impacts",
+    "cited": [
+     "On the positive side, our data-efficiency finding ( ${\\sim}16\\times$ reduction in required training data) may help democratize access to reasoning improvements for resource-constrained research groups."
+    ]
+   }
+  ],
+  "model": "claude-haiku-4-5-20251001",
+  "usage": {
+   "input_tokens": 3014,
+   "output_tokens": 395
+  },
+  "generated_at": "2026-09-25T06:42:06+00:00"
+ },
+ {
+  "question": "What benchmarks evaluate whether AI agents act safely over multi-step tasks?",
+  "answer": "Several benchmarks specifically evaluate AI agent safety over multi-step tasks:\n\n**AgentBench** evaluates multi-turn decision-making across operating system shells, databases, web interfaces, and digital games, and has highlighted severe security vulnerabilities where agents frequently execute destructive bash commands when given ambiguous instructions.[1]\n\n**R-Judge** benchmarks safety and risk awareness across 1,624 multi-turn interaction trajectories, evaluating whether agents can identify dangerous action proposals before execution.[1]\n\n**SafeAgentBench** extends evaluation to embodied settings in which unsafe planning may result in hazardous physical actions.[2]\n\n**AgentHarm** shifts the evaluation target from harmful text generation toward whether autonomous agents can successfully complete malicious multi-step tasks.[2]\n\n**ASB** broadens coverage across system prompts, user prompts, tool use, memory retrieval, planning, and defense evaluation.[2]\n\n**BLINDSPOT** treats the trajectory itself as the safety object, where the same task may require continued execution, refusal, additional authorization, or termination depending on policy and state accumulated during the interaction.[3]",
+  "refused": false,
+  "sources": [
+   {
+    "n": 1,
+    "arxiv_id": "2609.13731",
+    "title": "Trustworthy Agentic AI: A Comprehensive Cybersecurity and Systems Survey on Threat Landscapes, Defense Architectures, and Open Challenges",
+    "section": "VII Empirical Benchmarks, Auditing & Evaluation Frameworks > VII-A State-of-the-Art Empirical Benchmark Suites",
+    "cited": [
+     "In full-loop environments, AgentBench [ 181 ] evaluates multi-turn decision-making across operating system shells, databases, web interfaces, and digital games. AgentBench highlighted severe security vulnerabilities in OS environments, where agents frequently execute destructive bash commands when given ambiguous instructions. ",
+     "To evaluate planning safety specifically, R-Judge [ 100 ] benchmarks safety and risk awareness across 1,624 multi-turn interaction trajectories, evaluating whether agents can identify dangerous action proposals before execution. "
+    ]
+   },
+   {
+    "n": 2,
+    "arxiv_id": "2609.23894",
+    "title": "Connecting the Dots in Agentic AI Security: A Cross-Dimensional Threat Taxonomy, Evaluation Maturity, and Open Challenges",
+    "section": "V Empirical Analysis of Agentic AI Red Teaming > V-C Benchmarks and Evaluation Practices",
+    "cited": [
+     "AgentPoison isolates persistent compromise of memory and knowledge retrieval [ 8 ] , whereas SafeAgentBench extends evaluation to embodied settings in which unsafe planning may result in hazardous physical actions [ 93 ] . ",
+     "AgentHarm shifts the evaluation target from harmful text generation toward whether autonomous agents can successfully complete malicious multi-step tasks [ 56 ] . ",
+     "ASB broadens coverage across system prompts, user prompts, tool use, memory retrieval, planning, and defense evaluation [ 48 ] , while large-scale public red teaming evaluates adversarial robustness across diverse frontier models and agent configurations [ 106 ] ."
+    ]
+   },
+   {
+    "n": 3,
+    "arxiv_id": "2609.16305",
+    "title": "BLINDSPOT: A Benchmark for Safety and Refusal Calibration in Long-Horizon Tool-Using Agents",
+    "section": "2 Related Work > Stateful tool-use and task-completion benchmarks.",
+    "cited": [
+     "BLINDSPOT instead treats the trajectory itself as the safety object: the same task may require continued execution, refusal, additional authorization, or termination depending on policy and state accumulated during the interaction."
+    ]
+   }
+  ],
+  "model": "claude-haiku-4-5-20251001",
+  "usage": {
+   "input_tokens": 2944,
+   "output_tokens": 334
+  },
+  "generated_at": "2026-09-25T06:42:06+00:00"
+ },
+ {
+  "question": "How are diffusion language models being made faster or better at reasoning?",
+  "answer": "The paper proposes a Causal Shortcut Learning (CSL) Framework that introduces a step-by-step token extraction procedure to extract causal shortcuts from data, and applies parallel prioritized masking on these tokens during training to enable efficient and accurate convergence to correct answers via causal shortcuts.[1]\n\nCausal shortcuts are defined as token chains that cover the full sequence and provide explicit guidance towards correct reasoning trajectories.[1] The analysis finds that causal shortcuts largely improve answer convergence efficiency and generation accuracy.[1]\n\nExperiments demonstrate that CSL consistently outperforms existing SFT-variant baselines, achieving an average improvement of 1.92% over SFT-only models, and up to 4.20% on MATH-500.[1] Additionally, CSL enables earlier and more confident decoding of causal shortcut tokens, leading to faster convergence and reduced error accumulation in long-sequence reasoning.[2]",
+  "refused": false,
+  "sources": [
+   {
+    "n": 1,
+    "arxiv_id": "2609.28272",
+    "title": "Towards Efficient Reasoning: Learning Causal Shortcuts for Diffusion Language Models",
+    "section": "Abstract",
+    "cited": [
+     "Motivated by this, we propose a Causal Shortcut Learning (CSL) Framework for DLMs. Specifically, we introduce a step-by-step token extraction procedure to extract causal shortcuts from data, and apply parallel prioritized masking on these tokens during training to enable efficient and accurate convergence to correct answers via causal shortcuts. ",
+     "We define causal shortcuts as token chains that cover the full sequence and provide explicit guidance towards correct reasoning trajectories. ",
+     "We analyze the effects of causal shortcuts on the reasoning accuracy and convergence speed of DLMs, and find that they largely improve answer convergence efficiency and generation accuracy. ",
+     "Extensive experiments across multiple reasoning benchmarks and two base models demonstrate that CSL consistently outperforms existing SFT-variant baselines, achieving an average improvement of $1.92\\%$ over SFT-only models, and up to $4.20\\%$ on MATH-500. "
+    ]
+   },
+   {
+    "n": 2,
+    "arxiv_id": "2609.28272",
+    "title": "Towards Efficient Reasoning: Learning Causal Shortcuts for Diffusion Language Models",
+    "section": "4 Experiments > 4.3 Ablation Studies",
+    "cited": [
+     "In conclusion, CSL enables earlier and more confident decoding of causal shortcut tokens, leading to faster convergence and reduced error accumulation in long-sequence reasoning. "
+    ]
+   }
+  ],
+  "model": "claude-haiku-4-5-20251001",
+  "usage": {
+   "input_tokens": 3266,
+   "output_tokens": 278
+  },
+  "generated_at": "2026-09-25T06:42:06+00:00"
+ },
+ {
+  "question": "What did the Hunyuan-A13B technical report find about its mixture-of-experts model?",
+  "answer": "Hunyuan-A13B is based on a Mixture-of-Experts architecture with 80 billion total parameters but activates only 13 billion during inference, balancing model capability, computational efficiency, and deployment cost.[1]\n\nMore specifically, the model consists of 1 shared expert and 64 fine-grained non-shared experts, with the shared expert remaining perpetually active during training while only 8 non-shared experts are activated simultaneously.[2] The report found that the presence of a shared expert has a noticeable impact on model performance, but increasing the number of shared experts beyond one yields diminishing returns.[2]\n\nBy selectively activating relevant model components for each input, Hunyuan-A13B achieves performance comparable with cutting-edge LLMs, substantially reducing inference latency and computational overhead relative to dense models of similar scale.[3]",
+  "refused": false,
+  "sources": [
+   {
+    "n": 1,
+    "arxiv_id": "2609.27284",
+    "title": "Hunyuan-A13B Technical Report",
+    "section": "Abstract",
+    "cited": [
+     "We present Hunyuan-A13B, an open-source large language model based on a Mixture-of-Experts architecture. It contains 80 billion total parameters but activates only 13 billion during inference, balancing model capability, computational efficiency, and deployment cost. "
+    ]
+   },
+   {
+    "n": 2,
+    "arxiv_id": "2609.27284",
+    "title": "Hunyuan-A13B Technical Report",
+    "section": "2 Pre-Training > 2.2 Model Architechture",
+    "cited": [
+     "Specifically, it consists of 1 shared expert and 64 fine-grained non-shared experts, all operating with identical intermediate dimension. ",
+     "During the training stage, the shared expert remains perpetually active, while only 8 non-shared experts are activated simultaneously. ",
+     "Through these experiments, we observe that the presence of a shared expert has a noticeable impact on model performance, as models without any shared expert tend to underperform compared to those with at least one. However, increasing the number of shared experts beyond one yields diminishing returns, with only marginal improvements (or even fluctuations) in model effectiveness. "
+    ]
+   },
+   {
+    "n": 3,
+    "arxiv_id": "2609.27284",
+    "title": "Hunyuan-A13B Technical Report",
+    "section": "1 Introduction",
+    "cited": [
+     "By selectively activating relevant model components for each input, Hunyuan-A13B achieves performance comparable with cutting-edge LLMs, substantially reducing inference latency and computational overhead relative to dense models of similar scale. "
+    ]
+   }
+  ],
+  "model": "claude-haiku-4-5-20251001",
+  "usage": {
+   "input_tokens": 3302,
+   "output_tokens": 261
+  },
+  "generated_at": "2026-09-25T06:42:06+00:00"
+ },
+ {
+  "question": "最近有哪些检测或缓解大模型幻觉的新方法？",
+  "answer": "根据提供的论文，最近有以下几种检测和缓解大模型幻觉的新方法：\n\n**检测方法：**\n\n1. 使用特定注意力权重模式来检测大语言模型中的幻觉响应[1]。更具体地，基于将注意力权重解释为加权邻接矩阵的文献，评估可能阻碍信息流的注意力图的拓扑属性，从而提出从注意力权重推导的拓扑特征来有效区分幻觉响应和真实响应[2]。\n\n2. 通过测量多个生成响应的内部变异性来识别幻觉响应，使用top-p/top-k采样策略获得多个响应，然后测量其中的语义分歧[3]。\n\n**缓解方法：**\n\n检索增强生成(RAG)已获得关注，作为一个有希望的解决方案，通过从外部知识源检索相关信息作为LLM输入的上下文来改进LLM输出的准确性和可靠性[4]。\n\n此外，在多智能体框架中，通过分离智能体职责和限制提供给每个智能体的信息和权限来缓解幻觉[5]。",
+  "refused": false,
+  "sources": [
+   {
+    "n": 1,
+    "arxiv_id": "2609.21096",
+    "title": "Detecting Hallucination in LLMs: Tracing the Topological Signatures of Impaired Context Sharing",
+    "section": "V Related works",
+    "cited": [
+     "The second approach, which draws on more recent studies, has explored the use of specific attention-weight patterns to detect hallucinated responses in large language models (LLMs) [ 19 ] [ 23 ] . "
+    ]
+   },
+   {
+    "n": 2,
+    "arxiv_id": "2609.21096",
+    "title": "Detecting Hallucination in LLMs: Tracing the Topological Signatures of Impaired Context Sharing",
+    "section": "I Introduction",
+    "cited": [
+     "Building upon literature that interprets attention weights as a weighted adjacency matrix [ 11 ] , we evaluate topological properties of the attention graph that can impede information flow. Consequently, we propose a set of topological features derived from attention weights that effectively distinguish hallucinated from factual responses. "
+    ]
+   },
+   {
+    "n": 3,
+    "arxiv_id": "2609.21096",
+    "title": "Detecting Hallucination in LLMs: Tracing the Topological Signatures of Impaired Context Sharing",
+    "section": "V Related works",
+    "cited": [
+     "The first one supposes that hallucination is the result of the model’s sequence-level uncertainty or semantic inconsistency during token generation, and therefore its main focus is to identify hallucinated responses through measuring the amount of intravariability of multiple generated responses [ 8 ] , [ 10 ] , [ 22 ] . Such methods obtain multiple responses by applying top-p/top-k sampling strategy and then measure the semantic divergence among them. "
+    ]
+   },
+   {
+    "n": 4,
+    "arxiv_id": "2609.16095",
+    "title": "RAG-CT: Mitigating Privacy Risks on Retrieval-Augmented Generation Systems via Scanning Prompt Distribution",
+    "section": "1 Introduction",
+    "cited": [
+     "To mitigate these issues, Retrieval-Augmented Generation (RAG) has recently gained attention as a promising solution [ 17 ] . Specifically, RAG improves the accuracy and reliability of LLM outputs by incorporating relevant information retrieved from external knowledge sources as the context of LLM inputs shown in Fig. "
+    ]
+   },
+   {
+    "n": 5,
+    "arxiv_id": "2609.13436",
+    "title": "Toward Self-Adaptive Physical AI: Can LLM Agents Manage Long-Horizon Physical Tasks?",
+    "section": "4 Physical AI Agent Framework Design > 4.2 Grounding multi-agent decision making for hallucination mitigation",
+    "cited": [
+     "To mitigate hallucinations, we follow two main design principles: (i) separating agent responsibilities and (ii) restricting the information and authority available to each agent. "
+    ]
+   }
+  ],
+  "model": "claude-haiku-4-5-20251001",
+  "usage": {
+   "input_tokens": 3151,
+   "output_tokens": 454
+  },
+  "generated_at": "2026-09-25T06:42:06+00:00"
+ },
+ {
+  "question": "检索增强生成（RAG）最近有什么改进？",
+  "answer": "Based on the indexed papers, here are some recent improvements to Retrieval-Augmented Generation (RAG):\n\n**Technical Enhancements:**\nPrior work has explored retrieval refinement through reranking, active, and iterative retrieval strategies, as well as architectures that improve reasoning over retrieved documents and multi-document fusion[1]. Additionally, work has explored supervised fine-tuning of LLMs to retrofit them with retrieval capabilities, distilling reader signal back into the retriever, or fine-tuning the generator to reason over retrieved context[1].\n\n**Dynamic Selection:**\nRAG improves text generation by grounding LLM outputs in external knowledge, thereby mitigating hallucinations and knowledge limitations[1], and recent approaches explore dynamic selection of retrievers and generators for different tasks.\n\n**Security and Privacy:**\nNovel defenses like RAG-CT identify malicious queries by analyzing their entropy and margin distributions, providing a lightweight yet effective mechanism to protect RAG systems against PII leakage without requiring modifications to the underlying LLM or retriever[2].\n\n**Domain-Specific Applications:**\nRecent work has introduced legal-specific retrieval and RAG benchmarks, including LegalBench-RAG and Legal RAG Bench[3].",
+  "refused": false,
+  "sources": [
+   {
+    "n": 1,
+    "arxiv_id": "2609.17709",
+    "title": "One Size Does Not Fit All! Dynamic Retriever and Generator Selection for RAG",
+    "section": "2. Related Works > Retrieval Augmented Generation",
+    "cited": [
+     "Prior work has explored several forms of retrieval augmentation, including query-based retrieval and retrieval-conditioned generation ( Guu et al., 2020 ; Shi et al., 2024 ) , latent and logit-level integration of retrieved evidence into language modeling ( Khandelwal et al., 2020 ; Zhong et al., 2022 ) , retrieval refinement through reranking, active, and iterative retrieval strategies ( Glass et al., 2022 ; Jiang et al., 2023 ; Zhang et al., 2023 ) , as well as architectures that improve reasoning over retrieved documents and multi-document fusion ( Izacard and Grave, 2021 ; Lan et al., 2023 ; Santra et al., 2025 ) . ",
+     "Another line of work explores supervised fine-tuning of LLMs, that retrofit any LLM with retrieval capabilities ( Lin et al., 2024 ; Wang et al., 2024a ) , distill reader signal back into the retriever ( Izacard et al., 2023 ) , or fine-tune the generator to reason over retrieved context ( Lin et al., 2024 ; Asai et al., 2024 ) .",
+     "Retrieval-Augmented Generation (RAG) improves text generation by grounding LLM outputs in external knowledge, thereby mitigating hallucinations and knowledge limitations. "
+    ]
+   },
+   {
+    "n": 2,
+    "arxiv_id": "2609.16095",
+    "title": "RAG-CT: Mitigating Privacy Risks on Retrieval-Augmented Generation Systems via Scanning Prompt Distribution",
+    "section": "Abstract",
+    "cited": [
+     "To mitigate this risk, we propose a novel defense, RAG-CT, that identifies malicious queries by analyzing their entropy and margin distributions and using a score-based detection method. ",
+     "This work provides a lightweight yet effective mechanism to protect RAG systems against PII leakage without requiring modifications to the underlying LLM or retriever."
+    ]
+   },
+   {
+    "n": 3,
+    "arxiv_id": "2609.14739",
+    "title": "Building Legal Reward Models for Grounding and Abstention",
+    "section": "6 Related Work > Retrieval-Augmented Generation in Law",
+    "cited": [
+     "Recent work has introduced legal-specific retrieval and RAG benchmarks, including LegalBench-RAG and Legal RAG Bench ( Pipitone and Alami, 2024 ; Butler and Butler, 2026 ) . "
+    ]
+   }
+  ],
+  "model": "claude-haiku-4-5-20251001",
+  "usage": {
+   "input_tokens": 2976,
+   "output_tokens": 350
+  },
+  "generated_at": "2026-09-25T06:42:06+00:00"
+ },
+ {
+  "question": "有哪些工作研究多智能体系统的安全风险？",
+  "answer": "根据这些论文，多个研究团队已经在研究多智能体系统的安全风险：\n\n**特定攻击研究：**\n- Agent Smith 在模拟多模态智能体群体中展示了感染性越狱，其中引入到一个智能体记忆中的对抗性图像通过两两交互传播[1]\n- Prompt Infection 研究了通过在通信智能体之间复制的有效载荷的对应文本通道[1]\n- CORBA 通过表面上温和的指令诱发递归、无生产力的消息传递，阻断整个系统的协作[1]\n- Multi-Agent Security Tax 研究恶意指令在多个跳跃上的传播，并发现减少传播的防御也会影响协作[1]\n\n**系统层面的防守：**\n- G-Safeguard 研究基于LLM多智能体系统的拓扑感知防护栏；A-MEM 研究智能体记忆机制；最近的工作确定了智能体记忆和自主网络智能体中的隐私风险[2]\n\n**识别的安全依赖：**\n- 多智能体系统创建了单智能体测试无法捕捉的安全依赖关系，其安全性取决于身份、委派、通信、共享状态、协调机制和对其他参与者的假设[3]",
+  "refused": false,
+  "sources": [
+   {
+    "n": 1,
+    "arxiv_id": "2609.18460",
+    "title": "Collective Loss of Control in LLM Agent Systems: An Epidemic Account of Mutation, Contagion, and Recovery",
+    "section": "2 Related Work > 2.2 Multi-Agent Security and Propagation of Unsafe State",
+    "cited": [
+     "Agent Smith demonstrates infectious jailbreaks in simulated multimodal agent populations, where an adversarial image introduced into one agent’s memory spreads through pairwise interaction [ 14 ] . ",
+     "Prompt Infection studies a corresponding text-based channel through payloads that replicate between communicating agents [ 26 ] . ",
+     "CORBA induces recursive, unproductive message passing through superficially benign instructions, blocking collaboration across the system [ 62 ] . ",
+     "Multi-Agent Security Tax studies malicious instructions spreading over multiple hops and finds that defenses which reduce propagation can also impair collaboration [ 35 ] . "
+    ]
+   },
+   {
+    "n": 2,
+    "arxiv_id": "2609.19226",
+    "title": "PAPC: Platform Mediation for Privacy-Propagation Externalities in AI-Mediated Workflows",
+    "section": "7 Related Work > LLM-agent security and memory-centric multi-agent systems.",
+    "cited": [
+     "Agent Smith illustrates spread across interacting agents [ 8 ] ; G-Safeguard studies topology-aware guardrails for LLM-based multi-agent systems [ 23 ] ; A-MEM studies agent memory mechanisms [ 24 ] ; and recent work identifies privacy risks in agent memory and autonomous web agents [ 22 , 27 ] . "
+    ]
+   },
+   {
+    "n": 3,
+    "arxiv_id": "2609.23894",
+    "title": "Connecting the Dots in Agentic AI Security: A Cross-Dimensional Threat Taxonomy, Evaluation Maturity, and Open Challenges",
+    "section": "VI Research Gaps and Future Directions > VI-C Multi-Agent and Human–Agent Security",
+    "cited": [
+     "Multi-agent systems create security dependencies that cannot be captured by replicating single-agent tests across several models. Their security depends on identity, delegation, communication, shared state, coordination mechanisms, and assumptions about other participants. "
+    ]
+   }
+  ],
+  "model": "claude-haiku-4-5-20251001",
+  "usage": {
+   "input_tokens": 2958,
+   "output_tokens": 497
+  },
+  "generated_at": "2026-09-25T06:42:06+00:00"
+ },
+ {
+  "question": "When will GPT-7 be released and what is its context window?",
+  "answer": "The indexed papers do not contain information about GPT-7's release date or context window. The papers discuss various GPT models that exist as of early 2026 (such as GPT-5, GPT-5.3, and GPT-5.4), but they do not mention GPT-7 or provide predictions about future model releases.",
+  "refused": false,
+  "sources": [],
+  "model": "claude-haiku-4-5-20251001",
+  "usage": {
+   "input_tokens": 2612,
+   "output_tokens": 79
+  },
+  "generated_at": "2026-09-25T06:42:06+00:00"
+ }
+]
