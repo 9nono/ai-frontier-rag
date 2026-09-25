@@ -9,5 +9,6 @@ requests==2.34.2
 sacremoses==0.2.0
 sentence-transformers==6.1.0
 sentencepiece==0.2.2
+socksio==1.0.0
 torch==2.14.0
 transformers==5.17.0
