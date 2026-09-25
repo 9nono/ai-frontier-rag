@@ -22,10 +22,6 @@ EMBED_MODELS = {
         "name": "BAAI/bge-small-en-v1.5",
         "query_prefix": "Represent this sentence for searching relevant passages: ",
     },
-    "bge-m3": {
-        "name": "BAAI/bge-m3",
-        "query_prefix": "",
-    },
 }
 
 _models = {}

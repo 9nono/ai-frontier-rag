@@ -5,7 +5,7 @@ import anthropic
 
 from rag.retrieve import search
 
-DEFAULT_MODEL = "claude-opus-5"
+DEFAULT_MODEL = "claude-haiku-4-5"
 FALLBACK_MODELS = {"claude-opus-5"}
 NO_EFFORT_MODELS = {"claude-haiku-4-5"}
 TOP_K = 6

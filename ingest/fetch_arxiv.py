@@ -4,7 +4,7 @@ import json
 import sqlite3
 import time
 import xml.etree.ElementTree as ET
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import requests
@@ -114,29 +114,43 @@ def upsert_paper(conn, paper):
     return "updated" if row else "inserted"
 
 
-def fetch_metadata(categories, limit, page_size):
+def _fetch_page(session, throttle, query, start, size, attempts=4):
+    for attempt in range(attempts):
+        throttle.wait()
+        resp = session.get(API_URL, params={
+            "search_query": query, "sortBy": "submittedDate", "sortOrder": "descending",
+            "start": start, "max_results": size,
+        }, timeout=60)
+        if resp.status_code == 200:
+            entries = ET.fromstring(resp.content).findall("atom:entry", NS)
+            if entries:
+                return entries
+        time.sleep(5 * (attempt + 1))
+    return []
+
+
+def fetch_metadata(categories, limit, page_size, days=None):
     conn = connect()
     session = requests.Session()
     session.headers["User-Agent"] = USER_AGENT
     throttle = Throttle(REQUEST_GAP_SECONDS)
     query = " OR ".join(f"cat:{c}" for c in categories)
+    cutoff = (datetime.now(timezone.utc) - timedelta(days=days)).isoformat() if days else None
     counts = {"inserted": 0, "updated": 0, "unchanged": 0}
     start = 0
     while start < limit:
-        throttle.wait()
-        resp = session.get(API_URL, params={
-            "search_query": query, "sortBy": "submittedDate", "sortOrder": "descending",
-            "start": start, "max_results": min(page_size, limit - start),
-        }, timeout=60)
-        resp.raise_for_status()
-        entries = ET.fromstring(resp.content).findall("atom:entry", NS)
+        entries = _fetch_page(session, throttle, query, start, min(page_size, limit - start))
         if not entries:
             break
-        for entry in entries:
-            counts[upsert_paper(conn, parse_entry(entry))] += 1
+        papers = [parse_entry(e) for e in entries]
+        in_window = [p for p in papers if not cutoff or p["published"] >= cutoff]
+        for paper in in_window:
+            counts[upsert_paper(conn, paper)] += 1
         conn.commit()
         start += len(entries)
-        print(f"metadata: {start}/{limit} {counts}")
+        print(f"metadata: {start} fetched, oldest {papers[-1]['published'][:10]} {counts}", flush=True)
+        if len(in_window) < len(papers):
+            break
     conn.close()
     return counts
 
@@ -197,11 +211,12 @@ def main():
     meta.add_argument("--categories", nargs="+", default=["cs.CL", "cs.AI"])
     meta.add_argument("--limit", type=int, default=300)
     meta.add_argument("--page-size", type=int, default=100)
+    meta.add_argument("--days", type=int, help="stop once papers are older than this many days")
     full = sub.add_parser("fulltext")
     full.add_argument("--limit", type=int)
     args = parser.parse_args()
     if args.command == "metadata":
-        fetch_metadata(args.categories, args.limit, args.page_size)
+        fetch_metadata(args.categories, args.limit, args.page_size, args.days)
     else:
         fetch_fulltext(args.limit)
 
