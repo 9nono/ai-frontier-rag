@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Frontier Search</title>
+<style>
+:root {
+  --bg: #f7f7f5; --panel: #ffffff; --text: #1d1f23; --muted: #62666f; --line: #e3e3df;
+  --accent: #2f5bd3; --accent-soft: #e8eefc; --mark: #fff1b8; --warn: #9a5b00;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #15171a; --panel: #1d2024; --text: #e9eaec; --muted: #9ba1ab; --line: #30343a;
+          --accent: #8aa9ff; --accent-soft: #232b3f; --mark: #5a4a12; --warn: #f0b659; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text);
+       font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif; }
+main { max-width: 860px; margin: 0 auto; padding: 28px 16px 60px; }
+h1 { font-size: 24px; margin: 0 0 4px; }
+.sub { color: var(--muted); margin: 0 0 20px; font-size: 14px; }
+.tabs { display: flex; gap: 6px; border-bottom: 1px solid var(--line); margin-bottom: 18px; }
+.tabs button { background: none; border: 0; padding: 9px 12px; color: var(--muted); cursor: pointer;
+               font-size: 14px; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+.tabs button.active { color: var(--text); border-color: var(--accent); font-weight: 600; }
+form { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+input[type=text], textarea, select, input[type=date] {
+  background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 8px;
+  padding: 9px 11px; font: inherit; }
+input[type=text] { flex: 1 1 320px; min-width: 0; }
+textarea { width: 100%; min-height: 70px; resize: vertical; }
+button.primary { background: var(--accent); color: #fff; border: 0; border-radius: 8px; padding: 9px 16px;
+                 font: inherit; cursor: pointer; }
+button.primary:disabled { opacity: .6; cursor: default; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px;
+        margin-bottom: 12px; }
+.card h3 { margin: 0 0 4px; font-size: 15.5px; }
+.card h3 a { color: var(--text); text-decoration: none; }
+.card h3 a:hover { color: var(--accent); }
+.meta { color: var(--muted); font-size: 12.5px; margin-bottom: 8px; }
+.snippet { white-space: pre-wrap; font-size: 14px; overflow-wrap: anywhere; }
+.snippet.clamp { display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
+.more { background: none; border: 0; color: var(--accent); cursor: pointer; padding: 4px 0 0; font-size: 13px; }
+mark { background: var(--mark); color: inherit; padding: 0 1px; border-radius: 2px; }
+.pill { display: inline-block; background: var(--accent-soft); color: var(--accent); border-radius: 999px;
+        padding: 1px 8px; font-size: 12px; margin-right: 6px; }
+.answer { white-space: pre-wrap; margin: 6px 0 10px; }
+.answer sup { color: var(--accent); font-weight: 600; font-size: 11px; }
+.sources { border-top: 1px solid var(--line); padding-top: 8px; font-size: 13px; }
+.sources li { margin-bottom: 6px; }
+.quote { color: var(--muted); font-style: italic; display: block; margin-top: 2px; overflow-wrap: anywhere; }
+.note { color: var(--muted); font-size: 13.5px; }
+.warn { color: var(--warn); }
+.hidden { display: none; }
+</style>
+</head>
+<body>
+<main>
+  <h1>AI Frontier Search</h1>
+  <p class="sub" id="stats">Loading corpus…</p>
+  <div class="tabs" role="tablist">
+    <button data-tab="search" class="active">Search papers</button>
+    <button data-tab="featured">Featured Q&amp;A</button>
+    <button data-tab="ask" class="hidden" id="ask-tab">Ask (local)</button>
+  </div>
+
+  <section id="tab-search">
+    <form id="search-form">
+      <input type="text" id="q" placeholder="e.g. how to reduce hallucination in retrieval-augmented generation" autocomplete="off">
+      <select id="method" title="Retrieval method">
+        <option value="hybrid_rerank">Hybrid + rerank</option>
+        <option value="hybrid">Hybrid (BM25 + vector)</option>
+        <option value="vector">Vector only</option>
+        <option value="bm25">BM25 only</option>
+      </select>
+      <input type="date" id="since" title="Only papers published on or after">
+      <button class="primary" type="submit">Search</button>
+    </form>
+    <div id="results"><p class="note">Search runs locally over the indexed paper excerpts; no language model is called.</p></div>
+  </section>
+
+  <section id="tab-featured" class="hidden">
+    <p class="note">Answers generated once with Claude from the retrieved excerpts, with sentence-level citations.</p>
+    <div id="featured"></div>
+  </section>
+
+  <section id="tab-ask" class="hidden">
+    <form id="ask-form">
+      <textarea id="question" placeholder="Ask about the indexed papers. Questions in Chinese work too."></textarea>
+      <button class="primary" type="submit">Answer</button>
+    </form>
+    <div id="answer"></div>
+  </section>
+</main>
+<script>
+const $ = (sel) => document.querySelector(sel);
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[c]));
+const arxivUrl = (id) => `https://arxiv.org/abs/${encodeURIComponent(id)}`;
+
+function highlight(text, query) {
+  let html = esc(text);
+  const terms = [...new Set(query.toLowerCase().match(/[a-z0-9][a-z0-9.\-]{2,}/g) || [])];
+  for (const t of terms) {
+    const re = new RegExp(`(${t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`, "gi");
+    html = html.replace(re, "<mark>$1</mark>");
+  }
+  return html;
+}
+
+function hitCard(h, query) {
+  const div = document.createElement("div");
+  div.className = "card";
+  div.innerHTML = `
+    <h3><a href="${arxivUrl(h.arxiv_id)}" target="_blank" rel="noopener">${esc(h.title)}</a></h3>
+    <div class="meta"><span class="pill">${esc(h.kind)}</span>${esc(h.section)} · ${esc(h.published.slice(0, 10))} · arXiv:${esc(h.arxiv_id)}</div>
+    <div class="snippet clamp">${highlight(h.text, query)}</div>
+    <button class="more">Show more</button>`;
+  const snip = div.querySelector(".snippet"), more = div.querySelector(".more");
+  more.onclick = () => { snip.classList.toggle("clamp"); more.textContent = snip.classList.contains("clamp") ? "Show more" : "Show less"; };
+  return div;
+}
+
+function answerCard(item) {
+  const div = document.createElement("div");
+  div.className = "card";
+  if (item.refused || !item.answer) {
+    div.innerHTML = `<h3>${esc(item.question)}</h3><p class="warn">The model declined to answer this question.</p>`;
+    return div;
+  }
+  const body = esc(item.answer).replace(/\[(\d+)\]/g, "<sup>[$1]</sup>");
+  const sources = (item.sources || []).map((s) => `
+    <li><b>[${s.n}]</b> <a href="${arxivUrl(s.arxiv_id)}" target="_blank" rel="noopener">${esc(s.title)}</a>
+      <span class="note">— ${esc(s.section)}</span>
+      ${(s.cited || []).map((c) => `<span class="quote">“${esc(c)}”</span>`).join("")}</li>`).join("");
+  div.innerHTML = `<h3>${esc(item.question)}</h3><div class="answer">${body}</div>
+    ${sources ? `<ol class="sources">${sources}</ol>` : `<p class="note">No excerpt supported an answer.</p>`}`;
+  return div;
+}
+
+document.querySelectorAll(".tabs button").forEach((b) => b.onclick = () => {
+  document.querySelectorAll(".tabs button").forEach((x) => x.classList.toggle("active", x === b));
+  for (const t of ["search", "featured", "ask"]) $(`#tab-${t}`).classList.toggle("hidden", t !== b.dataset.tab);
+});
+
+$("#search-form").onsubmit = async (e) => {
+  e.preventDefault();
+  const q = $("#q").value.trim();
+  if (!q) return;
+  const params = new URLSearchParams({q, method: $("#method").value, k: 8});
+  if ($("#since").value) params.set("since", $("#since").value);
+  $("#results").innerHTML = `<p class="note">Searching…</p>`;
+  try {
+    const res = await fetch(`/api/search?${params}`);
+    if (!res.ok) throw new Error(res.statusText);
+    const {hits} = await res.json();
+    $("#results").innerHTML = hits.length ? "" : `<p class="note">No matching excerpts.</p>`;
+    hits.forEach((h) => $("#results").appendChild(hitCard(h, q)));
+  } catch (err) {
+    $("#results").innerHTML = `<p class="warn">Search failed: ${esc(err.message)}. Try again.</p>`;
+  }
+};
+
+$("#ask-form").onsubmit = async (e) => {
+  e.preventDefault();
+  const question = $("#question").value.trim();
+  if (!question) return;
+  const btn = e.submitter; btn.disabled = true;
+  $("#answer").innerHTML = `<p class="note">Retrieving excerpts and asking Claude… this takes a few seconds.</p>`;
+  try {
+    const res = await fetch("/api/answer", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({question})});
+    if (!res.ok) throw new Error(res.statusText);
+    $("#answer").innerHTML = "";
+    $("#answer").appendChild(answerCard(await res.json()));
+  } catch (err) {
+    $("#answer").innerHTML = `<p class="warn">Answer failed: ${esc(err.message)}.</p>`;
+  } finally { btn.disabled = false; }
+};
+
+(async () => {
+  try {
+    const s = await (await fetch("/api/stats")).json();
+    $("#stats").textContent = `${s.papers} recent arXiv papers (cs.CL, cs.AI) · published ${s.from} to ${s.to}`;
+    if (s.live_answers) $("#ask-tab").classList.remove("hidden");
+  } catch { $("#stats").textContent = "Corpus stats unavailable."; }
+  const featured = await (await fetch("/api/featured")).json();
+  if (!featured.length) $("#featured").innerHTML = `<p class="note">No featured answers yet.</p>`;
+  featured.forEach((item) => $("#featured").appendChild(answerCard(item)));
+})();
+</script>
+</body>
+</html>
